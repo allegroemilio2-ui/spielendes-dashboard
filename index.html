@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spielendes Dashboard – Deutsch B2 mit Ana</title>
+<meta name="description" content="Spielerisch Deutsch B2 lernen: Wortschatz-Quiz, Grammatik-Duell, Karteikarten und Memory. Alle paar Tage neue Inhalte.">
+<style>
+:root{--bg:#0f1226;--card:#1b1f3a;--card2:#232850;--text:#f4f5ff;--muted:#aab0d6;--acc:#ffb020;--acc2:#37d99a;--pink:#ff6b9d;--radius:18px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(1000px 500px at 80% -10%,#3b2f7a 0,transparent 60%),radial-gradient(800px 400px at -10% 10%,#123a5e 0,transparent 55%),var(--bg);color:var(--text)}
+header{padding:28px 18px 8px;max-width:980px;margin:0 auto}
+h1{font-size:clamp(26px,5vw,40px);margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 4px}
+.badge{display:inline-block;background:var(--card2);border:1px solid #39407a;padding:4px 12px;border-radius:999px;font-size:13px;color:var(--acc);margin-top:8px}
+main{max-width:980px;margin:0 auto;padding:14px 18px 48px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.stat{background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:16px;text-align:center}
+.stat b{font-size:26px;display:block}
+.stat span{color:var(--muted);font-size:13px}
+.ringwrap{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:16px}
+.ring{transform:rotate(-90deg)}
+.ring .bgc{stroke:#2c3160}.ring .fgc{stroke:var(--acc);transition:stroke-dashoffset .5s}
+section{background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:18px;margin:14px 0}
+h2{margin:0 0 8px;font-size:21px}
+h3{margin:14px 0 6px}
+p{line-height:1.55}
+.muted{color:var(--muted)}
+button{background:var(--acc);color:#191200;border:0;border-radius:12px;padding:11px 18px;font-weight:700;font-size:15px;cursor:pointer;margin:4px 4px 4px 0}
+button.ghost{background:var(--card2);color:var(--text);border:1px solid #39407a}
+button:disabled{opacity:.45;cursor:default}
+.opt{display:block;width:100%;text-align:left;background:var(--card2);color:var(--text);border:1px solid #39407a;border-radius:12px;padding:12px 14px;margin:7px 0;font-weight:600}
+.opt.correct{border-color:var(--acc2);background:#173d31}
+.opt.wrong{border-color:var(--pink);background:#42203a}
+.feedback{font-weight:700;margin:10px 0;min-height:24px}
+.ok{color:var(--acc2)}.bad{color:var(--pink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.flip{background:var(--card2);border:1px solid #39407a;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;min-height:86px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.flip.ka{color:var(--acc)}
+.mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px}
+.memcard{background:var(--card2);border:1px solid #39407a;border-radius:12px;padding:14px 6px;text-align:center;cursor:pointer;min-height:64px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.memcard.open{border-color:var(--acc)}
+.memcard.done{border-color:var(--acc2);background:#173d31;cursor:default}
+table{width:100%;border-collapse:collapse}
+td,th{padding:8px 6px;border-bottom:1px solid #2c3160;text-align:left;vertical-align:top}
+.bars{display:flex;gap:8px;align-items:flex-end;height:110px;margin-top:8px}
+.bar{flex:1;background:var(--card2);border-radius:8px 8px 0 0;position:relative;min-height:6px}
+.bar i{position:absolute;top:-20px;left:0;right:0;text-align:center;font-style:normal;font-size:12px;color:var(--muted)}
+.barlbl{display:flex;gap:8px}.barlbl span{flex:1;text-align:center;font-size:12px;color:var(--muted)}
+.quest{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #2c3160}
+.pack{border-left:4px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
+footer{color:var(--muted);text-align:center;padding:20px;font-size:13px}
+a{color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+<h1>🎮 Spielendes Dashboard</h1>
+<p class="sub">Deutsch B2 spielerisch lernen — für Ana. Wortschatz, Grammatik, Karteikarten &amp; Memory.</p>
+<span class="badge">🔄 Alle paar Tage kommen neue Wörter &amp; Aufgaben dazu</span>
+</header>
+<main>
+<div class="ringwrap">
+<svg class="ring" width="92" height="92" viewBox="0 0 92 92">
+<circle class="bgc" cx="46" cy="46" r="40" fill="none" stroke-width="9"></circle>
+<circle class="fgc" id="ringFg" cx="46" cy="46" r="40" fill="none" stroke-width="9" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+</svg>
+<div>
+<div style="font-size:22px;font-weight:800">Level <span id="level">1</span> · <span id="xp">0</span> XP</div>
+<div class="muted" id="levelHint">Noch 100 XP bis zum nächsten Level</div>
+<div class="muted">Jede richtige Antwort: <b style="color:var(--acc)">+10 XP</b> · Perfekte Runde: <b style="color:var(--acc)">+25 Bonus</b></div>
+</div>
+</div>
+
+<div class="stats">
+<div class="stat"><b id="streak">0 🔥</b><span>Tage-Streak</span></div>
+<div class="stat"><b id="accuracy">–</b><span>Trefferquote</span></div>
+<div class="stat"><b id="answered">0</b><span>Antworten gesamt</span></div>
+<div class="stat"><b id="wordCount">0</b><span>Wörter zum Lernen</span></div>
+</div>
+
+<section>
+<h2>📅 Tages-Quests</h2>
+<div class="quest"><span>Beantworte 5 Quiz-Fragen</span><span id="q1">0 / 5</span></div>
+<div class="quest"><span>Sammle heute 30 XP</span><span id="q2">0 / 30 XP</span></div>
+<div class="quest"><span>Schau dir 4 Karteikarten an</span><span id="q3">0 / 4</span></div>
+</section>
+
+<section>
+<h2>🆕 Neues auf dieser Seite</h2>
+<div id="packs"></div>
+</section>
+
+<section>
+<h2>🧠 Wortschatz-Quiz spielen</h2>
+<p class="muted">Georgisch → Deutsch. Wähle die richtige Antwort.</p>
+<div id="quizBox"><button id="quizStart">Quiz starten</button></div>
+</section>
+
+<section>
+<h2>⚔️ Grammatik-Duell</h2>
+<p class="muted">B2-Grammatik aus Anas Test: Konjunktiv II, Passiv, Relativsätze, Präpositionen.</p>
+<div id="gramBox"><button id="gramStart">Duell starten</button></div>
+</section>
+
+<section>
+<h2>🃏 Karteikarten (Deutsch ↔ ქართული)</h2>
+<p class="muted">Tippe auf eine Karte, um die Übersetzung zu sehen.</p>
+<div class="cards" id="flash"></div>
+</section>
+
+<section>
+<h2>🧩 Memory</h2>
+<p class="muted">Finde die Paare: deutsches Wort ↔ georgische Bedeutung.</p>
+<div id="memInfo" class="feedback"></div>
+<div class="mem" id="mem"></div>
+<p><button class="ghost" id="memRestart">Neues Memory-Spiel</button></p>
+</section>
+
+<section>
+<h2>📈 Deine letzten 7 Tage</h2>
+<div class="bars" id="bars"></div>
+<div class="barlbl" id="barlbl"></div>
+</section>
+
+<section>
+<h2>📚 Wortliste</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Deutsch</th><th>ქართული</th><th>Beispiel</th></tr></thead><tbody id="wordTable"></tbody></table></div>
+</section>
+</main>
+<footer>Gemacht für Ana · Deutsch B2 · Fortschritt wird nur in deinem Browser gespeichert.<br>Code auf GitHub: <a href="https://github.com/allegroemilio2-ui/spielendes-dashboard">allegroemilio2-ui/spielendes-dashboard</a></footer>
+<script>
+"use strict";
+/* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
+const PACKS=[
+{ id:"start-2026-10-20", date:"20. Oktober 2026", title:"Start-Paket: Pflege & Vermittlung",
+  words:[
+   {de:"die Vermittlung",ka:"შუამავლობა",ex:"Die Vermittlung einer Pflegekraft dauert manchmal zwei Wochen."},
+   {de:"die Pflegekraft",ka:"მომვლელი",ex:"Die Familie sucht eine erfahrene Pflegekraft."},
+   {de:"die Betreuung",ka:"მოვლა, მზრუნველობა",ex:"Die alte Dame braucht den ganzen Tag Betreuung."},
+   {de:"die Provision",ka:"საკომისიო",ex:"Die Agentur bekommt eine Provision für die Vermittlung."},
+   {de:"zuverlässig",ka:"სანდო",ex:"Es ist wichtig, zuverlässig zu sein."},
+   {de:"die Bewerbung",ka:"განაცხადი (სამსახურზე)",ex:"Sie schickt ihre Bewerbung an die Familie."},
+   {de:"sich kümmern um",ka:"ზრუნვა ვინმეზე",ex:"Sie kümmert sich um ihre Großmutter."},
+   {de:"der Haushalt",ka:"საშინაო საქმეები, ოჯახის მართვა",ex:"Er hilft ihr im Haushalt."},
+   {de:"vereinbaren",ka:"შეთანხმება, დანიშვნა",ex:"Wir müssen einen Termin vereinbaren."},
+   {de:"die Erfahrung",ka:"გამოცდილება",ex:"Er hat viel Erfahrung als Pflegekraft."},
+   {de:"die Voraussetzung",ka:"წინაპირობა",ex:"Gute Deutschkenntnisse sind eine wichtige Voraussetzung."},
+   {de:"zuständig",ka:"პასუხისმგებელი",ex:"Wer ist für die Organisation zuständig?"}
+  ]},
+];
+const GRAMMAR=[
+ {q:"Wenn ich mehr Zeit ______, würde ich einen Deutschkurs besuchen.",opts:["habe","hätte","hatte gehabt","haben werde"],a:1},
+ {q:"Das Haus ______ vor zwei Jahren gebaut.",opts:["wird","wurde","ist werden","hat"],a:1},
+ {q:"Die Frau, ______ Mann im Krankenhaus liegt, braucht Unterstützung.",opts:["deren","dessen","der","die"],a:0},
+ {q:"Er freut sich ______ deine Nachricht. Er hat sie gerade gelesen.",opts:["auf","über","für","an"],a:1},
+ {q:"Sie interessiert sich sehr ______ gesunde Ernährung.",opts:["an","für","über","auf"],a:1},
+ {q:"______ es stark regnete, gingen wir spazieren.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
+ {q:"Er lernt Deutsch, ______ in Deutschland arbeiten zu können.",opts:["um","damit","statt","ohne"],a:0},
+ {q:"Das ist das schönste Geschenk, ______ ich je bekommen habe.",opts:["der","den","das","dem"],a:2},
+ {q:"Wenn der Termin verschoben werden ______, sage mir bitte Bescheid.",opts:["muss","musst","müssen","gemusst"],a:0},
+ {q:"Je mehr du übst, ______ sprichst du Deutsch.",opts:["besser","am besten","gut","mehr gut"],a:0}
+];
+const ALLWORDS=PACKS.flatMap(p=>p.words);
+/* ===== Fortschritt (nur lokal im Browser) ===== */
+const KEY="b2-spiel-dashboard-v1";
+let S; try{S=JSON.parse(localStorage.getItem(KEY))||null}catch(e){S=null}
+if(!S||typeof S!=="object") S={xp:0,correct:0,answered:0,days:{},lastDay:"",streak:0,flips:0,todayAnswers:0,todayXP:0,todayFlips:0,today:""};
+function todayKey(d){d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function rollDay(){const t=todayKey();if(S.today!==t){S.today=t;S.todayAnswers=0;S.todayXP=0;S.todayFlips=0}}
+rollDay();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function gain(xp,wasCorrect){rollDay();S.xp+=xp;S.answered++;if(wasCorrect)S.correct++;S.todayAnswers++;S.todayXP+=xp;const t=todayKey();S.days[t]=(S.days[t]||0)+xp;
+ if(S.lastDay!==t){const y=new Date();y.setDate(y.getDate()-1);S.streak=(S.lastDay===todayKey(y))?S.streak+1:1;S.lastDay=t} save();renderStats()}
+function renderStats(){const lvl=Math.floor(S.xp/100)+1;const into=S.xp%100;
+ document.getElementById("level").textContent=lvl;
+ document.getElementById("xp").textContent=S.xp;
+ document.getElementById("levelHint").textContent="Noch "+(100-into)+" XP bis zu Level "+(lvl+1);
+ document.getElementById("ringFg").style.strokeDashoffset=(251.2*(1-into/100)).toFixed(1);
+ document.getElementById("streak").textContent=S.streak+" 🔥";
+ document.getElementById("accuracy").textContent=S.answered?Math.round(S.correct/S.answered*100)+"%":"–";
+ document.getElementById("answered").textContent=S.answered;
+ document.getElementById("wordCount").textContent=ALLWORDS.length;
+ document.getElementById("q1").textContent=Math.min(S.todayAnswers,5)+" / 5 "+(S.todayAnswers>=5?"✅":"");
+ document.getElementById("q2").textContent=Math.min(S.todayXP,30)+" / 30 XP "+(S.todayXP>=30?"✅":"");
+ document.getElementById("q3").textContent=Math.min(S.todayFlips,4)+" / 4 "+(S.todayFlips>=4?"✅":"");
+ const bars=document.getElementById("bars"),lbl=document.getElementById("barlbl");bars.innerHTML="";lbl.innerHTML="";
+ let max=10;for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);max=Math.max(max,S.days[todayKey(d)]||0)}
+ for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const v=S.days[todayKey(d)]||0;
+  const b=document.createElement("div");b.className="bar";b.style.height=Math.max(6,Math.round(v/max*100))+"%";b.innerHTML="<i>"+v+"</i>";bars.appendChild(b);
+  const s=document.createElement("span");s.textContent=["So","Mo","Di","Mi","Do","Fr","Sa"][d.getDay()];lbl.appendChild(s)}}
+/* ===== Pakete / Wortliste / Karteikarten ===== */
+function renderPacks(){document.getElementById("packs").innerHTML=PACKS.map(p=>'<div class="pack"><b>'+p.title+'</b> <span class="muted">('+p.date+')</span><br><span class="muted">'+p.words.length+' neue Wörter: '+p.words.map(w=>w.de).join(", ")+'</span></div>').join("")}
+function renderWords(){document.getElementById("wordTable").innerHTML=ALLWORDS.map(w=>"<tr><td><b>"+w.de+"</b></td><td>"+w.ka+"</td><td class='muted'>"+w.ex+"</td></tr>").join("");
+ const f=document.getElementById("flash");f.innerHTML="";
+ ALLWORDS.forEach(w=>{const d=document.createElement("div");d.className="flip";d.textContent=w.de;d.dataset.state="de";
+  d.onclick=()=>{if(d.dataset.state==="de"){d.textContent=w.ka;d.classList.add("ka");d.dataset.state="ka";S.flips++;S.todayFlips++;save();renderStats()}else{d.textContent=w.de;d.classList.remove("ka");d.dataset.state="de"}};f.appendChild(d)})}
+/* ===== Quiz-Engine ===== */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
+function runQuiz(boxId,questions,label){const box=document.getElementById(boxId);let i=0,score=0;
+ function step(){if(i>=questions.length){let bonus=0;if(score===questions.length){bonus=25;S.xp+=25;const t=todayKey();S.days[t]=(S.days[t]||0)+25;S.todayXP+=25;save()}
+   box.innerHTML='<div class="feedback '+(score>=questions.length*0.7?"ok":"bad")+'">Fertig! '+score+" von "+questions.length+" richtig."+(bonus?" Perfekt! +25 Bonus-XP 🎉":"")+'</div><button onclick="document.getElementById(\''+boxId+'\').dispatchEvent(new Event(\'restart\'))">Nochmal spielen</button>';renderStats();return}
+  const qu=questions[i];
+  box.innerHTML="<p><b>"+label+" · Frage "+(i+1)+" / "+questions.length+"</b></p><p style='font-size:18px'>"+qu.q+"</p>"+qu.opts.map((o,idx)=>'<button class="opt" data-i="'+idx+'">'+o+"</button>").join("")+'<div class="feedback" id="fb-'+boxId+'"></div>';
+  box.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>{const picked=+btn.dataset.i;const good=picked===qu.a;
+   box.querySelectorAll(".opt").forEach(b=>{b.disabled=true;if(+b.dataset.i===qu.a)b.classList.add("correct")});
+   if(!good)btn.classList.add("wrong");
+   if(good)score++; gain(good?10:0,good);
+   const fb=document.getElementById("fb-"+boxId);fb.innerHTML=good?'<span class="ok">Richtig! +10 XP ✅</span>':'<span class="bad">Nicht ganz. Richtig ist: '+qu.opts[qu.a]+"</span>";
+   const nx=document.createElement("button");nx.textContent=(i+1>=questions.length)?"Ergebnis sehen":"Weiter";nx.onclick=()=>{i++;step()};box.appendChild(nx)})}
+ box.addEventListener("restart",()=>{start()},{once:true});
+ function start(){i=0;score=0;step()} start()}
+function wordQuestions(){return shuffle(ALLWORDS).slice(0,10).map(w=>{const others=shuffle(ALLWORDS.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.de);const opts=shuffle([w.de].concat(others));return{q:"Was heißt „"+w.ka+"“ auf Deutsch?",opts:opts,a:opts.indexOf(w.de)}})}
+function grammarQuestions(){return shuffle(GRAMMAR).map(g=>({q:g.q,opts:g.opts,a:g.a}))}
+document.getElementById("quizStart").onclick=()=>runQuiz("quizBox",wordQuestions(),"Wortschatz-Quiz");
+document.getElementById("gramStart").onclick=()=>runQuiz("gramBox",grammarQuestions(),"Grammatik-Duell");
+/* ===== Memory ===== */
+let memOpen=[],memLock=false,memPairs=0;
+function startMemory(){const words=shuffle(ALLWORDS).slice(0,6);let cards=[];words.forEach((w,idx)=>{cards.push({t:w.de,id:idx});cards.push({t:w.ka,id:idx})});cards=shuffle(cards);memOpen=[];memLock=false;memPairs=0;
+ const m=document.getElementById("mem");m.innerHTML="";document.getElementById("memInfo").textContent="";
+ cards.forEach(c=>{const d=document.createElement("div");d.className="memcard";d.textContent="❓";d.dataset.id=c.id;d.dataset.txt=c.t;
+  d.onclick=()=>{if(memLock||d.classList.contains("open")||d.classList.contains("done"))return;d.classList.add("open");d.textContent=c.t;memOpen.push(d);
+   if(memOpen.length===2){memLock=true;const A=memOpen[0],B=memOpen[1];
+    if(A.dataset.id===B.dataset.id){A.classList.add("done");B.classList.add("done");memPairs++;gain(10,true);
+     document.getElementById("memInfo").innerHTML='<span class="ok">Paar gefunden! +10 XP ✅ ('+memPairs+" / 6)</span>";
+     if(memPairs===6)document.getElementById("memInfo").innerHTML='<span class="ok">Memory geschafft! 🎉</span>';memOpen=[];memLock=false}
+    else{gain(0,false);setTimeout(()=>{A.classList.remove("open");B.classList.remove("open");A.textContent="❓";B.textContent="❓";memOpen=[];memLock=false},850)}}};
+  m.appendChild(d)})}
+document.getElementById("memRestart").onclick=startMemory;
+renderPacks();renderWords();renderStats();startMemory();
+</script>
+</body>
+</html>
