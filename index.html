@@ -120,6 +120,12 @@ a{color:var(--acc)}
 </section>
 
 <section>
+<h2>🎧 Hör-Prüfung (B2) – Antworten antippen</h2>
+<p class="muted">Wie in der echten B2-Prüfung: Höre dir den Text mit ▶ an und tippe dann bei jeder Frage auf die richtige Antwort. Du bekommst sofort Rückmeldung – und für jede richtige Antwort +10 XP. Das Transkript kannst du dir am Ende jeder Übung anzeigen lassen.</p>
+<div id="hpBox"></div>
+</section>
+
+<section>
 <h2>⚔️ Grammatik-Duell</h2>
 <p class="muted">Grammatik für B2, C1 und C2 — passend zum gewählten Niveau: Konjunktiv, Passiv &amp; Passiv-Ersatz, Relativsätze, Nominalstil und mehr.</p>
 <div id="gramBox"><button id="gramStart">Duell starten</button></div>
@@ -255,6 +261,92 @@ function speak(txt){try{const u=new SpeechSynthesisUtterance(txt);u.lang="de-DE"
  speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 if("speechSynthesis" in window){speechSynthesis.getVoices()}
 function spkBtn(txt){const b=document.createElement("button");b.type="button";b.className="spk";b.textContent="🔊";b.title="Anhören";b.onclick=function(ev){ev.stopPropagation();speak(txt)};return b}
+/* ===== Hör-Prüfung: Dialoge/Texte mit zwei Stimmen abspielen ===== */
+function speakTurns(turns){try{speechSynthesis.cancel();const vs=speechSynthesis.getVoices();const dv=vs.find(v=>v.lang&&v.lang.toLowerCase().indexOf("de")===0);
+ turns.forEach(function(tn){const u=new SpeechSynthesisUtterance(tn.t);u.lang="de-DE";u.rate=0.92;if(dv)u.voice=dv;if(tn.s===1)u.pitch=0.85;speechSynthesis.speak(u)})}catch(e){}}
+function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}}
+/* ===== Inhalte: Hör-Prüfung (B2) — turns: s=0/1 Sprecher, questions: q/opts/a ===== */
+const HOERPRUEFUNG=[
+{title:"Übung 1: Interview mit einer Pflegekraft",names:["Moderatorin","Frau Berger"],
+ turns:[
+  {s:0,t:"Guten Morgen, liebe Hörerinnen und Hörer. Heute spreche ich mit Frau Berger. Sie arbeitet seit zehn Jahren als Pflegekraft in einem Seniorenheim. Frau Berger, wie sieht ein normaler Arbeitstag bei Ihnen aus?"},
+  {s:1,t:"Guten Morgen. Mein Tag beginnt um sechs Uhr. Zuerst bespreche ich mit meinen Kolleginnen, wie es den Bewohnern geht. Danach helfe ich den Senioren beim Waschen und Anziehen und bringe ihnen das Frühstück."},
+  {s:0,t:"Was gefällt Ihnen an Ihrem Beruf besonders?"},
+  {s:1,t:"Die Gespräche mit den alten Menschen. Viele erzählen gern von früher, und ich höre ihnen gern zu. Aber die Arbeit ist auch anstrengend. Wir haben oft zu wenig Zeit, weil Personal fehlt."},
+  {s:0,t:"Was müsste sich Ihrer Meinung nach ändern?"},
+  {s:1,t:"Wir brauchen mehr Kolleginnen und Kollegen, damit wir mehr Zeit für jeden Menschen haben. Und die Pflegekräfte sollten besser bezahlt werden. Trotzdem möchte ich keinen anderen Beruf haben. Die Dankbarkeit der Senioren gibt mir viel Kraft."},
+  {s:0,t:"Vielen Dank für das Gespräch, Frau Berger."},
+  {s:1,t:"Sehr gern."}],
+ questions:[
+  {q:"Wann beginnt Frau Bergers Arbeitstag?",opts:["um 5 Uhr","um 6 Uhr","um 7 Uhr"],a:1},
+  {q:"Was macht sie zuerst?",opts:["Sie bespricht mit ihren Kolleginnen, wie es den Bewohnern geht.","Sie bringt den Senioren das Frühstück.","Sie hilft den Senioren beim Anziehen."],a:0},
+  {q:"Was ist ein Problem in ihrem Beruf?",opts:["Die Senioren sind unfreundlich.","Es gibt zu wenig Personal.","Die Arbeit ist langweilig."],a:1},
+  {q:"Was wünscht sich Frau Berger?",opts:["mehr Urlaub","weniger Bewohner","mehr Kolleginnen und Kollegen und bessere Bezahlung"],a:2},
+  {q:"Wie steht Frau Berger zu ihrem Beruf?",opts:["Sie möchte bald den Beruf wechseln.","Sie möchte keinen anderen Beruf haben.","Sie ist sehr unzufrieden."],a:1}]},
+{title:"Übung 2: Telefongespräch – Familie sucht eine Pflegekraft",names:["Frau Sommer (Agentur)","Herr Klein"],
+ turns:[
+  {s:0,t:"Agentur PflegeStern, Anna Sommer am Apparat. Was kann ich für Sie tun?"},
+  {s:1,t:"Guten Tag, hier spricht Thomas Klein. Es geht um meine Mutter. Sie ist zweiundachtzig Jahre alt und wohnt allein. Nach ihrem Krankenhausaufenthalt braucht sie rund um die Uhr Hilfe."},
+  {s:0,t:"Das verstehe ich. Braucht Ihre Mutter nur Hilfe im Haushalt oder auch bei der Körperpflege?"},
+  {s:1,t:"Beides. Sie kann nicht mehr allein duschen, und auch das Kochen fällt ihr schwer. Wichtig ist uns, dass die Pflegekraft gut Deutsch spricht, weil meine Mutter gern erzählt."},
+  {s:0,t:"Das ist kein Problem. Unsere Pflegekräfte haben viel Erfahrung. Wann soll die Betreuung denn beginnen?"},
+  {s:1,t:"Am besten ab dem ersten November. Und was würde das ungefähr kosten?"},
+  {s:0,t:"Das hängt vom Pflegegrad Ihrer Mutter ab. Ich schicke Ihnen gern ein Angebot per E-Mail zu. Außerdem können wir einen Termin für ein Gespräch bei Ihrer Mutter zu Hause vereinbaren."},
+  {s:1,t:"Das wäre sehr gut. Am Freitag hätte ich ab sechzehn Uhr Zeit."},
+  {s:0,t:"Wunderbar, dann notiere ich: Freitag, sechzehn Uhr, bei Ihrer Mutter. Ich rufe Sie am Donnerstag noch einmal an, um den Termin zu bestätigen."}],
+ questions:[
+  {q:"Warum ruft Herr Klein an?",opts:["Er sucht eine Arbeit als Pflegekraft.","Seine Mutter braucht nach dem Krankenhaus rund um die Uhr Hilfe.","Er möchte sich über die Agentur beschweren."],a:1},
+  {q:"Was kann die Mutter nicht mehr allein machen?",opts:["duschen und kochen","lesen und fernsehen","spazieren gehen und einkaufen"],a:0},
+  {q:"Was ist der Familie besonders wichtig?",opts:["Die Pflegekraft soll einen Führerschein haben.","Die Pflegekraft soll möglichst jung sein.","Die Pflegekraft soll gut Deutsch sprechen."],a:2},
+  {q:"Wann soll die Betreuung beginnen?",opts:["sofort, noch diese Woche","ab dem 1. November","erst im nächsten Jahr"],a:1},
+  {q:"Was vereinbaren die beiden am Ende?",opts:["einen Termin am Freitag um 16 Uhr bei der Mutter zu Hause","ein Telefonat am Freitag um 16 Uhr","einen Besuch in der Agentur am Donnerstag"],a:0}]},
+{title:"Übung 3: Radiobericht – Nachtzug Berlin–Wien",names:["Reporter"],
+ turns:[
+  {s:0,t:"Gute Nachrichten für alle, die gern mit dem Zug reisen: Ab dem fünfzehnten Dezember gibt es eine neue Nachtzugverbindung von Berlin nach Wien. Der Zug fährt jeden Abend um neunzehn Uhr dreißig am Berliner Hauptbahnhof ab und kommt am nächsten Morgen um sieben Uhr fünfzehn in Wien an. Fahrkarten gibt es ab neunundzwanzig Euro, wenn man früh bucht. Im Zug gibt es Schlafwagen, ein Bordrestaurant und kostenloses WLAN. Die Bahn erwartet besonders viele Fahrgäste in der Weihnachtszeit und empfiehlt deshalb, die Tickets mindestens vier Wochen vorher zu kaufen. Wer mit dem Nachtzug fährt, spart sich nicht nur eine Hotelübernachtung, sondern reist auch umweltfreundlicher als mit dem Flugzeug."}],
+ questions:[
+  {q:"Ab wann gibt es die neue Nachtzugverbindung?",opts:["ab dem 1. Dezember","ab dem 15. Dezember","ab dem 1. Januar"],a:1},
+  {q:"Wann kommt der Zug in Wien an?",opts:["um 7:15 Uhr","um 19:30 Uhr","um 6:45 Uhr"],a:0},
+  {q:"Ab welchem Preis gibt es Fahrkarten?",opts:["ab 19 Euro","ab 29 Euro","ab 39 Euro"],a:1},
+  {q:"Was empfiehlt die Bahn für die Weihnachtszeit?",opts:["die Tickets mindestens vier Wochen vorher zu kaufen","nur mit Handgepäck zu reisen","lieber das Auto zu nehmen"],a:0},
+  {q:"Welche Vorteile hat der Nachtzug laut Bericht?",opts:["Er ist schneller als das Flugzeug.","Man spart eine Hotelübernachtung und reist umweltfreundlicher.","Er fährt auch tagsüber."],a:1}]},
+{title:"Übung 4: Dialog – Freunde planen eine Wanderung",names:["Lena","Jonas"],
+ turns:[
+  {s:0,t:"Hallo Jonas! Hast du am Wochenende schon etwas vor?"},
+  {s:1,t:"Hallo Lena! Nein, noch nichts. Warum fragst du?"},
+  {s:0,t:"Ich möchte gern in den Bergen bei Garmisch wandern gehen. Das Wetter soll sonnig werden, fünfundzwanzig Grad. Kommst du mit?"},
+  {s:1,t:"Sehr gern! Fahren wir mit dem Zug oder mit dem Auto?"},
+  {s:0,t:"Mit dem Zug ist es entspannter. Es gibt einen Zug um acht Uhr zehn ab Hauptbahnhof. Wir müssen die Tickets aber vorher online kaufen."},
+  {s:1,t:"Gut, das mache ich heute Abend. Und was nehmen wir zu essen mit?"},
+  {s:0,t:"Ich mache belegte Brote und nehme Obst mit. Du kannst etwas zu trinken mitbringen, am besten Wasser. Und vergiss deine Wanderschuhe nicht!"},
+  {s:1,t:"Keine Sorge! Wann treffen wir uns am Samstag?"},
+  {s:0,t:"Um halb acht am Bahnhof, damit wir den Zug nicht verpassen. Die Wanderung dauert ungefähr vier Stunden."},
+  {s:1,t:"Perfekt, ich freue mich schon!"}],
+ questions:[
+  {q:"Was möchte Lena am Wochenende machen?",opts:["schwimmen gehen","in den Bergen wandern gehen","eine Stadt besichtigen"],a:1},
+  {q:"Wie wird das Wetter?",opts:["regnerisch und kalt","bewölkt, 15 Grad","sonnig, 25 Grad"],a:2},
+  {q:"Wie fahren die beiden?",opts:["mit dem Zug um 8:10 Uhr","mit dem Auto","mit dem Bus um 9 Uhr"],a:0},
+  {q:"Wer kauft die Tickets?",opts:["Lena, am Bahnhof","Jonas, heute Abend online","niemand, sie brauchen keine"],a:1},
+  {q:"Wann treffen sie sich am Samstag?",opts:["um 7:30 Uhr am Bahnhof","um 8:10 Uhr am Bahnhof","um 9 Uhr bei Lena"],a:0}]},
+{title:"Übung 5: Telefongespräch – Termin beim Arzt",names:["Frau Lehmann (Praxis)","Herr Wagner"],
+ turns:[
+  {s:0,t:"Praxis Dr. Weber, guten Tag. Mein Name ist Frau Lehmann. Wie kann ich Ihnen helfen?"},
+  {s:1,t:"Guten Tag, hier ist Michael Wagner. Ich hätte gern einen Termin. Ich habe seit einer Woche starke Rückenschmerzen."},
+  {s:0,t:"Das tut mir leid. Waren Sie schon einmal bei uns?"},
+  {s:1,t:"Ja, vor zwei Jahren war ich schon einmal da."},
+  {s:0,t:"Gut, ich habe Ihre Daten gefunden. Der nächste freie Termin ist am Donnerstag um neun Uhr dreißig. Passt Ihnen das?"},
+  {s:1,t:"Am Donnerstag arbeite ich bis zwölf Uhr. Geht es auch später in der Woche?"},
+  {s:0,t:"Am Freitag um vierzehn Uhr wäre noch ein Termin frei."},
+  {s:1,t:"Freitag passt mir gut. Was soll ich zu dem Termin mitbringen?"},
+  {s:0,t:"Bitte bringen Sie Ihre Versichertenkarte und, wenn Sie welche haben, ältere Befunde mit. Und kommen Sie bitte zehn Minuten früher."},
+  {s:1,t:"Alles klar. Vielen Dank und bis Freitag!"},
+  {s:0,t:"Gern geschehen. Gute Besserung, Herr Wagner!"}],
+ questions:[
+  {q:"Warum ruft Herr Wagner an?",opts:["Er möchte ein Rezept abholen.","Er braucht einen Termin wegen Rückenschmerzen.","Er möchte seine Versichertenkarte erneuern."],a:1},
+  {q:"Seit wann hat er Rückenschmerzen?",opts:["seit einer Woche","seit zwei Jahren","seit gestern"],a:0},
+  {q:"Warum passt ihm der Termin am Donnerstag nicht?",opts:["Er arbeitet donnerstags bis 12 Uhr.","Er ist donnerstags nicht in der Stadt.","Er hat donnerstags schon einen anderen Termin."],a:0},
+  {q:"Wann ist sein Termin jetzt?",opts:["Donnerstag, 9:30 Uhr","Freitag, 14:00 Uhr","Freitag, 9:30 Uhr"],a:1},
+  {q:"Was soll er mitbringen und beachten?",opts:["Versichertenkarte und ältere Befunde; 10 Minuten früher kommen","nur die Versichertenkarte; pünktlich um 14 Uhr kommen","einen Überweisungsschein; nüchtern kommen"],a:0}]}
+];
 </script>
 <script>
 "use strict";
@@ -328,6 +420,37 @@ function grammarQuestions(){const pool=CURLEVEL==="Alle"?GRAMMAR:GRAMMAR.filter(
 document.getElementById("quizStart").onclick=()=>runQuiz("quizBox",wordQuestions(),"Wortschatz-Quiz");
 document.getElementById("hearStart").onclick=()=>runQuiz("hearBox",hearQuestions(),"Hör-Quiz");
 document.getElementById("gramStart").onclick=()=>runQuiz("gramBox",grammarQuestions(),"Grammatik-Duell");
+/* ===== Hör-Prüfung (B2): Text anhören, Antworten antippen ===== */
+function renderHoerPruefung(){const box=document.getElementById("hpBox");if(!box)return;box.innerHTML="";
+ HOERPRUEFUNG.forEach(function(ex,ei){const wrap=document.createElement("div");
+  if(ei>0){wrap.style.borderTop="1px solid #2c3160";wrap.style.marginTop="16px";wrap.style.paddingTop="6px"}
+  const h=document.createElement("h3");h.textContent=ex.title;wrap.appendChild(h);
+  const prow=document.createElement("p");
+  const play=document.createElement("button");play.type="button";play.textContent="▶ Text anhören";play.onclick=function(){speakTurns(ex.turns)};prow.appendChild(play);
+  const stop=document.createElement("button");stop.type="button";stop.className="ghost";stop.textContent="⏹ Stopp";stop.onclick=function(){stopSpeak()};prow.appendChild(stop);
+  wrap.appendChild(prow);
+  let done=0,score=0;const result=document.createElement("div");result.className="feedback";
+  ex.questions.forEach(function(qu,qi){const qd=document.createElement("div");
+   const qp=document.createElement("p");qp.innerHTML="<b>"+(qi+1)+".</b> "+qu.q;qd.appendChild(qp);
+   qu.opts.forEach(function(o,oi){const b=document.createElement("button");b.type="button";b.className="opt";b.textContent=o;b.dataset.i=oi;
+    b.onclick=function(){const good=oi===qu.a;
+     qd.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(+x.dataset.i===qu.a)x.classList.add("correct")});
+     if(!good)b.classList.add("wrong");
+     if(good)score++;gain(good?10:0,good);done++;
+     const fbd=document.createElement("div");fbd.className="feedback";
+     fbd.innerHTML=good?'<span class="ok">Richtig! +10 XP ✅</span>':'<span class="bad">Nicht ganz. Richtig ist: '+qu.opts[qu.a]+"</span>";
+     qd.appendChild(fbd);
+     if(done===ex.questions.length){result.innerHTML='<span class="'+(score>=3?"ok":"bad")+'">Ergebnis: '+score+" von "+ex.questions.length+" richtig.</span>"+(score===ex.questions.length?" Perfekt! 🎉":"");result.scrollIntoView({behavior:"smooth",block:"nearest"})}};
+    qd.appendChild(b)});
+   wrap.appendChild(qd)});
+  wrap.appendChild(result);
+  const trb=document.createElement("button");trb.type="button";trb.className="ghost";trb.textContent="📄 Transkript zeigen";
+  const trd=document.createElement("div");trd.style.display="none";
+  trd.innerHTML=ex.turns.map(function(tn){return "<p><b>"+ex.names[tn.s]+":</b> "+tn.t+"</p>"}).join("");
+  trb.onclick=function(){const open=trd.style.display!=="none";trd.style.display=open?"none":"block";trb.textContent=open?"📄 Transkript zeigen":"📄 Transkript verbergen"};
+  wrap.appendChild(trb);wrap.appendChild(trd);
+  box.appendChild(wrap)})}
+renderHoerPruefung();
 /* ===== Memory ===== */
 let memOpen=[],memLock=false,memPairs=0,memTotal=6;
 function startMemory(){const W=shuffle(curWords());const words=W.slice(0,Math.min(6,W.length));memTotal=words.length;let cards=[];words.forEach((w,idx)=>{cards.push({t:w.de,id:idx});cards.push({t:w.ka,id:idx})});cards=shuffle(cards);memOpen=[];memLock=false;memPairs=0;

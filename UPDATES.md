@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-21 – 🎧 Hör-Prüfung (B2) zum Antippen
+- Neue Sektion **„Hör-Prüfung (B2)"**: 5 Prüfungs-Übungen (Interview mit Pflegekraft, Telefongespräch mit Pflege-Agentur, Radiobericht Nachtzug, Wandern-Dialog, Arzttermin) — Text anhören und die Antworten direkt antippen, mit sofortiger Rückmeldung und +10 XP pro richtiger Antwort.
+- Zwei Stimmen pro Dialog (zweite Stimme tiefer), Stopp-Button inklusive.
+- Transkript zu jeder Übung per Button einblendbar.
+
 ## 2026-10-21 – B2-Paket „Gesundheit & Arztbesuch“
 - 10 neue B2-Wörter: Untersuchung, Rezept, Schmerzen, Behandlung, Blutdruck, sich erholen, Krankenkasse, Notfall, Tablette, regelmäßig.
 - 4 neue Grammatikfragen zum Thema Gesundheit.
