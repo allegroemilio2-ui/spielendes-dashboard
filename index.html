@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spielendes Dashboard – Deutsch B2 mit Ana</title>
-<meta name="description" content="Spielerisch Deutsch B2 lernen: Wortschatz-Quiz, Grammatik-Duell, Karteikarten und Memory. Alle paar Tage neue Inhalte.">
+<title>Spielendes Dashboard – Deutsch B2–C2 mit Ana</title>
+<meta name="description" content="Spielerisch Deutsch B2 bis C2 lernen: Wortschatz-Quiz, Hör-Quiz, Bild-Karten, Grammatik-Duell, Karteikarten und Memory. Alle paar Tage neue Inhalte.">
 <style>
 :root{--bg:#0f1226;--card:#1b1f3a;--card2:#232850;--text:#f4f5ff;--muted:#aab0d6;--acc:#ffb020;--acc2:#37d99a;--pink:#ff6b9d;--radius:18px}
 *{box-sizing:border-box}
@@ -35,8 +35,17 @@ button:disabled{opacity:.45;cursor:default}
 .feedback{font-weight:700;margin:10px 0;min-height:24px}
 .ok{color:var(--acc2)}.bad{color:var(--pink)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.flip{background:var(--card2);border:1px solid #39407a;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;min-height:86px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.flip{background:var(--card2);border:1px solid #39407a;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;gap:4px}
 .flip.ka{color:var(--acc)}
+.picgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.piccard{background:linear-gradient(160deg,#2a2f5e,#1b1f3a);border:1px solid #39407a;border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer}
+.piccard .big{font-size:46px;line-height:1.15;display:block}
+.piccard .wd{font-weight:800;display:block;margin-top:6px}
+.piccard .ka2{color:var(--acc);font-weight:700;display:block;min-height:20px}
+.spk{background:var(--card2);border:1px solid #39407a;color:var(--text);border-radius:999px;padding:4px 10px;font-size:14px;margin:2px}
+.lvlbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.lvlbtn{background:var(--card2);color:var(--text);border:1px solid #39407a}
+.lvlbtn.active{background:var(--acc);color:#191200;border-color:var(--acc)}
 .mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px}
 .memcard{background:var(--card2);border:1px solid #39407a;border-radius:12px;padding:14px 6px;text-align:center;cursor:pointer;min-height:64px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
 .memcard.open{border-color:var(--acc)}
@@ -49,6 +58,7 @@ td,th{padding:8px 6px;border-bottom:1px solid #2c3160;text-align:left;vertical-a
 .barlbl{display:flex;gap:8px}.barlbl span{flex:1;text-align:center;font-size:12px;color:var(--muted)}
 .quest{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #2c3160}
 .pack{border-left:4px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
+.lvltag{display:inline-block;background:#39407a;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;color:var(--acc)}
 footer{color:var(--muted);text-align:center;padding:20px;font-size:13px}
 a{color:var(--acc)}
 </style>
@@ -56,8 +66,14 @@ a{color:var(--acc)}
 <body>
 <header>
 <h1>🎮 Spielendes Dashboard</h1>
-<p class="sub">Deutsch B2 spielerisch lernen — für Ana. Wortschatz, Grammatik, Karteikarten &amp; Memory.</p>
+<p class="sub">Deutsch <b>B2 bis C2</b> spielerisch lernen — für Ana. Wortschatz, Hören, Bilder, Grammatik, Karteikarten &amp; Memory.</p>
 <span class="badge">🔄 Alle paar Tage kommen neue Wörter &amp; Aufgaben dazu</span>
+<div class="lvlbar"><span class="muted"><b>Niveau wählen:</b></span>
+<button class="lvlbtn" data-lvl="Alle">Alle</button>
+<button class="lvlbtn" data-lvl="B2">B2</button>
+<button class="lvlbtn" data-lvl="C1">C1</button>
+<button class="lvlbtn" data-lvl="C2">C2</button>
+<span class="muted">Quiz, Karten, Memory &amp; Wortliste passen sich an.</span></div>
 </header>
 <main>
 <div class="ringwrap">
@@ -98,14 +114,26 @@ a{color:var(--acc)}
 </section>
 
 <section>
+<h2>🎧 Hör-Quiz</h2>
+<p class="muted">Du hörst ein deutsches Wort — wähle die richtige georgische Bedeutung. Tippe auf 🔊, um es (noch einmal) zu hören.</p>
+<div id="hearBox"><button id="hearStart">Hör-Quiz starten</button></div>
+</section>
+
+<section>
 <h2>⚔️ Grammatik-Duell</h2>
-<p class="muted">B2-Grammatik aus Anas Test: Konjunktiv II, Passiv, Relativsätze, Präpositionen.</p>
+<p class="muted">Grammatik für B2, C1 und C2 — passend zum gewählten Niveau: Konjunktiv, Passiv &amp; Passiv-Ersatz, Relativsätze, Nominalstil und mehr.</p>
 <div id="gramBox"><button id="gramStart">Duell starten</button></div>
 </section>
 
 <section>
+<h2>🖼️ Bild-Karten</h2>
+<p class="muted">Lernen mit Bildern: Tippe auf eine Karte — du hörst das Wort und siehst die Übersetzung.</p>
+<div class="picgrid" id="picCards"></div>
+</section>
+
+<section>
 <h2>🃏 Karteikarten (Deutsch ↔ ქართული)</h2>
-<p class="muted">Tippe auf eine Karte, um die Übersetzung zu sehen.</p>
+<p class="muted">Tippe auf eine Karte, um die Übersetzung zu sehen. Mit 🔊 hörst du die Aussprache.</p>
 <div class="cards" id="flash"></div>
 </section>
 
@@ -125,47 +153,100 @@ a{color:var(--acc)}
 
 <section>
 <h2>📚 Wortliste</h2>
-<div style="overflow-x:auto"><table><thead><tr><th>Deutsch</th><th>ქართული</th><th>Beispiel</th></tr></thead><tbody id="wordTable"></tbody></table></div>
+<div style="overflow-x:auto"><table><thead><tr><th>Deutsch</th><th>🔊</th><th>ქართული</th><th>Beispiel</th><th>Niveau</th></tr></thead><tbody id="wordTable"></tbody></table></div>
 </section>
 </main>
-<footer>Gemacht für Ana · Deutsch B2 · Fortschritt wird nur in deinem Browser gespeichert.<br>Code auf GitHub: <a href="https://github.com/allegroemilio2-ui/spielendes-dashboard">allegroemilio2-ui/spielendes-dashboard</a></footer>
+<footer>Gemacht für Ana · Deutsch B2–C2 · Fortschritt wird nur in deinem Browser gespeichert.<br>Code auf GitHub: <a href="https://github.com/allegroemilio2-ui/spielendes-dashboard">allegroemilio2-ui/spielendes-dashboard</a></footer>
 <script>
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
-{ id:"start-2026-10-20", date:"20. Oktober 2026", title:"Start-Paket: Pflege & Vermittlung",
+{ id:"c2-2026-10-21", date:"21. Oktober 2026", level:"C2", title:"C2-Paket: Gehobene Sprache & Präzision",
   words:[
-   {de:"die Vermittlung",ka:"შუამავლობა",ex:"Die Vermittlung einer Pflegekraft dauert manchmal zwei Wochen."},
-   {de:"die Pflegekraft",ka:"მომვლელი",ex:"Die Familie sucht eine erfahrene Pflegekraft."},
-   {de:"die Betreuung",ka:"მოვლა, მზრუნველობა",ex:"Die alte Dame braucht den ganzen Tag Betreuung."},
-   {de:"die Provision",ka:"საკომისიო",ex:"Die Agentur bekommt eine Provision für die Vermittlung."},
-   {de:"zuverlässig",ka:"სანდო",ex:"Es ist wichtig, zuverlässig zu sein."},
-   {de:"die Bewerbung",ka:"განაცხადი (სამსახურზე)",ex:"Sie schickt ihre Bewerbung an die Familie."},
-   {de:"sich kümmern um",ka:"ზრუნვა ვინმეზე",ex:"Sie kümmert sich um ihre Großmutter."},
-   {de:"der Haushalt",ka:"საშინაო საქმეები, ოჯახის მართვა",ex:"Er hilft ihr im Haushalt."},
-   {de:"vereinbaren",ka:"შეთანხმება, დანიშვნა",ex:"Wir müssen einen Termin vereinbaren."},
-   {de:"die Erfahrung",ka:"გამოცდილება",ex:"Er hat viel Erfahrung als Pflegekraft."},
-   {de:"die Voraussetzung",ka:"წინაპირობა",ex:"Gute Deutschkenntnisse sind eine wichtige Voraussetzung."},
-   {de:"zuständig",ka:"პასუხისმგებელი",ex:"Wer ist für die Organisation zuständig?"}
+   {de:"augenscheinlich",ka:"აშკარად, თვალსაჩინოდ",img:"👀",ex:"Er war augenscheinlich sehr müde."},
+   {de:"die Vorreiterrolle",ka:"წინამძღოლის როლი",img:"🚩",ex:"Die Agentur übernimmt in der Region eine Vorreiterrolle."},
+   {de:"unabdingbar",ka:"აუცილებელი",img:"🔒",ex:"Vertrauen ist für diese Arbeit unabdingbar."},
+   {de:"die Tragweite",ka:"მასშტაბი, მნიშვნელობა",img:"🌐",ex:"Die Tragweite der Entscheidung war allen klar."},
+   {de:"sich bewähren",ka:"საიმედოდ თავის გამართლება",img:"🏅",ex:"Die neue Pflegekraft hat sich schnell bewährt."},
+   {de:"der Werdegang",ka:"ცხოვრების გზა, კარიერა",img:"🛤️",ex:"Ihr beruflicher Werdegang ist beeindruckend."},
+   {de:"nahezu",ka:"თითქმის",img:"🌗",ex:"Das ist nahezu unmöglich."},
+   {de:"die Gelassenheit",ka:"სიმშვიდე, თავშეკავებულობა",img:"🧘",ex:"Sie reagiert auch im Stress mit Gelassenheit."},
+   {de:"von vornherein",ka:"თავიდანვე",img:"🏁",ex:"Das war von vornherein so vereinbart."},
+   {de:"die Wertschätzung",ka:"დაფასება",img:"🙏",ex:"Die Familie zeigt ihr viel Wertschätzung."},
+   {de:"einwandfrei",ka:"უნაკლო, უხარვეზო",img:"✨",ex:"Ihre Arbeit ist immer einwandfrei."},
+   {de:"die Beharrlichkeit",ka:"შეუპოვრობა, სიმტკიცე",img:"⛰️",ex:"Mit Beharrlichkeit erreicht sie jedes Ziel."}
+  ]},
+{ id:"c1-2026-10-21", date:"21. Oktober 2026", level:"C1", title:"C1-Paket: Beruf & Gesellschaft",
+  words:[
+   {de:"die Auswirkung",ka:"შედეგი, გავლენა",img:"🌊",ex:"Die Entscheidung hat große Auswirkungen auf die Familie."},
+   {de:"berücksichtigen",ka:"გათვალისწინება",img:"🔍",ex:"Wir müssen die Wünsche der Familie berücksichtigen."},
+   {de:"der Anspruch",ka:"მოთხოვნა",img:"🎯",ex:"Die Arbeit stellt hohe Ansprüche an sie."},
+   {de:"gewährleisten",ka:"უზრუნველყოფა",img:"🛡️",ex:"So können wir eine gute Betreuung gewährleisten."},
+   {de:"die Maßnahme",ka:"ღონისძიება",img:"🛠️",ex:"Diese Maßnahme verbessert die Pflege deutlich."},
+   {de:"erheblich",ka:"მნიშვნელოვანი, საგრძნობი",img:"📈",ex:"Die Kosten sind erheblich gestiegen."},
+   {de:"die Grundlage",ka:"საფუძველი",img:"🧱",ex:"Vertrauen ist die Grundlage unserer Arbeit."},
+   {de:"sich auswirken auf",ka:"გავლენის მოხდენა, ასახვა",img:"🌡️",ex:"Stress wirkt sich auf die Gesundheit aus."},
+   {de:"der Zugang",ka:"წვდომა",img:"🔑",ex:"Sie hat Zugang zu allen wichtigen Unterlagen."},
+   {de:"verantwortungsbewusst",ka:"პასუხისმგებლიანი",img:"💎",ex:"Sie arbeitet sehr verantwortungsbewusst."},
+   {de:"die Herausforderung",ka:"გამოწვევა",img:"🧗",ex:"Die neue Aufgabe ist eine große Herausforderung."},
+   {de:"im Voraus",ka:"წინასწარ",img:"⏩",ex:"Bitte sagen Sie mir Änderungen im Voraus."}
+  ]},
+{ id:"start-2026-10-20", date:"20. Oktober 2026", level:"B2", title:"Start-Paket: Pflege & Vermittlung",
+  words:[
+   {de:"die Vermittlung",ka:"შუამავლობა",img:"🤝",ex:"Die Vermittlung einer Pflegekraft dauert manchmal zwei Wochen."},
+   {de:"die Pflegekraft",ka:"მომვლელი",img:"🧑‍⚕️",ex:"Die Familie sucht eine erfahrene Pflegekraft."},
+   {de:"die Betreuung",ka:"მოვლა, მზრუნველობა",img:"💙",ex:"Die alte Dame braucht den ganzen Tag Betreuung."},
+   {de:"die Provision",ka:"საკომისიო",img:"💶",ex:"Die Agentur bekommt eine Provision für die Vermittlung."},
+   {de:"zuverlässig",ka:"სანდო",img:"✅",ex:"Es ist wichtig, zuverlässig zu sein."},
+   {de:"die Bewerbung",ka:"განაცხადი (სამსახურზე)",img:"📄",ex:"Sie schickt ihre Bewerbung an die Familie."},
+   {de:"sich kümmern um",ka:"ზრუნვა ვინმეზე",img:"🤲",ex:"Sie kümmert sich um ihre Großmutter."},
+   {de:"der Haushalt",ka:"საშინაო საქმეები, ოჯახის მართვა",img:"🏠",ex:"Er hilft ihr im Haushalt."},
+   {de:"vereinbaren",ka:"შეთანხმება, დანიშვნა",img:"📅",ex:"Wir müssen einen Termin vereinbaren."},
+   {de:"die Erfahrung",ka:"გამოცდილება",img:"⭐",ex:"Er hat viel Erfahrung als Pflegekraft."},
+   {de:"die Voraussetzung",ka:"წინაპირობა",img:"📋",ex:"Gute Deutschkenntnisse sind eine wichtige Voraussetzung."},
+   {de:"zuständig",ka:"პასუხისმგებელი",img:"🗂️",ex:"Wer ist für die Organisation zuständig?"}
   ]},
 ];
 const GRAMMAR=[
- {q:"Wenn ich mehr Zeit ______, würde ich einen Deutschkurs besuchen.",opts:["habe","hätte","hatte gehabt","haben werde"],a:1},
- {q:"Das Haus ______ vor zwei Jahren gebaut.",opts:["wird","wurde","ist werden","hat"],a:1},
- {q:"Die Frau, ______ Mann im Krankenhaus liegt, braucht Unterstützung.",opts:["deren","dessen","der","die"],a:0},
- {q:"Er freut sich ______ deine Nachricht. Er hat sie gerade gelesen.",opts:["auf","über","für","an"],a:1},
- {q:"Sie interessiert sich sehr ______ gesunde Ernährung.",opts:["an","für","über","auf"],a:1},
- {q:"______ es stark regnete, gingen wir spazieren.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
- {q:"Er lernt Deutsch, ______ in Deutschland arbeiten zu können.",opts:["um","damit","statt","ohne"],a:0},
- {q:"Das ist das schönste Geschenk, ______ ich je bekommen habe.",opts:["der","den","das","dem"],a:2},
- {q:"Wenn der Termin verschoben werden ______, sage mir bitte Bescheid.",opts:["muss","musst","müssen","gemusst"],a:0},
- {q:"Je mehr du übst, ______ sprichst du Deutsch.",opts:["besser","am besten","gut","mehr gut"],a:0}
+ {lvl:"B2",q:"Wenn ich mehr Zeit ______, würde ich einen Deutschkurs besuchen.",opts:["habe","hätte","hatte gehabt","haben werde"],a:1},
+ {lvl:"B2",q:"Das Haus ______ vor zwei Jahren gebaut.",opts:["wird","wurde","ist werden","hat"],a:1},
+ {lvl:"B2",q:"Die Frau, ______ Mann im Krankenhaus liegt, braucht Unterstützung.",opts:["deren","dessen","der","die"],a:0},
+ {lvl:"B2",q:"Er freut sich ______ deine Nachricht. Er hat sie gerade gelesen.",opts:["auf","über","für","an"],a:1},
+ {lvl:"B2",q:"Sie interessiert sich sehr ______ gesunde Ernährung.",opts:["an","für","über","auf"],a:1},
+ {lvl:"B2",q:"______ es stark regnete, gingen wir spazieren.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
+ {lvl:"B2",q:"Er lernt Deutsch, ______ in Deutschland arbeiten zu können.",opts:["um","damit","statt","ohne"],a:0},
+ {lvl:"B2",q:"Das ist das schönste Geschenk, ______ ich je bekommen habe.",opts:["der","den","das","dem"],a:2},
+ {lvl:"B2",q:"Wenn der Termin verschoben werden ______, sage mir bitte Bescheid.",opts:["muss","musst","müssen","gemusst"],a:0},
+ {lvl:"B2",q:"Je mehr du übst, ______ sprichst du Deutsch.",opts:["besser","am besten","gut","mehr gut"],a:0},
+ {lvl:"C1",q:"Die Patientin sagte, sie ______ gestern starke Schmerzen gehabt.",opts:["hat","habe","hätte","hatte"],a:1},
+ {lvl:"C1",q:"Das Formular ist von der Pflegekraft ______.",opts:["auszufüllen","ausfüllen","ausgefüllt werden","füllt aus"],a:0},
+ {lvl:"C1",q:"______ der Medikamentengabe muss die Dosierung geprüft werden.",opts:["Vor","Bevor","Vorm","An"],a:0},
+ {lvl:"C1",q:"Die Unterlagen lassen sich leicht ______.",opts:["zu ordnen","ordnen","geordnet","ordnend"],a:1},
+ {lvl:"C1",q:"Der Arzt meinte, die Therapie ______ bald Wirkung zeigen.",opts:["wird","werde","würde","wurde"],a:1},
+ {lvl:"C2",q:"Die von der Familie ______ Pflegekraft beginnt am Montag.",opts:["ausgewählte","auswählen","ausgewählt zu","wählende"],a:0},
+ {lvl:"C2",q:"______ aller Bemühungen konnte die Familie keine Pflegekraft finden.",opts:["Trotz","Wegen","Anstatt","Statt"],a:0},
+ {lvl:"C2",q:"Die neue Regelung tritt ______ 1. November in Kraft.",opts:["am","im","zum","beim"],a:0},
+ {lvl:"C2",q:"Die Pflegekraft, ______ Einsatz alle lobten, blieb zwei Jahre bei der Familie.",opts:["deren","derer","dessen","welcher"],a:0},
+ {lvl:"C2",q:"Kaum hatte sie angerufen, ______ die Familie schon zurück.",opts:["rief","ruft","gerufen","anrief"],a:0}
 ];
-const ALLWORDS=PACKS.flatMap(p=>p.words);
+const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
+let CURLEVEL="Alle";
+function curWords(){return CURLEVEL==="Alle"?ALLWORDS:ALLWORDS.filter(w=>w.lvl===CURLEVEL)}
+/* ===== Audio: Vorlesen mit deutscher Stimme (Web Speech API) ===== */
+function speak(txt){try{const u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";u.rate=0.92;
+ const vs=speechSynthesis.getVoices();const dv=vs.find(v=>v.lang&&v.lang.toLowerCase().indexOf("de")===0);if(dv)u.voice=dv;
+ speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+if("speechSynthesis" in window){speechSynthesis.getVoices()}
+function spkBtn(txt){const b=document.createElement("button");b.type="button";b.className="spk";b.textContent="🔊";b.title="Anhören";b.onclick=function(ev){ev.stopPropagation();speak(txt)};return b}
+</script>
+<script>
+"use strict";
 /* ===== Fortschritt (nur lokal im Browser) ===== */
 const KEY="b2-spiel-dashboard-v1";
 let S; try{S=JSON.parse(localStorage.getItem(KEY))||null}catch(e){S=null}
-if(!S||typeof S!=="object") S={xp:0,correct:0,answered:0,days:{},lastDay:"",streak:0,flips:0,todayAnswers:0,todayXP:0,todayFlips:0,today:""};
+if(!S||typeof S!=="object") S={xp:0,correct:0,answered:0,days:{},lastDay:"",streak:0,flips:0,todayAnswers:0,todayXP:0,todayFlips:0,today:"",level:"Alle"};
+if(!S.level)S.level="Alle";
+CURLEVEL=S.level||"Alle";
 function todayKey(d){d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 function rollDay(){const t=todayKey();if(S.today!==t){S.today=t;S.todayAnswers=0;S.todayXP=0;S.todayFlips=0}}
 rollDay();
@@ -180,7 +261,7 @@ function renderStats(){const lvl=Math.floor(S.xp/100)+1;const into=S.xp%100;
  document.getElementById("streak").textContent=S.streak+" 🔥";
  document.getElementById("accuracy").textContent=S.answered?Math.round(S.correct/S.answered*100)+"%":"–";
  document.getElementById("answered").textContent=S.answered;
- document.getElementById("wordCount").textContent=ALLWORDS.length;
+ document.getElementById("wordCount").textContent=curWords().length;
  document.getElementById("q1").textContent=Math.min(S.todayAnswers,5)+" / 5 "+(S.todayAnswers>=5?"✅":"");
  document.getElementById("q2").textContent=Math.min(S.todayXP,30)+" / 30 XP "+(S.todayXP>=30?"✅":"");
  document.getElementById("q3").textContent=Math.min(S.todayFlips,4)+" / 4 "+(S.todayFlips>=4?"✅":"");
@@ -189,19 +270,33 @@ function renderStats(){const lvl=Math.floor(S.xp/100)+1;const into=S.xp%100;
  for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const v=S.days[todayKey(d)]||0;
   const b=document.createElement("div");b.className="bar";b.style.height=Math.max(6,Math.round(v/max*100))+"%";b.innerHTML="<i>"+v+"</i>";bars.appendChild(b);
   const s=document.createElement("span");s.textContent=["So","Mo","Di","Mi","Do","Fr","Sa"][d.getDay()];lbl.appendChild(s)}}
-/* ===== Pakete / Wortliste / Karteikarten ===== */
-function renderPacks(){document.getElementById("packs").innerHTML=PACKS.map(p=>'<div class="pack"><b>'+p.title+'</b> <span class="muted">('+p.date+')</span><br><span class="muted">'+p.words.length+' neue Wörter: '+p.words.map(w=>w.de).join(", ")+'</span></div>').join("")}
-function renderWords(){document.getElementById("wordTable").innerHTML=ALLWORDS.map(w=>"<tr><td><b>"+w.de+"</b></td><td>"+w.ka+"</td><td class='muted'>"+w.ex+"</td></tr>").join("");
+/* ===== Pakete / Wortliste / Karteikarten / Bild-Karten ===== */
+function renderPacks(){document.getElementById("packs").innerHTML=PACKS.map(p=>'<div class="pack"><b>'+p.title+'</b> <span class="lvltag">'+p.level+'</span> <span class="muted">('+p.date+')</span><br><span class="muted">'+p.words.length+' neue Wörter: '+p.words.map(w=>w.de).join(", ")+'</span></div>').join("")}
+function renderWords(){const W=curWords();
+ const tb=document.getElementById("wordTable");tb.innerHTML="";
+ W.forEach(w=>{const tr=document.createElement("tr");
+  const td1=document.createElement("td");td1.innerHTML="<b>"+w.de+"</b>";tr.appendChild(td1);
+  const td2=document.createElement("td");td2.appendChild(spkBtn(w.de));tr.appendChild(td2);
+  const td3=document.createElement("td");td3.textContent=w.ka;tr.appendChild(td3);
+  const td4=document.createElement("td");td4.className="muted";td4.textContent=w.ex;tr.appendChild(td4);
+  const td5=document.createElement("td");td5.innerHTML='<span class="lvltag">'+w.lvl+"</span>";tr.appendChild(td5);
+  tb.appendChild(tr)});
  const f=document.getElementById("flash");f.innerHTML="";
- ALLWORDS.forEach(w=>{const d=document.createElement("div");d.className="flip";d.textContent=w.de;d.dataset.state="de";
-  d.onclick=()=>{if(d.dataset.state==="de"){d.textContent=w.ka;d.classList.add("ka");d.dataset.state="ka";S.flips++;S.todayFlips++;save();renderStats()}else{d.textContent=w.de;d.classList.remove("ka");d.dataset.state="de"}};f.appendChild(d)})}
+ W.forEach(w=>{const d=document.createElement("div");d.className="flip";d.dataset.state="de";
+  const top=document.createElement("span");top.textContent=w.img+" "+w.de;d.appendChild(top);d.appendChild(spkBtn(w.de));
+  d.onclick=()=>{if(d.dataset.state==="de"){top.textContent=w.ka;d.classList.add("ka");d.dataset.state="ka";S.flips++;S.todayFlips++;save();renderStats()}else{top.textContent=w.img+" "+w.de;d.classList.remove("ka");d.dataset.state="de"}};f.appendChild(d)});
+ const pc=document.getElementById("picCards");pc.innerHTML="";
+ W.forEach(w=>{const d=document.createElement("div");d.className="piccard";
+  d.innerHTML='<span class="big">'+w.img+'</span><span class="wd">'+w.de+'</span><span class="ka2"></span>';
+  d.onclick=()=>{speak(w.de);d.querySelector(".ka2").textContent=w.ka};pc.appendChild(d)})}
 /* ===== Quiz-Engine ===== */
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
 function runQuiz(boxId,questions,label){const box=document.getElementById(boxId);let i=0,score=0;
  function step(){if(i>=questions.length){let bonus=0;if(score===questions.length){bonus=25;S.xp+=25;const t=todayKey();S.days[t]=(S.days[t]||0)+25;S.todayXP+=25;save()}
    box.innerHTML='<div class="feedback '+(score>=questions.length*0.7?"ok":"bad")+'">Fertig! '+score+" von "+questions.length+" richtig."+(bonus?" Perfekt! +25 Bonus-XP 🎉":"")+'</div><button onclick="document.getElementById(\''+boxId+'\').dispatchEvent(new Event(\'restart\'))">Nochmal spielen</button>';renderStats();return}
   const qu=questions[i];
-  box.innerHTML="<p><b>"+label+" · Frage "+(i+1)+" / "+questions.length+"</b></p><p style='font-size:18px'>"+qu.q+"</p>"+qu.opts.map((o,idx)=>'<button class="opt" data-i="'+idx+'">'+o+"</button>").join("")+'<div class="feedback" id="fb-'+boxId+'"></div>';
+  box.innerHTML="<p><b>"+label+" · Frage "+(i+1)+" / "+questions.length+"</b></p>"+(qu.audio?'<p><button type="button" class="ghost" id="spk-'+boxId+'">🔊 Wort anhören</button></p>':"")+"<p style='font-size:18px'>"+qu.q+"</p>"+qu.opts.map((o,idx)=>'<button class="opt" data-i="'+idx+'">'+o+"</button>").join("")+'<div class="feedback" id="fb-'+boxId+'"></div>';
+  if(qu.audio){const sb=document.getElementById("spk-"+boxId);sb.onclick=()=>speak(qu.audio);speak(qu.audio)}
   box.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>{const picked=+btn.dataset.i;const good=picked===qu.a;
    box.querySelectorAll(".opt").forEach(b=>{b.disabled=true;if(+b.dataset.i===qu.a)b.classList.add("correct")});
    if(!good)btn.classList.add("wrong");
@@ -210,23 +305,29 @@ function runQuiz(boxId,questions,label){const box=document.getElementById(boxId)
    const nx=document.createElement("button");nx.textContent=(i+1>=questions.length)?"Ergebnis sehen":"Weiter";nx.onclick=()=>{i++;step()};box.appendChild(nx)})}
  box.addEventListener("restart",()=>{start()},{once:true});
  function start(){i=0;score=0;step()} start()}
-function wordQuestions(){return shuffle(ALLWORDS).slice(0,10).map(w=>{const others=shuffle(ALLWORDS.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.de);const opts=shuffle([w.de].concat(others));return{q:"Was heißt „"+w.ka+"“ auf Deutsch?",opts:opts,a:opts.indexOf(w.de)}})}
-function grammarQuestions(){return shuffle(GRAMMAR).map(g=>({q:g.q,opts:g.opts,a:g.a}))}
+function wordQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.de);const opts=shuffle([w.de].concat(others));return{q:"Was heißt „"+w.ka+"“ auf Deutsch?",opts:opts,a:opts.indexOf(w.de)}})}
+function hearQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.ka);const opts=shuffle([w.ka].concat(others));return{q:"Was bedeutet das gehörte Wort?",audio:w.de,opts:opts,a:opts.indexOf(w.ka)}})}
+function grammarQuestions(){const pool=CURLEVEL==="Alle"?GRAMMAR:GRAMMAR.filter(g=>g.lvl===CURLEVEL);const use=pool.length?pool:GRAMMAR;return shuffle(use).map(g=>({q:g.q,opts:g.opts,a:g.a}))}
 document.getElementById("quizStart").onclick=()=>runQuiz("quizBox",wordQuestions(),"Wortschatz-Quiz");
+document.getElementById("hearStart").onclick=()=>runQuiz("hearBox",hearQuestions(),"Hör-Quiz");
 document.getElementById("gramStart").onclick=()=>runQuiz("gramBox",grammarQuestions(),"Grammatik-Duell");
 /* ===== Memory ===== */
-let memOpen=[],memLock=false,memPairs=0;
-function startMemory(){const words=shuffle(ALLWORDS).slice(0,6);let cards=[];words.forEach((w,idx)=>{cards.push({t:w.de,id:idx});cards.push({t:w.ka,id:idx})});cards=shuffle(cards);memOpen=[];memLock=false;memPairs=0;
+let memOpen=[],memLock=false,memPairs=0,memTotal=6;
+function startMemory(){const W=shuffle(curWords());const words=W.slice(0,Math.min(6,W.length));memTotal=words.length;let cards=[];words.forEach((w,idx)=>{cards.push({t:w.de,id:idx});cards.push({t:w.ka,id:idx})});cards=shuffle(cards);memOpen=[];memLock=false;memPairs=0;
  const m=document.getElementById("mem");m.innerHTML="";document.getElementById("memInfo").textContent="";
  cards.forEach(c=>{const d=document.createElement("div");d.className="memcard";d.textContent="❓";d.dataset.id=c.id;d.dataset.txt=c.t;
   d.onclick=()=>{if(memLock||d.classList.contains("open")||d.classList.contains("done"))return;d.classList.add("open");d.textContent=c.t;memOpen.push(d);
    if(memOpen.length===2){memLock=true;const A=memOpen[0],B=memOpen[1];
     if(A.dataset.id===B.dataset.id){A.classList.add("done");B.classList.add("done");memPairs++;gain(10,true);
-     document.getElementById("memInfo").innerHTML='<span class="ok">Paar gefunden! +10 XP ✅ ('+memPairs+" / 6)</span>";
-     if(memPairs===6)document.getElementById("memInfo").innerHTML='<span class="ok">Memory geschafft! 🎉</span>';memOpen=[];memLock=false}
+     document.getElementById("memInfo").innerHTML='<span class="ok">Paar gefunden! +10 XP ✅ ('+memPairs+" / "+memTotal+")</span>";
+     if(memPairs===memTotal)document.getElementById("memInfo").innerHTML='<span class="ok">Memory geschafft! 🎉</span>';memOpen=[];memLock=false}
     else{gain(0,false);setTimeout(()=>{A.classList.remove("open");B.classList.remove("open");A.textContent="❓";B.textContent="❓";memOpen=[];memLock=false},850)}}};
   m.appendChild(d)})}
 document.getElementById("memRestart").onclick=startMemory;
+/* ===== Niveau-Auswahl ===== */
+function paintLvlBtns(){document.querySelectorAll(".lvlbtn").forEach(b=>b.classList.toggle("active",b.dataset.lvl===CURLEVEL))}
+document.querySelectorAll(".lvlbtn").forEach(b=>b.onclick=()=>{CURLEVEL=b.dataset.lvl;S.level=CURLEVEL;save();paintLvlBtns();renderWords();renderStats();startMemory()});
+paintLvlBtns();
 renderPacks();renderWords();renderStats();startMemory();
 </script>
 </body>

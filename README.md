@@ -1,6 +1,6 @@
-# 🎮 Spielendes Dashboard – Deutsch B2 für Ana
+# 🎮 Spielendes Dashboard – Deutsch B2–C2 für Ana
 
-Eine spielerische Lern-Website: Wortschatz-Quiz, Grammatik-Duell, Karteikarten (Deutsch ↔ ქართული) und Memory — mit XP, Level, Streak und 7-Tage-Diagramm.
+Eine spielerische Lern-Website: Wortschatz-Quiz, Hör-Quiz mit Audio, Bild-Karten, Grammatik-Duell, Karteikarten (Deutsch ↔ ქართული) und Memory — mit XP, Level, Streak und 7-Tage-Diagramm. Mit Niveau-Auswahl von B2 über C1 bis C2.
 
 **▶️ Live:** https://allegroemilio2-ui.github.io/spielendes-dashboard/
 
@@ -16,5 +16,7 @@ Alle paar Tage kommt ein neues Inhaltspaket dazu:
 Neue Pakete werden im `PACKS`-Array in `index.html` ergänzt und auf die Branches `main` und `gh-pages` gepusht, damit die Live-Seite sie sofort zeigt.
 
 ## Inhalt bisher
+- C1-Paket (21. Oktober 2026): Beruf & Gesellschaft — Auswirkung, berücksichtigen, Anspruch, gewährleisten, Maßnahme, erheblich, Grundlage, sich auswirken auf, Zugang, verantwortungsbewusst, Herausforderung, im Voraus
+- C2-Paket (21. Oktober 2026): Gehobene Sprache & Präzision — augenscheinlich, Vorreiterrolle, unabdingbar, Tragweite, sich bewähren, Werdegang, nahezu, Gelassenheit, von vornherein, Wertschätzung, einwandfrei, Beharrlichkeit
 - Start-Paket (20. Oktober 2026): Pflege & Vermittlung — Vermittlung, Pflegekraft, Betreuung, Provision, zuverlässig, Bewerbung, sich kümmern um, Haushalt, vereinbaren, Erfahrung, Voraussetzung, zuständig
-- Grammatik-Duell: Konjunktiv II, Passiv, Relativsätze, Präpositionen, Konnektoren
+- Grammatik-Duell: B2 (Konjunktiv II, Passiv, Relativsätze, Präpositionen, Konnektoren), C1 (Konjunktiv I, Passiv-Ersatz, Nominalstil), C2 (erweiterte Attribute, Genitiv-Relativsätze u. a.)
