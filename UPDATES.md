@@ -1,5 +1,11 @@
 # Updates
 
+## 2026-10-21 – B2-Paket „Gesundheit & Arztbesuch“
+- 10 neue B2-Wörter: Untersuchung, Rezept, Schmerzen, Behandlung, Blutdruck, sich erholen, Krankenkasse, Notfall, Tablette, regelmäßig.
+- 4 neue Grammatikfragen zum Thema Gesundheit.
+- Ab jetzt kommen die Updates **täglich** (vorher alle paar Tage).
+- Jetzt insgesamt 46 Wörter und 24 Grammatikfragen (B2–C2).
+
 ## 2026-10-21 – Audio, Bilder & Niveaus B2–C2
 - 🔊 **Audio:** Aussprache per Knopfdruck (deutsche Stimme) in Wortliste und Karteikarten, plus ein neues **Hör-Quiz** (Wort hören → Bedeutung wählen).
 - 🖼️ **Visuell:** Neue **Bild-Karten** — jedes Wort hat jetzt ein Bildsymbol; antippen spielt das Wort ab und zeigt die Übersetzung.
