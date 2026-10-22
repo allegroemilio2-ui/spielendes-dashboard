@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-22 – C1-Paket „Wohnen & Umzug“
+- 10 neue C1-Wörter: Wohnungssuche, Miete, Kaution, Mietvertrag, kündigen, einziehen, renovieren, Nachbarschaft, Umzug, möbliert.
+- 4 neue C1-Grammatikfragen (weder–noch, als-Vergleich, trotz + Genitiv, so–dass).
+- Jetzt insgesamt 56 Wörter und 28 Grammatikfragen (B2–C2).
+
 ## 2026-10-21 – 🎧 Hör-Prüfung (B2) zum Antippen
 - Neue Sektion **„Hör-Prüfung (B2)"**: 5 Prüfungs-Übungen (Interview mit Pflegekraft, Telefongespräch mit Pflege-Agentur, Radiobericht Nachtzug, Wandern-Dialog, Arzttermin) — Text anhören und die Antworten direkt antippen, mit sofortiger Rückmeldung und +10 XP pro richtiger Antwort.
 - Zwei Stimmen pro Dialog (zweite Stimme tiefer), Stopp-Button inklusive.

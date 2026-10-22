@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c1-wohnen-2026-10-22", date:"22. Oktober 2026", level:"C1", title:"C1-Paket: Wohnen & Umzug",
+  words:[
+   {de:"die Wohnungssuche",ka:"ბინის ძებნა",img:"🏘️",ex:"Die Wohnungssuche in Berlin ist sehr anstrengend."},
+   {de:"die Miete",ka:"ქირა",img:"💰",ex:"Die Miete wird jeden Monat pünktlich überwiesen."},
+   {de:"die Kaution",ka:"დეპოზიტი",img:"🔐",ex:"Vor dem Einzug muss man die Kaution zahlen."},
+   {de:"der Mietvertrag",ka:"იჯარის ხელშეკრულება",img:"📝",ex:"Lies den Mietvertrag genau durch, bevor du unterschreibst."},
+   {de:"kündigen",ka:"შეწყვეტა (ხელშეკრულების)",img:"✂️",ex:"Sie will die Wohnung zum Jahresende kündigen."},
+   {de:"einziehen",ka:"გადასვლა (ბინაში შესვლა)",img:"📦",ex:"Nächste Woche ziehen wir in die neue Wohnung ein."},
+   {de:"renovieren",ka:"განახლება, რემონტი",img:"🛠️",ex:"Die Familie lässt die Wohnung vor dem Einzug renovieren."},
+   {de:"die Nachbarschaft",ka:"სამეზობლო",img:"🏡",ex:"In unserer Nachbarschaft kennt man sich gut."},
+   {de:"der Umzug",ka:"გადასახლება",img:"🚚",ex:"Der Umzug der Möbel dauert den ganzen Tag."},
+   {de:"möbliert",ka:"ავეჯით მოწყობილი",img:"🛋️",ex:"Die Ferienwohnung ist komplett möbliert."}
+  ]},
 { id:"b2-gesundheit-2026-10-21", date:"21. Oktober 2026", level:"B2", title:"B2-Paket: Gesundheit & Arztbesuch",
   words:[
    {de:"die Untersuchung",ka:"გამოკვლევა",img:"🩺",ex:"Der Arzt macht morgen eine gründliche Untersuchung."},
@@ -250,7 +263,11 @@ const GRAMMAR=[
  {lvl:"B2",q:"Sie nimmt die Tabletten, ______ der Arzt es so verordnet hat.",opts:["weil","obwohl","damit","statt"],a:0},
  {lvl:"B2",q:"______ der Behandlung fühlte sie sich viel besser.",opts:["Nach","Nachdem","Währenddessen","Bevor"],a:0},
  {lvl:"B2",q:"Die Ärztin empfiehlt ihr, mehr Wasser ______.",opts:["zu trinken","trinken","trinkt","getrunken"],a:0},
- {lvl:"B2",q:"Anstatt lange zu warten, ______ wir gleich den Arzt an.",opts:["rufen","ruft","gerufen","anrufen"],a:0}
+ {lvl:"B2",q:"Anstatt lange zu warten, ______ wir gleich den Arzt an.",opts:["rufen","ruft","gerufen","anrufen"],a:0},
+ {lvl:"C1",q:"Weder der Vermieter ______ die Mieterin waren mit dem Zustand zufrieden.",opts:["noch","oder","sondern","weder"],a:0},
+ {lvl:"C1",q:"Der Umzug war teurer, ______ wir anfangs gedacht hatten.",opts:["wie","als","dass","obwohl"],a:1},
+ {lvl:"C1",q:"Trotz ______ Kälte will sie nicht aus der Wohnung ausziehen.",opts:["der großen","die große","großer","den großen"],a:0},
+ {lvl:"C1",q:"Er war so müde, ______ er kaum die Augen offen halten konnte.",opts:["dass","damit","weil","ob"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";
