@@ -1,5 +1,12 @@
 # Updates
 
+## 2026-10-22 – Neue Lektionen überall + professionellere, schnellere Stimme
+- **3 neue Wortpakete (je 10 Wörter):** B2 „Reisen & Unterwegs“, C1 „Gesundheitssystem & Versicherung“, C2 „Abstrakte Begriffe & Stil“.
+- **12 neue Grammatikfragen** (je 4 für B2, C1 und C2).
+- **2 neue Hör-Prüfungs-Übungen:** Nr. 6 „Wetterbericht – Unwetterwarnung für das Saarland“ und Nr. 7 „In der Apotheke“ – jetzt 7 Übungen in der Hör-Prüfung.
+- 🔊 **Stimme verbessert:** Die Seite wählt jetzt automatisch die beste verfügbare deutsche Stimme (zuerst „Google Deutsch“, dann Microsoft-Natural/Neural-Stimmen wie Katja oder Stefan) und spricht etwas schneller (Rate 1,08 statt 0,92; Dialoge 1,05).
+- Jetzt insgesamt 86 Wörter und 40 Grammatikfragen (B2–C2).
+
 ## 2026-10-22 – C1-Paket „Wohnen & Umzug“
 - 10 neue C1-Wörter: Wohnungssuche, Miete, Kaution, Mietvertrag, kündigen, einziehen, renovieren, Nachbarschaft, Umzug, möbliert.
 - 4 neue C1-Grammatikfragen (weder–noch, als-Vergleich, trotz + Genitiv, so–dass).

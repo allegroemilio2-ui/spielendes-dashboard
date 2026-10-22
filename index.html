@@ -167,6 +167,45 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"b2-reisen-2026-10-22", date:"22. Oktober 2026", level:"B2", title:"B2-Paket: Reisen & Unterwegs",
+  words:[
+   {de:"der Abflug",ka:"აფრენა",img:"🛫",ex:"Der Abflug nach Tiflis ist um 14 Uhr."},
+   {de:"die Unterkunft",ka:"საცხოვრებელი, განთავსება",img:"🏨",ex:"Wir haben eine gemütliche Unterkunft im Zentrum gebucht."},
+   {de:"die Rundreise",ka:"წრიული მოგზაურობა",img:"🗺️",ex:"Sie machen eine Rundreise durch ganz Georgien."},
+   {de:"sich verlaufen",ka:"გზის აბნევა, დაკარგვა",img:"🧭",ex:"In der Altstadt kann man sich leicht verlaufen."},
+   {de:"die Sehenswürdigkeit",ka:"ღირსშესანიშნაობა",img:"🏰",ex:"Die Burg ist die bekannteste Sehenswürdigkeit der Stadt."},
+   {de:"übernachten",ka:"ღამის გათევა",img:"🌙",ex:"Wir übernachten in einem kleinen Hotel am Meer."},
+   {de:"die Verspätung",ka:"დაგვიანება",img:"⏰",ex:"Der Zug hat heute zwanzig Minuten Verspätung."},
+   {de:"umsteigen",ka:"გადაჯდომა",img:"🔄",ex:"In München müssen wir in einen anderen Zug umsteigen."},
+   {de:"die Buchung",ka:"ჯავშანი",img:"📅",ex:"Die Buchung des Fluges hat nur fünf Minuten gedauert."},
+   {de:"das Handgepäck",ka:"ხელბარგი",img:"🎒",ex:"Mein Koffer ist zu groß für das Handgepäck."}
+  ]},
+{ id:"c1-gesundheitssystem-2026-10-22", date:"22. Oktober 2026", level:"C1", title:"C1-Paket: Gesundheitssystem & Versicherung",
+  words:[
+   {de:"die Versicherung",ka:"დაზღვევა",img:"🛡️",ex:"Eine private Versicherung übernimmt mehr Leistungen."},
+   {de:"der Beitrag",ka:"შენატანი",img:"💳",ex:"Der monatliche Beitrag steigt nächstes Jahr leicht an."},
+   {de:"die Leistung",ka:"მომსახურება, შეღავათი",img:"📋",ex:"Welche Leistungen übernimmt die Krankenkasse eigentlich?"},
+   {de:"der Versicherungsnehmer",ka:"დაზღვეული პირი",img:"🧾",ex:"Der Versicherungsnehmer muss den Schaden sofort melden."},
+   {de:"die Selbstbeteiligung",ka:"საკუთარი თანამონაწილეობა გადახდაში",img:"🤝",ex:"Mit einer Selbstbeteiligung wird die Versicherung günstiger."},
+   {de:"die Vorsorgeuntersuchung",ka:"პროფილაქტიკური გამოკვლევა",img:"🩺",ex:"Die Vorsorgeuntersuchung ist einmal im Jahr kostenlos."},
+   {de:"der Hausarzt",ka:"ოჯახის ექიმი",img:"👨‍⚕️",ex:"Zuerst gehe ich immer zu meinem Hausarzt."},
+   {de:"die Überweisung",ka:"მიმართვა (სპეციალისტთან)",img:"📄",ex:"Für den Facharzt brauche ich eine Überweisung."},
+   {de:"versichert sein",ka:"დაზღვეული ყოფნა",img:"✅",ex:"In Deutschland muss jeder krankenversichert sein."},
+   {de:"die Zusatzversicherung",ka:"დამატებითი დაზღვევა",img:"➕",ex:"Viele schließen eine Zusatzversicherung für die Zähne ab."}
+  ]},
+{ id:"c2-abstrakt-2026-10-22", date:"22. Oktober 2026", level:"C2", title:"C2-Paket: Abstrakte Begriffe & Stil",
+  words:[
+   {de:"die Vergänglichkeit",ka:"წარმავლობა",img:"🍂",ex:"Das Gedicht handelt von der Vergänglichkeit des Lebens."},
+   {de:"zwiespältig",ka:"ორაზროვანი, წინააღმდეგობრივი",img:"⚖️",ex:"Er hinterließ einen zwiespältigen Eindruck."},
+   {de:"die Einsicht",ka:"გააზრება, შეგნება",img:"💡",ex:"Mit den Jahren kam die Einsicht, dass Zeit wichtiger ist als Geld."},
+   {de:"sich entfalten",ka:"გაშლა, განვითარება",img:"🌸",ex:"Ihr Talent konnte sich in dieser Umgebung frei entfalten."},
+   {de:"der Grundsatz",ka:"ძირითადი პრინციპი",img:"🧭",ex:"Ehrlichkeit ist sein oberster Grundsatz."},
+   {de:"unerschütterlich",ka:"შეურყეველი, მტკიცე",img:"🗿",ex:"Sie blieb auch in der Krise unerschütterlich ruhig."},
+   {de:"die Wechselwirkung",ka:"ურთიერთქმედება",img:"🔄",ex:"Die Wechselwirkung zwischen Körper und Seele ist stark."},
+   {de:"flüchtig",ka:"წარმავალი, სწრაფად გამქრალი",img:"💨",ex:"Es war nur ein flüchtiger Moment des Glücks."},
+   {de:"die Betrachtungsweise",ka:"ხედვის კუთხე, მიდგომა",img:"👁️",ex:"Aus dieser Betrachtungsweise ergibt sich ein ganz anderes Bild."},
+   {de:"zugrunde liegen",ka:"საფუძვლად დადება",img:"🧱",ex:"Dem Konflikt liegt ein altes Missverständnis zugrunde."}
+  ]},
 { id:"c1-wohnen-2026-10-22", date:"22. Oktober 2026", level:"C1", title:"C1-Paket: Wohnen & Umzug",
   words:[
    {de:"die Wohnungssuche",ka:"ბინის ძებნა",img:"🏘️",ex:"Die Wohnungssuche in Berlin ist sehr anstrengend."},
@@ -267,20 +306,43 @@ const GRAMMAR=[
  {lvl:"C1",q:"Weder der Vermieter ______ die Mieterin waren mit dem Zustand zufrieden.",opts:["noch","oder","sondern","weder"],a:0},
  {lvl:"C1",q:"Der Umzug war teurer, ______ wir anfangs gedacht hatten.",opts:["wie","als","dass","obwohl"],a:1},
  {lvl:"C1",q:"Trotz ______ Kälte will sie nicht aus der Wohnung ausziehen.",opts:["der großen","die große","großer","den großen"],a:0},
- {lvl:"C1",q:"Er war so müde, ______ er kaum die Augen offen halten konnte.",opts:["dass","damit","weil","ob"],a:0}
+ {lvl:"C1",q:"Er war so müde, ______ er kaum die Augen offen halten konnte.",opts:["dass","damit","weil","ob"],a:0},
+ {lvl:"B2",q:"Wir bleiben heute zu Hause, ______ es den ganzen Tag regnet.",opts:["denn","obwohl","trotzdem","damit"],a:0},
+ {lvl:"B2",q:"Das Zimmer, ______ wir seit März wohnen, ist sehr hell.",opts:["dem","in dem","den","in den"],a:1},
+ {lvl:"B2",q:"______ du mir bitte die Unterlagen bis morgen schicken?",opts:["Könntest","Konntest","Könne","Könntet"],a:0},
+ {lvl:"B2",q:"Statt ______ Taxi zu nehmen, ist sie zu Fuß gegangen.",opts:["ein","eines","einem","eins"],a:0},
+ {lvl:"C1",q:"Er behauptete, von dem Unfall nichts ______.",opts:["gewusst zu haben","zu wissen gehabt","gewissen zu haben","wissen zu haben"],a:0},
+ {lvl:"C1",q:"Er tat so, ______ er von nichts wüsste.",opts:["als ob","ob als","wie ob","als dass"],a:0},
+ {lvl:"C1",q:"Die Kosten werden von der Versicherung ______, wenn der Antrag vollständig ist.",opts:["übernommen","übernehmen","übernehmend","übernahm"],a:0},
+ {lvl:"C1",q:"Sie versicherte ihm, ______ Antrag noch heute zu bearbeiten.",opts:["den","der","dem","das"],a:0},
+ {lvl:"C2",q:"______ des steigenden Bedarfs wurden zusätzliche Pflegekräfte eingestellt.",opts:["Angesichts","Anstatt","Zwecks","Während"],a:0},
+ {lvl:"C2",q:"Es bedarf großer Anstrengungen, ______ Ziel zu erreichen.",opts:["dieses","diesem","diesen","dieser"],a:0},
+ {lvl:"C2",q:"Der Vertrag gilt als ______, sobald beide Seiten unterschrieben haben.",opts:["geschlossen","schließen","schließenden","geschlossenem"],a:0},
+ {lvl:"C2",q:"Dem Bericht ______ lässt sich die Entwicklung gut nachvollziehen.",opts:["zufolge","folgend","gefolgt","zufolgen"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";
 function curWords(){return CURLEVEL==="Alle"?ALLWORDS:ALLWORDS.filter(w=>w.lvl===CURLEVEL)}
 /* ===== Audio: Vorlesen mit deutscher Stimme (Web Speech API) ===== */
-function speak(txt){try{const u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";u.rate=0.92;
- const vs=speechSynthesis.getVoices();const dv=vs.find(v=>v.lang&&v.lang.toLowerCase().indexOf("de")===0);if(dv)u.voice=dv;
+/* Professionelle deutsche Stimme wählen: zuerst „Google Deutsch", dann Microsoft-Natural/Neural (z. B. Katja, Stefan, Conrad), dann andere Microsoft-de-DE-Stimmen; Fallback: erste deutsche Stimme. */
+function pickGermanVoice(){try{const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().replace("_","-").indexOf("de")===0);
+ if(!vs.length)return null;
+ const byName=function(n){return vs.find(v=>(v.name||"").toLowerCase().indexOf(n)>=0)};
+ let v=byName("google deutsch")||byName("google");if(v)return v;
+ const names=["katja","stefan","conrad","amala","killian","vicki","hans","marlene"];
+ for(let i=0;i<names.length;i++){const c=vs.filter(x=>(x.name||"").toLowerCase().indexOf(names[i])>=0);
+  const nat=c.find(x=>/natural|neural/.test((x.name||"").toLowerCase()));if(nat)return nat;if(c.length)return c[0]}
+ v=vs.find(x=>/natural|neural/.test((x.name||"").toLowerCase()));if(v)return v;
+ v=vs.find(x=>(x.name||"").toLowerCase().indexOf("microsoft")===0);if(v)return v;
+ return vs[0]}catch(e){return null}}
+function speak(txt){try{const u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";u.rate=1.08;
+ const dv=pickGermanVoice();if(dv)u.voice=dv;
  speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 if("speechSynthesis" in window){speechSynthesis.getVoices()}
 function spkBtn(txt){const b=document.createElement("button");b.type="button";b.className="spk";b.textContent="🔊";b.title="Anhören";b.onclick=function(ev){ev.stopPropagation();speak(txt)};return b}
 /* ===== Hör-Prüfung: Dialoge/Texte mit zwei Stimmen abspielen ===== */
-function speakTurns(turns){try{speechSynthesis.cancel();const vs=speechSynthesis.getVoices();const dv=vs.find(v=>v.lang&&v.lang.toLowerCase().indexOf("de")===0);
- turns.forEach(function(tn){const u=new SpeechSynthesisUtterance(tn.t);u.lang="de-DE";u.rate=0.92;if(dv)u.voice=dv;if(tn.s===1)u.pitch=0.85;speechSynthesis.speak(u)})}catch(e){}}
+function speakTurns(turns){try{speechSynthesis.cancel();const dv=pickGermanVoice();
+ turns.forEach(function(tn){const u=new SpeechSynthesisUtterance(tn.t);u.lang="de-DE";u.rate=1.05;if(dv)u.voice=dv;if(tn.s===1)u.pitch=0.85;speechSynthesis.speak(u)})}catch(e){}}
 function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}}
 /* ===== Inhalte: Hör-Prüfung (B2) — turns: s=0/1 Sprecher, questions: q/opts/a ===== */
 const HOERPRUEFUNG=[
@@ -362,7 +424,34 @@ const HOERPRUEFUNG=[
   {q:"Seit wann hat er Rückenschmerzen?",opts:["seit einer Woche","seit zwei Jahren","seit gestern"],a:0},
   {q:"Warum passt ihm der Termin am Donnerstag nicht?",opts:["Er arbeitet donnerstags bis 12 Uhr.","Er ist donnerstags nicht in der Stadt.","Er hat donnerstags schon einen anderen Termin."],a:0},
   {q:"Wann ist sein Termin jetzt?",opts:["Donnerstag, 9:30 Uhr","Freitag, 14:00 Uhr","Freitag, 9:30 Uhr"],a:1},
-  {q:"Was soll er mitbringen und beachten?",opts:["Versichertenkarte und ältere Befunde; 10 Minuten früher kommen","nur die Versichertenkarte; pünktlich um 14 Uhr kommen","einen Überweisungsschein; nüchtern kommen"],a:0}]}
+  {q:"Was soll er mitbringen und beachten?",opts:["Versichertenkarte und ältere Befunde; 10 Minuten früher kommen","nur die Versichertenkarte; pünktlich um 14 Uhr kommen","einen Überweisungsschein; nüchtern kommen"],a:0}]},
+{title:"Übung 6: Wetterbericht – Unwetterwarnung für das Saarland",names:["Wetteransagerin"],
+ turns:[
+  {s:0,t:"Und nun das Wetter für das Saarland, heute am Donnerstag: Am Vormittag ist es noch freundlich, mit Temperaturen um vierzehn Grad."},
+  {s:0,t:"Aber Achtung: Ab dem Nachmittag ziehen von Westen her schwere Gewitter auf. Es muss mit Starkregen, Hagel und Sturmböen bis zu neunzig Stundenkilometern gerechnet werden. Der Deutsche Wetterdienst hat eine Unwetterwarnung für die Landkreise Saarlouis und Merzig-Wadern herausgegeben."},
+  {s:0,t:"Die Warnung gilt von fünfzehn Uhr bis in die späten Abendstunden. Bitte bleiben Sie wenn möglich zu Hause, sichern Sie lose Gegenstände auf dem Balkon und meiden Sie den Wald. Am Freitag beruhigt sich das Wetter wieder, es bleibt aber kühl bei höchstens zwölf Grad."}],
+ questions:[
+  {q:"Wie ist das Wetter am Vormittag?",opts:["schweres Gewitter mit Hagel","freundlich, um 14 Grad","stürmischer Dauerregen"],a:1},
+  {q:"Was wird für den Nachmittag erwartet?",opts:["Sonnenschein und Wärme","leichter Nieselregen","schwere Gewitter mit Starkregen und Hagel"],a:2},
+  {q:"Wie stark können die Sturmböen werden?",opts:["bis zu 90 Stundenkilometer","bis zu 50 Stundenkilometer","bis zu 120 Stundenkilometer"],a:0},
+  {q:"Für welche Landkreise gilt die Unwetterwarnung?",opts:["Saarbrücken und Neunkirchen","Saarlouis und Merzig-Wadern","St. Wendel und Homburg"],a:1},
+  {q:"Wie wird das Wetter am Freitag?",opts:["wieder Unwetter den ganzen Tag","wärmer, bis 20 Grad","ruhiger, aber kühl, höchstens 12 Grad"],a:2}]},
+{title:"Übung 7: In der Apotheke – Beratung zu Kopfschmerzen",names:["Frau Yilmaz (Kundin)","Apotheker"],
+ turns:[
+  {s:0,t:"Guten Tag. Ich habe seit gestern starke Kopfschmerzen. Haben Sie etwas dagegen?"},
+  {s:1,t:"Guten Tag. Haben Sie nur Kopfschmerzen, oder auch andere Beschwerden, zum Beispiel Fieber?"},
+  {s:0,t:"Nein, Fieber habe ich nicht. Aber ich vertrage nicht alle Medikamente. Gegen Aspirin bin ich allergisch."},
+  {s:1,t:"Gut, dass Sie das sagen. Dann empfehle ich Ihnen Paracetamol. Das ist bei einer Aspirin-Allergie besser geeignet. Nehmen Sie alle sechs Stunden eine Tablette, höchstens vier am Tag."},
+  {s:0,t:"Und darf ich die Tabletten auf leeren Magen nehmen?"},
+  {s:1,t:"Besser nehmen Sie sie nach dem Essen und trinken dazu ein großes Glas Wasser. Und wichtig: Wenn die Schmerzen nach drei Tagen nicht besser werden, gehen Sie bitte zum Arzt."},
+  {s:0,t:"Vielen Dank für die gute Beratung!"},
+  {s:1,t:"Sehr gern. Gute Besserung!"}],
+ questions:[
+  {q:"Warum kommt Frau Yilmaz in die Apotheke?",opts:["Sie hat Fieber und Halsschmerzen.","Sie hat seit gestern starke Kopfschmerzen.","Sie braucht ein Rezept vom Arzt."],a:1},
+  {q:"Welche weiteren Beschwerden hat sie?",opts:["Sie hat auch Fieber.","Sie hat Halsschmerzen.","Sie hat keine weiteren Beschwerden, kein Fieber."],a:2},
+  {q:"Wogegen ist Frau Yilmaz allergisch?",opts:["gegen Paracetamol","gegen Aspirin","gegen Ibuprofen"],a:1},
+  {q:"Wie soll sie das empfohlene Medikament einnehmen?",opts:["alle sechs Stunden eine Tablette, höchstens vier am Tag","zwei Tabletten morgens und abends","eine Tablette nur bei sehr starken Schmerzen"],a:0},
+  {q:"Was rät der Apotheker außerdem?",opts:["Die Tabletten immer auf leeren Magen nehmen.","Die Tabletten nach dem Essen nehmen und nach drei Tagen ohne Besserung zum Arzt gehen.","Eine Woche lang im Bett bleiben."],a:1}]}
 ];
 </script>
 <script>
