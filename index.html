@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c1-gefuehle-2026-10-23", date:"23. Oktober 2026", level:"C1", title:"C1-Paket: Gefühle & Meinungen",
+  words:[
+   {de:"die Begeisterung",ka:"აღფრთოვანება",img:"😍",ex:"Ihre Begeisterung für die Pflegearbeit steckt die ganze Familie an."},
+   {de:"die Enttäuschung",ka:"იმედგაცრუება",img:"😞",ex:"Die Enttäuschung war groß, als der Termin in letzter Minute platzte."},
+   {de:"die Überzeugung",ka:"ღრმა რწმენა, დარწმუნება",img:"🧠",ex:"Aus Überzeugung arbeitet sie seit Jahren in der Pflege."},
+   {de:"empört",ka:"აღშფოთებული",img:"😠",ex:"Die Familie war empört über die Absage ohne Vorwarnung."},
+   {de:"die Sehnsucht",ka:"მონატრება, ძლიერი სწრაფვა",img:"💭",ex:"Die Sehnsucht nach Georgien wird in den Feiertagen besonders stark."},
+   {de:"nachdenklich",ka:"დაფიქრებული, ჩაფიქრებული",img:"🤔",ex:"Nachdenklich saß sie am Telefon und plante die nächste Vermittlung."},
+   {de:"die Erleichterung",ka:"შვება, განთავისუფლება",img:"🍃",ex:"Als die neue Pflegekraft endlich ankam, war die Erleichterung groß."},
+   {de:"skeptisch",ka:"სკეპტიკურად განწყობილი",img:"🧐",ex:"Am Anfang war sie skeptisch, doch das Vertrauen wuchs schnell."},
+   {de:"stolz auf",ka:"ამაყი (ვინმეთი/რაღაცით)",img:"🏆",ex:"Sie ist stolz auf ihre Vermittlungsarbeit."},
+   {de:"die Besorgnis",ka:"შეშფოთება",img:"😟",ex:"Ihre Besorgnis um die alte Dame war deutlich zu spüren."}
+  ]},
 { id:"b2-reisen-2026-10-22", date:"22. Oktober 2026", level:"B2", title:"B2-Paket: Reisen & Unterwegs",
   words:[
    {de:"der Abflug",ka:"აფრენა",img:"🛫",ex:"Der Abflug nach Tiflis ist um 14 Uhr."},
@@ -318,7 +331,11 @@ const GRAMMAR=[
  {lvl:"C2",q:"______ des steigenden Bedarfs wurden zusätzliche Pflegekräfte eingestellt.",opts:["Angesichts","Anstatt","Zwecks","Während"],a:0},
  {lvl:"C2",q:"Es bedarf großer Anstrengungen, ______ Ziel zu erreichen.",opts:["dieses","diesem","diesen","dieser"],a:0},
  {lvl:"C2",q:"Der Vertrag gilt als ______, sobald beide Seiten unterschrieben haben.",opts:["geschlossen","schließen","schließenden","geschlossenem"],a:0},
- {lvl:"C2",q:"Dem Bericht ______ lässt sich die Entwicklung gut nachvollziehen.",opts:["zufolge","folgend","gefolgt","zufolgen"],a:0}
+ {lvl:"C2",q:"Dem Bericht ______ lässt sich die Entwicklung gut nachvollziehen.",opts:["zufolge","folgend","gefolgt","zufolgen"],a:0},
+ {lvl:"C1",q:"Je mehr Erfahrung die Bewerberin hat, ______ einfacher wird die Vermittlung.",opts:["desto","so","dann","umso weniger"],a:0},
+ {lvl:"C1",q:"Er erinnerte sie daran, ______ Antrag rechtzeitig einzureichen.",opts:["den","dem","der","des"],a:0},
+ {lvl:"C1",q:"Nicht nur die Pflegekraft, ______ auch die Familie zeigte große Wertschätzung.",opts:["sondern","aber","dennoch","jedoch"],a:0},
+ {lvl:"C1",q:"Der Vertrag, ______ beide Seiten sofort einverstanden waren, wurde unterschrieben.",opts:["mit dem","den","mit dessen","welches"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-23 – C1-Paket „Gefühle & Meinungen“
+- 10 neue C1-Wörter: Begeisterung, Enttäuschung, Überzeugung, empört, Sehnsucht, nachdenklich, Erleichterung, skeptisch, stolz auf, Besorgnis.
+- 4 neue C1-Grammatikfragen (je–desto, sich erinnern an + Akk., nicht nur–sondern, Relativsatz mit Präposition).
+- Jetzt insgesamt 96 Wörter und 44 Grammatikfragen (B2–C2).
+
 ## 2026-10-22 – Neue Lektionen überall + professionellere, schnellere Stimme
 - **3 neue Wortpakete (je 10 Wörter):** B2 „Reisen & Unterwegs“, C1 „Gesundheitssystem & Versicherung“, C2 „Abstrakte Begriffe & Stil“.
 - **12 neue Grammatikfragen** (je 4 für B2, C1 und C2).
