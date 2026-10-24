@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c2-kommunikation-2026-10-24", date:"24. Oktober 2026", level:"C2", title:"C2-Paket: Kommunikation & Verhandlung",
+  words:[
+   {de:"die Verhandlung",ka:"მოლაპარაკება",img:"🤝",ex:"Die Verhandlung über den Lohn dauerte fast eine Stunde."},
+   {de:"aushandeln",ka:"მოლაპარაკებით შეთანხმება",img:"💬",ex:"Familie und Pflegekraft handeln die Arbeitszeiten gemeinsam aus."},
+   {de:"die Kompromissbereitschaft",ka:"კომპრომისისადმი მზადყოფნა",img:"⚖️",ex:"Mit etwas Kompromissbereitschaft findet man fast immer eine Lösung."},
+   {de:"überzeugend",ka:"დამაჯერებელი",img:"🎯",ex:"Ihre überzeugenden Argumente machten die Familie sofort neugierig."},
+   {de:"der Einwand",ka:"შენიშვნა, წინააღმდეგობა",img:"✋",ex:"Gegen den späten Arbeitsbeginn gab es keinen Einwand."},
+   {de:"entgegnen",ka:"პასუხის გაცემა, შენიშვნის გაკეთება",img:"🗣️",ex:"Auf die Frage nach dem Gehalt entgegnete sie ruhig und freundlich."},
+   {de:"die Zusage",ka:"დაპირება, თანხმობა",img:"✅",ex:"Nach der Zusage der Familie konnte die Vermittlung abgeschlossen werden."},
+   {de:"die Absage",ka:"უარი, უარყოფა",img:"❌",ex:"Nach der Absage suchte Ana sofort nach einer anderen Familie."},
+   {de:"nachdrücklich",ka:"დაჟინებით, კატეგორიულად",img:"❗",ex:"Sie wies nachdrücklich darauf hin, dass freie Tage eingehalten werden müssen."},
+   {de:"die Einigung",ka:"შეთანხმება",img:"🤝",ex:"Am Ende stand eine Einigung, mit der beide Seiten zufrieden waren."}
+  ]},
 { id:"c1-gefuehle-2026-10-23", date:"23. Oktober 2026", level:"C1", title:"C1-Paket: Gefühle & Meinungen",
   words:[
    {de:"die Begeisterung",ka:"აღფრთოვანება",img:"😍",ex:"Ihre Begeisterung für die Pflegearbeit steckt die ganze Familie an."},
@@ -335,7 +348,11 @@ const GRAMMAR=[
  {lvl:"C1",q:"Je mehr Erfahrung die Bewerberin hat, ______ einfacher wird die Vermittlung.",opts:["desto","so","dann","umso weniger"],a:0},
  {lvl:"C1",q:"Er erinnerte sie daran, ______ Antrag rechtzeitig einzureichen.",opts:["den","dem","der","des"],a:0},
  {lvl:"C1",q:"Nicht nur die Pflegekraft, ______ auch die Familie zeigte große Wertschätzung.",opts:["sondern","aber","dennoch","jedoch"],a:0},
- {lvl:"C1",q:"Der Vertrag, ______ beide Seiten sofort einverstanden waren, wurde unterschrieben.",opts:["mit dem","den","mit dessen","welches"],a:0}
+ {lvl:"C1",q:"Der Vertrag, ______ beide Seiten sofort einverstanden waren, wurde unterschrieben.",opts:["mit dem","den","mit dessen","welches"],a:0},
+ {lvl:"C2",q:"Die Agentur teilte mit, die neue Pflegekraft ______ am Montag.",opts:["beginne","beginnt","begänne","begonnen"],a:0},
+ {lvl:"C2",q:"Ungeachtet ______ Einwände wurde der Vertrag unterschrieben.",opts:["der","den","die","dem"],a:0},
+ {lvl:"C2",q:"Je überzeugender das Angebot, ______ eher stimmt die Familie zu.",opts:["desto","umso weniger","so","dann"],a:0},
+ {lvl:"C2",q:"Die Verhandlung wurde vertagt, ______ noch offene Fragen zu klären.",opts:["um","damit","statt","ohne"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

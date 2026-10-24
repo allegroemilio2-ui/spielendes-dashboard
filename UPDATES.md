@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-24 – C2-Paket „Kommunikation & Verhandlung“
+- 10 neue C2-Wörter: die Verhandlung, aushandeln, die Kompromissbereitschaft, überzeugend, der Einwand, entgegnen, die Zusage, die Absage, nachdrücklich, die Einigung.
+- 4 neue C2-Grammatikfragen (Konjunktiv I in der indirekten Rede, „ungeachtet“ + Genitiv, je–desto, um–zu).
+- Jetzt insgesamt 106 Wörter und 48 Grammatikfragen (B2–C2).
+
 ## 2026-10-23 – C1-Paket „Gefühle & Meinungen“
 - 10 neue C1-Wörter: Begeisterung, Enttäuschung, Überzeugung, empört, Sehnsucht, nachdenklich, Erleichterung, skeptisch, stolz auf, Besorgnis.
 - 4 neue C1-Grammatikfragen (je–desto, sich erinnern an + Akk., nicht nur–sondern, Relativsatz mit Präposition).
