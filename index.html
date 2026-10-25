@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"b2-arbeit-2026-10-25", date:"25. Oktober 2026", level:"B2", title:"B2-Paket: Arbeit & Termine",
+  words:[
+   {de:"der Termin",ka:"დანიშნული შეხვედრა",img:"📅",ex:"Der Termin mit der Familie ist am Dienstag um 10 Uhr."},
+   {de:"die Besprechung",ka:"განხილვა, შეხვედრა",img:"💬",ex:"In der Besprechung klären wir alle Fragen zur Betreuung."},
+   {de:"verschieben",ka:"გადადება",img:"🔄",ex:"Wir müssen den Termin wegen Krankheit leider verschieben."},
+   {de:"der Lebenslauf",ka:"რეზიუმე, ბიოგრაფია",img:"📄",ex:"Bitte schicke mir deinen Lebenslauf per E-Mail."},
+   {de:"die Schicht",ka:"სამუშაო ცვლა",img:"🌙",ex:"Heute arbeitet sie in der Nachtschicht."},
+   {de:"pünktlich",ka:"დროული, პუნქტუალური",img:"⏰",ex:"Sie kommt immer pünktlich zur Arbeit."},
+   {de:"die Arbeitszeit",ka:"სამუშაო დრო",img:"🕘",ex:"Die Arbeitszeit ist von 8 bis 16 Uhr."},
+   {de:"die Überstunden",ka:"ზეგანაკვეთური სამუშაო",img:"⏱️",ex:"Für Überstunden bekommt sie einen Zuschlag."},
+   {de:"der Arbeitsvertrag",ka:"შრომითი ხელშეკრულება",img:"📝",ex:"Im Arbeitsvertrag stehen Gehalt und Urlaubstage."},
+   {de:"die Probezeit",ka:"გამოსაცდელი ვადა",img:"🧪",ex:"Die Probezeit bei der neuen Familie dauert einen Monat."}
+  ]},
 { id:"c2-kommunikation-2026-10-24", date:"24. Oktober 2026", level:"C2", title:"C2-Paket: Kommunikation & Verhandlung",
   words:[
    {de:"die Verhandlung",ka:"მოლაპარაკება",img:"🤝",ex:"Die Verhandlung über den Lohn dauerte fast eine Stunde."},
@@ -352,7 +365,11 @@ const GRAMMAR=[
  {lvl:"C2",q:"Die Agentur teilte mit, die neue Pflegekraft ______ am Montag.",opts:["beginne","beginnt","begänne","begonnen"],a:0},
  {lvl:"C2",q:"Ungeachtet ______ Einwände wurde der Vertrag unterschrieben.",opts:["der","den","die","dem"],a:0},
  {lvl:"C2",q:"Je überzeugender das Angebot, ______ eher stimmt die Familie zu.",opts:["desto","umso weniger","so","dann"],a:0},
- {lvl:"C2",q:"Die Verhandlung wurde vertagt, ______ noch offene Fragen zu klären.",opts:["um","damit","statt","ohne"],a:0}
+ {lvl:"C2",q:"Die Verhandlung wurde vertagt, ______ noch offene Fragen zu klären.",opts:["um","damit","statt","ohne"],a:0},
+ {lvl:"B2",q:"______ sie pünktlich war, konnte die Besprechung rechtzeitig beginnen.",opts:["Da","Trotzdem","Obwohl","Damit"],a:0},
+ {lvl:"B2",q:"Der Lebenslauf muss bis Freitag ______ werden.",opts:["geschickt","schicken","schickt","geschickten"],a:0},
+ {lvl:"B2",q:"Die Pflegekraft, ______ wir gestern angerufen haben, kommt am Montag.",opts:["die","der","den","dem"],a:0},
+ {lvl:"B2",q:"Anstatt Überstunden zu machen, ______ sie lieber früher nach Hause.",opts:["geht","gehen","gegangen","gehen zu"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

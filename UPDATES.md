@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-25 – B2-Paket „Arbeit & Termine“
+- 10 neue B2-Wörter: der Termin, die Besprechung, verschieben, der Lebenslauf, die Schicht, pünktlich, die Arbeitszeit, die Überstunden, der Arbeitsvertrag, die Probezeit.
+- 4 neue B2-Grammatikfragen (Da-Satz, Passiv mit „werden“, Relativsatz im Akkusativ, anstatt + Infinitiv).
+- Jetzt insgesamt 116 Wörter und 52 Grammatikfragen (B2–C2).
+
 ## 2026-10-24 – C2-Paket „Kommunikation & Verhandlung“
 - 10 neue C2-Wörter: die Verhandlung, aushandeln, die Kompromissbereitschaft, überzeugend, der Einwand, entgegnen, die Zusage, die Absage, nachdrücklich, die Einigung.
 - 4 neue C2-Grammatikfragen (Konjunktiv I in der indirekten Rede, „ungeachtet“ + Genitiv, je–desto, um–zu).
