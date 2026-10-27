@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c1-bildung-2026-10-26", date:"26. Oktober 2026", level:"C1", title:"C1-Paket: Bildung & Weiterbildung",
+  words:[
+   {de:"die Weiterbildung",ka:"კვალიფიკაციის ამაღლება",img:"🎓",ex:"Durch eine Weiterbildung kann sie bessere Stellen in der Pflege bekommen."},
+   {de:"der Lehrgang",ka:"სასწავლო კურსი",img:"📚",ex:"Der Lehrgang für Pflegekräfte dauert drei Monate."},
+   {de:"sich weiterbilden",ka:"კვალიფიკაციის ამაღლება (საკუთარი)",img:"📖",ex:"Sie bildet sich neben der Arbeit in einem Abendkurs weiter."},
+   {de:"die Vorkenntnisse",ka:"წინასწარი ცოდნა",img:"🧠",ex:"Für diesen Kurs sind gute Deutsch-Vorkenntnisse nötig."},
+   {de:"die Zulassung",ka:"დაშვება, ნებართვა",img:"✅",ex:"Nach der Zulassung darf sie an der Prüfung teilnehmen."},
+   {de:"die Anerkennung",ka:"აღიარება (დიპლომის, კვალიფიკაციის)",img:"📜",ex:"Die Anerkennung ihres georgischen Diploms dauert einige Wochen."},
+   {de:"der Nachweis",ka:"დამადასტურებელი დოკუმენტი, ცნობა",img:"🧾",ex:"Als Nachweis braucht die Agentur eine Kopie des Zertifikats."},
+   {de:"die Förderung",ka:"მხარდაჭერა, დაფინანსება",img:"💶",ex:"Es gibt eine Förderung für Weiterbildungskurse in der Pflege."},
+   {de:"der Fernkurs",ka:"დისტანციური კურსი",img:"💻",ex:"Im Fernkurs lernt sie bequem von zu Hause aus."},
+   {de:"der Abschluss",ka:"დამთავრება, დიპლომი",img:"🏅",ex:"Nach dem Abschluss des Kurses bekommt sie ein Zertifikat."}
+  ]},
 { id:"b2-arbeit-2026-10-25", date:"25. Oktober 2026", level:"B2", title:"B2-Paket: Arbeit & Termine",
   words:[
    {de:"der Termin",ka:"დანიშნული შეხვედრა",img:"📅",ex:"Der Termin mit der Familie ist am Dienstag um 10 Uhr."},
@@ -369,7 +382,11 @@ const GRAMMAR=[
  {lvl:"B2",q:"______ sie pünktlich war, konnte die Besprechung rechtzeitig beginnen.",opts:["Da","Trotzdem","Obwohl","Damit"],a:0},
  {lvl:"B2",q:"Der Lebenslauf muss bis Freitag ______ werden.",opts:["geschickt","schicken","schickt","geschickten"],a:0},
  {lvl:"B2",q:"Die Pflegekraft, ______ wir gestern angerufen haben, kommt am Montag.",opts:["die","der","den","dem"],a:0},
- {lvl:"B2",q:"Anstatt Überstunden zu machen, ______ sie lieber früher nach Hause.",opts:["geht","gehen","gegangen","gehen zu"],a:0}
+ {lvl:"B2",q:"Anstatt Überstunden zu machen, ______ sie lieber früher nach Hause.",opts:["geht","gehen","gegangen","gehen zu"],a:0},
+ {lvl:"C1",q:"Die Anerkennung des Diploms ist Voraussetzung dafür, ______ in Deutschland arbeiten zu dürfen.",opts:["um","damit","dass","ohne"],a:0},
+ {lvl:"C1",q:"Je mehr Vorkenntnisse die Teilnehmerin mitbringt, ______ schneller kann sie den Lehrgang abschließen.",opts:["desto","so","dann","umso"],a:0},
+ {lvl:"C1",q:"Der Fernkurs richtet sich an alle, ______ sich neben der Arbeit weiterbilden wollen.",opts:["die","der","den","welche"],a:0},
+ {lvl:"C1",q:"Sie hat den Lehrgang erfolgreich abgeschlossen, ______ sie nebenbei Vollzeit gearbeitet hat.",opts:["obwohl","trotzdem","denn","weil"],a:0}
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

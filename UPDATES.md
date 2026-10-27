@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-26 – C1-Paket „Bildung & Weiterbildung“
+- 10 neue C1-Wörter: die Weiterbildung, der Lehrgang, sich weiterbilden, die Vorkenntnisse, die Zulassung, die Anerkennung, der Nachweis, die Förderung, der Fernkurs, der Abschluss.
+- 4 neue C1-Grammatikfragen (um–zu, je–desto, Relativsatz, obwohl).
+- Jetzt insgesamt 126 Wörter und 56 Grammatikfragen (B2–C2).
+
 ## 2026-10-25 – B2-Paket „Arbeit & Termine“
 - 10 neue B2-Wörter: der Termin, die Besprechung, verschieben, der Lebenslauf, die Schicht, pünktlich, die Arbeitszeit, die Überstunden, der Arbeitsvertrag, die Probezeit.
 - 4 neue B2-Grammatikfragen (Da-Satz, Passiv mit „werden“, Relativsatz im Akkusativ, anstatt + Infinitiv).
