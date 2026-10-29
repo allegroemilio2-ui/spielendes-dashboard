@@ -1,5 +1,20 @@
 # Updates
 
+## 2026-10-29 – C1-Paket „Umwelt & Nachhaltigkeit“
+- 10 neue C1-Wörter: die Nachhaltigkeit, der Klimawandel, die Mülltrennung, recyceln, umweltfreundlich, erneuerbar, der Klimaschutz, die Verschmutzung, der Ressourcenverbrauch, die Energieeffizienz.
+- 4 neue C1-Grammatikfragen (je–desto, Infinitiv mit „zu“, Passiv mit „werden“, trotz + Genitiv).
+- Jetzt insgesamt 156 Wörter und 68 Grammatikfragen (B2–C2).
+
+## 2026-10-28 – B2-Paket „Familie & Alltag“
+- 10 neue B2-Wörter: der Alltag, der Tagesablauf, die Routine, die Hausarbeit, die Mahlzeit, einkaufen, kochen, aufräumen, der Spaziergang, die Freizeit.
+- 4 neue B2-Grammatikfragen (bevor, sodass, trennbares Verb „aufstehen“, „beginnen“).
+- Jetzt insgesamt 146 Wörter und 64 Grammatikfragen (B2–C2).
+
+## 2026-10-27 – C2-Paket „Verträge & Formalitäten“
+- 10 neue C2-Wörter: die Klausel, die Frist, verbindlich, rechtskräftig, die Schweigepflicht, die Haftung, der Widerruf, die Vollmacht, unterzeichnen, die Vertraulichkeit.
+- 4 neue C2-Grammatikfragen (Aufgrund + Genitiv, Relativsatz „bis zu der“, Konjunktiv I in der indirekten Rede, Passiv mit Partizip).
+- Jetzt insgesamt 136 Wörter und 60 Grammatikfragen (B2–C2).
+
 ## 2026-10-26 – C1-Paket „Bildung & Weiterbildung“
 - 10 neue C1-Wörter: die Weiterbildung, der Lehrgang, sich weiterbilden, die Vorkenntnisse, die Zulassung, die Anerkennung, der Nachweis, die Förderung, der Fernkurs, der Abschluss.
 - 4 neue C1-Grammatikfragen (um–zu, je–desto, Relativsatz, obwohl).
