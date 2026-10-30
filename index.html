@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c2-technik-2026-10-30", date:"30. Oktober 2026", level:"C2", title:"C2-Paket: Technik & Digitalisierung",
+  words:[
+   {de:"die Digitalisierung",ka:"ციფრულიზაცია",img:"💻",ex:"Durch die Digitalisierung kann Ana Termine und Unterlagen viel schneller mit den Familien abstimmen."},
+   {de:"die Vernetzung",ka:"ქსელში გაერთიანება",img:"🌐",ex:"Die Vernetzung von Pflegekräften und Familien erleichtert den Austausch von Informationen."},
+   {de:"die Datensicherheit",ka:"მონაცემთა დაცვა",img:"🔐",ex:"Datensicherheit ist wichtig, damit private Daten der Familien geschützt bleiben."},
+   {de:"verschlüsseln",ka:"დაშიფვრა",img:"🔒",ex:"Sie verschlüsselt die Nachricht, bevor sie persönliche Daten an die Familie schickt."},
+   {de:"der Algorithmus",ka:"ალგორითმი",img:"🤖",ex:"Ein Algorithmus schlägt passende Pflegekräfte für eine Familie vor."},
+   {de:"die Automatisierung",ka:"ავტომატიზაცია",img:"⚙️",ex:"Durch Automatisierung werden wiederkehrende Aufgaben, zum Beispiel Erinnerungen, einfacher."},
+   {de:"die Schnittstelle",ka:"ინტერფეისი",img:"🔌",ex:"Die neue App ist eine Schnittstelle zwischen Familie und Pflegekraft."},
+   {de:"die Benutzerfreundlichkeit",ka:"მომხმარებლისთვის მოხერხებულობა",img:"👍",ex:"Die Benutzerfreundlichkeit der App ist wichtig, damit auch ältere Menschen sie nutzen können."},
+   {de:"die Fernbetreuung",ka:"დისტანციური მოვლა",img:"📱",ex:"Durch Fernbetreuung kann sie auch aus der Ferne nach einer Seniorin schauen."},
+   {de:"die Künstliche Intelligenz",ka:"ხელოვნური ინტელექტი",img:"🧠",ex:"Künstliche Intelligenz kann helfen, Dienstpläne schneller zu erstellen."}
+  ]},
 { id:"c1-umwelt-2026-10-29", date:"29. Oktober 2026", level:"C1", title:"C1-Paket: Umwelt & Nachhaltigkeit",
   words:[
    {de:"die Nachhaltigkeit",ka:"მდგრადობა",img:"🌱",ex:"Nachhaltigkeit bedeutet, auch an die Zukunft der nächsten Generationen zu denken."},
@@ -437,7 +450,11 @@ const GRAMMAR=[
  {lvl:"C1",q:"Je mehr Müll wir recyceln, ______ weniger Ressourcen verbrauchen wir.",opts:["desto","so","dann","umso"],a:0},
  {lvl:"C1",q:"Die Regierung plant, den CO2-Ausstoß bis 2030 deutlich ______.",opts:["zu senken","senken","gesenkt","senkend"],a:0},
  {lvl:"C1",q:"Sie fordert, dass die Energieeffizienz ______ wird.",opts:["verbessert","verbessern","verbesserte","verbessernd"],a:0},
- {lvl:"C1",q:"Trotz ______ Bemühungen steigt der Ressourcenverbrauch weiter.",opts:["aller","alle","allen","alles"],a:0}
+ {lvl:"C1",q:"Trotz ______ Bemühungen steigt der Ressourcenverbrauch weiter.",opts:["aller","alle","allen","alles"],a:0},
+ {lvl:"C2",q:"______ der Digitalisierung lassen sich Termine heute viel schneller abstimmen.",opts:["Dank","Wegen","Trotz","Anstatt"],a:0},
+ {lvl:"C2",q:"Die App, ______ Benutzerfreundlichkeit alle loben, wird oft empfohlen.",opts:["deren","dessen","derer","welche"],a:0},
+ {lvl:"C2",q:"Die Digitalisierung schreitet voran, ______ viele ältere Menschen noch unsicher sind.",opts:["obwohl","trotzdem","denn","damit"],a:0},
+ {lvl:"C2",q:"Es ist unabdingbar, dass persönliche Daten in der Vermittlung ______ werden.",opts:["geschützt","schützen","schützend","geschützten"],a:0},
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";
