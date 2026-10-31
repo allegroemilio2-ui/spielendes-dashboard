@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"b2-kleidung-2026-10-31", date:"31. Oktober 2026", level:"B2", title:"B2-Paket: Kleidung & Winter",
+  words:[
+   {de:"die Jacke",ka:"ქურთუკი",img:"🧥",ex:"Am Morgen zieht sie ihre warme Jacke an, bevor sie zur Familie geht."},
+   {de:"der Pullover",ka:"სვიტრი",img:"🧶",ex:"Die Seniorin trägt gern einen weichen Pullover, wenn es kalt ist."},
+   {de:"die Mütze",ka:"ქუდი",img:"🧢",ex:"Bei Wind und Kälte setzt sie der Seniorin eine warme Mütze auf."},
+   {de:"der Schal",ka:"შარფი",img:"🧣",ex:"Mit einem Schal um den Hals bleibt sie beim Spaziergang warm."},
+   {de:"die Handschuhe",ka:"ხელთათმანები",img:"🧤",ex:"Im Winter braucht sie Handschuhe, wenn sie einkaufen geht."},
+   {de:"die Stiefel",ka:"ჩექმები",img:"👢",ex:"Feste Stiefel sind wichtig, wenn der Weg nass oder glatt ist."},
+   {de:"anziehen",ka:"ჩაცმა",img:"👕",ex:"Morgens hilft sie der Seniorin, sich langsam anzuziehen."},
+   {de:"die Größe",ka:"ზომა",img:"📏",ex:"Beim Kauf von Stiefeln muss man die richtige Größe wissen."},
+   {de:"warm",ka:"თბილი",img:"🔥",ex:"Warme Kleidung schützt vor Kälte."},
+   {de:"passen",ka:"მორგება, შესაფერისი ყოფნა",img:"👌",ex:"Die neuen Stiefel passen gut und drücken nicht."}
+  ]},
 { id:"c2-technik-2026-10-30", date:"30. Oktober 2026", level:"C2", title:"C2-Paket: Technik & Digitalisierung",
   words:[
    {de:"die Digitalisierung",ka:"ციფრულიზაცია",img:"💻",ex:"Durch die Digitalisierung kann Ana Termine und Unterlagen viel schneller mit den Familien abstimmen."},
@@ -455,6 +468,10 @@ const GRAMMAR=[
  {lvl:"C2",q:"Die App, ______ Benutzerfreundlichkeit alle loben, wird oft empfohlen.",opts:["deren","dessen","derer","welche"],a:0},
  {lvl:"C2",q:"Die Digitalisierung schreitet voran, ______ viele ältere Menschen noch unsicher sind.",opts:["obwohl","trotzdem","denn","damit"],a:0},
  {lvl:"C2",q:"Es ist unabdingbar, dass persönliche Daten in der Vermittlung ______ werden.",opts:["geschützt","schützen","schützend","geschützten"],a:0},
+ {lvl:"B2",q:"Es ist so kalt, ______ sie einen warmen Pullover anzieht.",opts:["dass","weil","obwohl","damit"],a:0},
+ {lvl:"B2",q:"Im Winter ______ es oft schon um 17 Uhr dunkel.",opts:["wird","werden","ist","wurde"],a:0},
+ {lvl:"B2",q:"Sie friert, ______ sie keine Mütze trägt.",opts:["weil","obwohl","trotzdem","damit"],a:0},
+ {lvl:"B2",q:"Die Jacke, ______ sie gestern gekauft hat, ist sehr warm.",opts:["die","der","dem","das"],a:0},
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

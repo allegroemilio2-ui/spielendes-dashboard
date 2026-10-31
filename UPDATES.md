@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-10-31 – B2-Paket „Kleidung & Winter“
+- 10 neue B2-Wörter: die Jacke, der Pullover, die Mütze, der Schal, die Handschuhe, die Stiefel, anziehen, die Größe, warm, passen.
+- 4 neue B2-Grammatikfragen (dass-Satz, „werden“ bei Wetter, weil-Satz, Relativsatz „die“).
+- Jetzt insgesamt 176 Wörter und 76 Grammatikfragen (B2–C2).
+
 ## 2026-10-30 – C2-Paket „Technik & Digitalisierung“
 - 10 neue C2-Wörter: die Digitalisierung, die Vernetzung, die Datensicherheit, verschlüsseln, der Algorithmus, die Automatisierung, die Schnittstelle, die Benutzerfreundlichkeit, die Fernbetreuung, die Künstliche Intelligenz.
 - 4 neue C2-Grammatikfragen (Dank + Genitiv, Relativsatz „deren“, obwohl-Satz, Passiv mit „werden“).
