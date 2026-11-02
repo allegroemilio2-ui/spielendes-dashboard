@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-11-01 – C1-Paket „Ernährung & Wohlbefinden“
+- 10 neue C1-Wörter: die Ernährung, ausgewogen, die Nährstoffe, der Stoffwechsel, die Verdauung, der Appetit, die Unverträglichkeit, der Blutzucker, die Mangelernährung, vorbeugen.
+- 4 neue C1-Grammatikfragen (je–desto, Infinitiv mit „zu“, obwohl-Satz, Relativsatz „die“).
+- Jetzt insgesamt 186 Wörter und 80 Grammatikfragen (B2–C2).
+
 ## 2026-10-31 – B2-Paket „Kleidung & Winter“
 - 10 neue B2-Wörter: die Jacke, der Pullover, die Mütze, der Schal, die Handschuhe, die Stiefel, anziehen, die Größe, warm, passen.
 - 4 neue B2-Grammatikfragen (dass-Satz, „werden“ bei Wetter, weil-Satz, Relativsatz „die“).
