@@ -167,6 +167,32 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"b2-telefonieren-2026-11-03", date:"3. November 2026", level:"B2", title:"B2-Paket: Telefonieren & Nachrichten",
+  words:[
+   {de:"der Anruf",ka:"ზარი",img:"📞",ex:"Am Morgen bekommt Ana einen Anruf von einer Familie, die eine Pflegekraft sucht."},
+   {de:"anrufen",ka:"დარეკვა",img:"📲",ex:"Sie ruft die Familie noch am selben Tag an, um den Einsatz zu besprechen."},
+   {de:"die Nachricht",ka:"შეტყობინება",img:"💬",ex:"Eine Nachricht auf WhatsApp fragt, ob es eine neue Stelle gibt."},
+   {de:"die Mailbox",ka:"ხმოვანი ფოსტა",img:"🎙️",ex:"Wenn Ana nicht ans Telefon geht, hinterlässt die Familie eine Nachricht auf der Mailbox."},
+   {de:"zurückrufen",ka:"უკან დარეკვა",img:"↩️",ex:"Am Abend ruft sie alle zurück, die tagsüber angerufen haben."},
+   {de:"der Absender",ka:"გამგზავნი",img:"👤",ex:"Am Absender erkennt sie sofort, ob die Nachricht von einer Familie oder einer Pflegekraft kommt."},
+   {de:"erreichbar",ka:"მისაწვდომი",img:"📶",ex:"Tagsüber ist Ana für Familien und Pflegekräfte gut erreichbar."},
+   {de:"die Rufnummer",ka:"ტელეფონის ნომერი",img:"🔢",ex:"Bitte gib mir deine Rufnummer, damit ich dich direkt anrufen kann."},
+   {de:"die Sprachnachricht",ka:"ხმოვანი შეტყობინება",img:"🎤",ex:"In einer Sprachnachricht erklärt die Pflegekraft kurz, ab wann sie frei ist."},
+   {de:"verpassen",ka:"გამოტოვება",img:"⏰",ex:"Sie will keinen wichtigen Anruf verpassen, deshalb hört sie die Mailbox jeden Abend ab."}
+  ]},
+{ id:"c2-achtsamkeit-2026-11-02", date:"2. November 2026", level:"C2", title:"C2-Paket: Achtsamkeit & innere Balance",
+  words:[
+   {de:"die Achtsamkeit",ka:"გაცნობიერებული ყურადღება",img:"🧘",ex:"Mit Achtsamkeit bemerkt sie früher, wenn eine Seniorin müde oder traurig ist."},
+   {de:"die Entschleunigung",ka:"ცხოვრების ტემპის შენელება",img:"🐢",ex:"Nach der Schicht hilft ihr eine bewusste Entschleunigung: kein Handy, ein Spaziergang, eine Tasse Tee."},
+   {de:"die Resilienz",ka:"ფსიქოლოგიური მდგრადობა",img:"💪",ex:"Resilienz bedeutet, nach einem schweren Tag wieder Kraft zu finden und weiterzumachen."},
+   {de:"die Weitsicht",ka:"შორსმჭვრეტელობა",img:"🔭",ex:"Mit Weitsicht plant Ana die Einsätze so, dass Pflegekraft und Familie langfristig zusammenpassen."},
+   {de:"die Selbstreflexion",ka:"თვითანალიზი",img:"🪞",ex:"Selbstreflexion hilft ihr zu erkennen, was im Gespräch mit einer Familie gut gelaufen ist."},
+   {de:"die Zäsur",ka:"გარდამტეხი მომენტი",img:"✂️",ex:"Der Umzug nach Deutschland war eine Zäsur in ihrem Leben: Danach begann ein neuer Abschnitt."},
+   {de:"die Ambivalenz",ka:"ორგვარი, წინააღმდეგობრივი გრძნობა",img:"🎭",ex:"Manchmal spürt sie eine Ambivalenz: Sie freut sich auf den neuen Einsatz und ist zugleich traurig über den Abschied."},
+   {de:"innehalten",ka:"გაჩერება და დაფიქრება",img:"⏸️",ex:"Zwischen zwei Terminen sollte man kurz innehalten und tief durchatmen."},
+   {de:"die Belastbarkeit",ka:"დატვირთვის მიმართ გამძლეობა",img:"🏋️",ex:"Hohe Belastbarkeit ist in der 24-Stunden-Betreuung wichtig, aber auch Pausen gehören dazu."},
+   {de:"die Ausgeglichenheit",ka:"შინაგანი წონასწორობა",img:"🌿",ex:"Ausgeglichenheit entsteht, wenn Arbeit, Ruhe und Zeit für sich selbst im Gleichgewicht sind."}
+  ]},
 { id:"c1-ernaehrung-2026-11-01", date:"1. November 2026", level:"C1", title:"C1-Paket: Ernährung & Wohlbefinden",
   words:[
    {de:"die Ernährung",ka:"კვება",img:"🥗",ex:"Eine ausgewogene Ernährung ist für Seniorinnen und Senioren besonders wichtig."},
@@ -489,6 +515,14 @@ const GRAMMAR=[
  {lvl:"C1",q:"Es ist wichtig, auf die Nährstoffe ______.",opts:["zu achten","achten","geachtet","achtend"],a:0},
  {lvl:"C1",q:"______ sie wenig Appetit hat, isst sie regelmäßig kleine Mahlzeiten.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
  {lvl:"C1",q:"Die Nährstoffe, ______ der Körper braucht, sind in Gemüse enthalten.",opts:["die","der","den","das"],a:0},
+ {lvl:"C2",q:"Die Beraterin betonte, Achtsamkeit ______ im Pflegealltag eine wichtige Rolle.",opts:["spiele","spielt","spielte","spielen würde"],a:0},
+ {lvl:"C2",q:"Ungeachtet ______ Belastungen blieb sie ausgeglichen.",opts:["der hohen","die hohen","den hohen","hoher"],a:0},
+ {lvl:"C2",q:"Die Zäsur, ______ ihr Leben eine neue Richtung nahm, war der Umzug nach Deutschland.",opts:["mit der","durch die","mit dem","bei der"],a:0},
+ {lvl:"C2",q:"Die bewusst ______ Pause hilft ihr, wieder Kraft zu schöpfen.",opts:["eingelegte","einlegen","eingelegt zu","einlegende"],a:0},
+ {lvl:"B2",q:"Wenn Ana die Familie nicht erreicht, ______ sie eine Nachricht.",opts:["hinterlässt","hinterlassen","hinterlasse","hinterlässtet"],a:0},
+ {lvl:"B2",q:"Die Pflegekraft, ______ Ana gestern angerufen hat, beginnt am Montag.",opts:["der","die","den","dem"],a:1},
+ {lvl:"B2",q:"Sie ruft die Familie zurück, ______ sie die Mailbox abgehört hat.",opts:["nachdem","bevor","während","obwohl"],a:0},
+ {lvl:"B2",q:"Bitte rufen Sie mich an, ______ Sie Fragen haben.",opts:["falls","obwohl","damit","während"],a:0},
 ];
 const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
 let CURLEVEL="Alle";

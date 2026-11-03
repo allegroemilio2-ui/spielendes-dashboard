@@ -1,5 +1,15 @@
 # Updates
 
+## 2026-11-03 – B2-Paket „Telefonieren & Nachrichten“
+- 10 neue B2-Wörter: der Anruf, anrufen, die Nachricht, die Mailbox, zurückrufen, der Absender, erreichbar, die Rufnummer, die Sprachnachricht, verpassen.
+- 4 neue B2-Grammatikfragen (trennbares Verb „hinterlassen“, Relativsatz „die“, nachdem-Satz, falls-Satz).
+- Jetzt insgesamt 206 Wörter und 88 Grammatikfragen (B2–C2).
+
+## 2026-11-02 – C2-Paket „Achtsamkeit & innere Balance“
+- 10 neue C2-Wörter: die Achtsamkeit, die Entschleunigung, die Resilienz, die Weitsicht, die Selbstreflexion, die Zäsur, die Ambivalenz, innehalten, die Belastbarkeit, die Ausgeglichenheit.
+- 4 neue C2-Grammatikfragen (Konjunktiv I, „ungeachtet“ + Genitiv, Relativsatz „mit der“, erweitertes Attribut).
+- Jetzt insgesamt 196 Wörter und 84 Grammatikfragen (B2–C2).
+
 ## 2026-11-01 – C1-Paket „Ernährung & Wohlbefinden“
 - 10 neue C1-Wörter: die Ernährung, ausgewogen, die Nährstoffe, der Stoffwechsel, die Verdauung, der Appetit, die Unverträglichkeit, der Blutzucker, die Mangelernährung, vorbeugen.
 - 4 neue C1-Grammatikfragen (je–desto, Infinitiv mit „zu“, obwohl-Satz, Relativsatz „die“).
