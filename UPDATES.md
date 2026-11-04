@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-11-04 – C1-Paket „Vertrauen & Zusammenarbeit“
+- 10 neue C1-Wörter: das Vertrauen, die Zuverlässigkeit, die Absprache, die Rücksicht, einfühlsam, respektvoll, die Zusammenarbeit, die Verantwortung, die Offenheit, die Geduld.
+- 4 neue C1-Grammatikfragen (Konjunktiv I „werde“, Relativsatz „mit der“, je–desto, Infinitiv mit „zu“ bei „Rücksicht nehmen“).
+- Jetzt insgesamt 216 Wörter und 92 Grammatikfragen (B2–C2).
+
 ## 2026-11-03 – B2-Paket „Telefonieren & Nachrichten“
 - 10 neue B2-Wörter: der Anruf, anrufen, die Nachricht, die Mailbox, zurückrufen, der Absender, erreichbar, die Rufnummer, die Sprachnachricht, verpassen.
 - 4 neue B2-Grammatikfragen (trennbares Verb „hinterlassen“, Relativsatz „die“, nachdem-Satz, falls-Satz).

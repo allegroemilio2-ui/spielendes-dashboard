@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c1-vertrauen-2026-11-04", date:"4. November 2026", level:"C1", title:"C1-Paket: Vertrauen & Zusammenarbeit",
+  words:[
+   {de:"das Vertrauen",ka:"ნდობა",img:"🤝",ex:"Vertrauen wächst, wenn die Pflegekraft pünktlich kommt und ehrlich spricht."},
+   {de:"die Zuverlässigkeit",ka:"საიმედოობა",img:"🛡️",ex:"Zuverlässigkeit ist für eine Familie das Wichtigste bei einer 24-Stunden-Betreuung."},
+   {de:"die Absprache",ka:"შეთანხმება",img:"📋",ex:"Vor dem ersten Einsatz klären Ana und die Familie in einer Absprache die Arbeitszeiten."},
+   {de:"die Rücksicht",ka:"სხვების გათვალისწინება",img:"💛",ex:"Mit Rücksicht auf die Ruhezeiten der Seniorin spricht sie am Abend leise."},
+   {de:"einfühlsam",ka:"ემპათიური, თანაგრძნობით სავსე",img:"🫶",ex:"Eine einfühlsame Pflegekraft merkt sofort, wenn die Seniorin traurig ist."},
+   {de:"respektvoll",ka:"პატივისცემით",img:"🙏",ex:"Sie geht respektvoll mit den Gewohnheiten und Wünschen der Familie um."},
+   {de:"die Zusammenarbeit",ka:"თანამშრომლობა",img:"🤲",ex:"Gute Zusammenarbeit zwischen Familie und Pflegekraft macht den Alltag leichter."},
+   {de:"die Verantwortung",ka:"პასუხისმგებლობა",img:"⚖️",ex:"Die Pflegekraft trägt große Verantwortung, wenn sie allein im Haus arbeitet."},
+   {de:"die Offenheit",ka:"ღიაობა",img:"🗣️",ex:"Mit Offenheit über Probleme kann man schnell eine Lösung finden."},
+   {de:"die Geduld",ka:"მოთმინება",img:"⏳",ex:"Bei einer langsamen Seniorin braucht man viel Geduld und ein ruhiges Tempo."}
+  ]},
 { id:"b2-telefonieren-2026-11-03", date:"3. November 2026", level:"B2", title:"B2-Paket: Telefonieren & Nachrichten",
   words:[
    {de:"der Anruf",ka:"ზარი",img:"📞",ex:"Am Morgen bekommt Ana einen Anruf von einer Familie, die eine Pflegekraft sucht."},
@@ -435,6 +448,10 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"C1",q:"Die Pflegekraft sagte, sie ______ am Montag mit dem neuen Einsatz beginnen.",opts:["wird","werde","würde","werden"],a:1},
+ {lvl:"C1",q:"Die Familie, mit ______ Ana schon lange zusammenarbeitet, empfiehlt sie gern weiter.",opts:["der","die","dem","den"],a:0},
+ {lvl:"C1",q:"Je mehr Vertrauen man aufbaut, ______ besser gelingt die Zusammenarbeit.",opts:["desto","so","dann","je"],a:0},
+ {lvl:"C1",q:"Es ist wichtig, auf die Wünsche der Seniorin Rücksicht ______.",opts:["nehmen","zu nehmen","genommen","nehmend"],a:1},
  {lvl:"B2",q:"Wenn ich mehr Zeit ______, würde ich einen Deutschkurs besuchen.",opts:["habe","hätte","hatte gehabt","haben werde"],a:1},
  {lvl:"B2",q:"Das Haus ______ vor zwei Jahren gebaut.",opts:["wird","wurde","ist werden","hat"],a:1},
  {lvl:"B2",q:"Die Frau, ______ Mann im Krankenhaus liegt, braucht Unterstützung.",opts:["deren","dessen","der","die"],a:0},
