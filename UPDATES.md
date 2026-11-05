@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-11-05 – C2-Paket „Geld & Finanzen“
+- 10 neue C2-Wörter: die Vergütung, die Abrechnung, das Honorar, die Steuererklärung, der Steuerbescheid, die Sozialabgaben, die Rückerstattung, die Vorauszahlung, die Altersvorsorge, der Zahltag.
+- 4 neue C2-Grammatikfragen (gemäß + Dativ, Passiv „aufgeklärt wird“, Relativsatz „um die“, konzessives „wie … auch sein mögen“).
+- Jetzt insgesamt 226 Wörter und 96 Grammatikfragen (B2–C2).
+
 ## 2026-11-04 – C1-Paket „Vertrauen & Zusammenarbeit“
 - 10 neue C1-Wörter: das Vertrauen, die Zuverlässigkeit, die Absprache, die Rücksicht, einfühlsam, respektvoll, die Zusammenarbeit, die Verantwortung, die Offenheit, die Geduld.
 - 4 neue C1-Grammatikfragen (Konjunktiv I „werde“, Relativsatz „mit der“, je–desto, Infinitiv mit „zu“ bei „Rücksicht nehmen“).

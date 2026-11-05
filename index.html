@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c2-geld-finanzen-2026-11-05", date:"5. November 2026", level:"C2", title:"C2-Paket: Geld & Finanzen",
+  words:[
+   {de:"die Vergütung",ka:"ანაზღაურება",img:"💶",ex:"Die Vergütung für den 24-Stunden-Einsatz wird am Monatsende überwiesen."},
+   {de:"die Abrechnung",ka:"ანგარიშსწორება",img:"🧾",ex:"Ana schickt der Familie am Ende des Monats eine genaue Abrechnung."},
+   {de:"das Honorar",ka:"ჰონორარი",img:"💵",ex:"Das Honorar für die Vermittlung steht im Vertrag."},
+   {de:"die Steuererklärung",ka:"საგადასახადო დეკლარაცია",img:"📝",ex:"Einmal im Jahr muss sie ihre Steuererklärung beim Finanzamt abgeben."},
+   {de:"der Steuerbescheid",ka:"საგადასახადო გადაწყვეტილება",img:"📮",ex:"Im Steuerbescheid steht, ob sie Geld zurückbekommt oder nachzahlen muss."},
+   {de:"die Sozialabgaben",ka:"სოციალური შენატანები",img:"🏦",ex:"Von der Vergütung werden auch Sozialabgaben abgezogen."},
+   {de:"die Rückerstattung",ka:"თანხის დაბრუნება",img:"💸",ex:"Wenn zu viel gezahlt wurde, gibt es eine Rückerstattung."},
+   {de:"die Vorauszahlung",ka:"წინასწარი გადახდა",img:"💳",ex:"Manchmal verlangt die Agentur eine Vorauszahlung für den ersten Monat."},
+   {de:"die Altersvorsorge",ka:"საპენსიო უზრუნველყოფა",img:"👵",ex:"Auch als Selbstständige sollte man rechtzeitig an die Altersvorsorge denken."},
+   {de:"der Zahltag",ka:"ხელფასის დღე",img:"🗓️",ex:"Der Zahltag ist immer der erste Werktag im Monat."}
+  ]},
 { id:"c1-vertrauen-2026-11-04", date:"4. November 2026", level:"C1", title:"C1-Paket: Vertrauen & Zusammenarbeit",
   words:[
    {de:"das Vertrauen",ka:"ნდობა",img:"🤝",ex:"Vertrauen wächst, wenn die Pflegekraft pünktlich kommt und ehrlich spricht."},
@@ -448,6 +461,10 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"C2",q:"Gemäß ______ Abrechnung muss die Familie die Vergütung bis zum Monatsende überweisen.",opts:["der","die","dem","den"],a:0},
+ {lvl:"C2",q:"Es ist unerlässlich, dass die Pflegekraft über ihre Pflichten ______ wird.",opts:["aufklärt","aufgeklärt","aufklärend","aufzuklären"],a:1},
+ {lvl:"C2",q:"Die Vermittlung, ______ Ana sich seit Wochen bemüht, steht kurz vor dem Abschluss.",opts:["um die","um der","für die","über die"],a:0},
+ {lvl:"C2",q:"______ groß die Kosten auch sein mögen, auf Qualität darf nicht verzichtet werden.",opts:["Wie","So","Ob","Je"],a:0},
  {lvl:"C1",q:"Die Pflegekraft sagte, sie ______ am Montag mit dem neuen Einsatz beginnen.",opts:["wird","werde","würde","werden"],a:1},
  {lvl:"C1",q:"Die Familie, mit ______ Ana schon lange zusammenarbeitet, empfiehlt sie gern weiter.",opts:["der","die","dem","den"],a:0},
  {lvl:"C1",q:"Je mehr Vertrauen man aufbaut, ______ besser gelingt die Zusammenarbeit.",opts:["desto","so","dann","je"],a:0},
