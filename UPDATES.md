@@ -1,5 +1,10 @@
 # Updates
 
+## 2026-11-06 – B2-Paket „Freizeit & Hobbys“
+- 10 neue B2-Wörter: das Hobby, entspannen, das Wochenende, das Treffen, die Einladung, der Ausflug, die Erholung, die Feier, die Verabredung, der Feierabend.
+- 4 neue B2-Grammatikfragen (reflexives Verb „sich entspannen“, „sich freuen über“, Relativsatz „den“, trennbares Verb „einladen“).
+- Jetzt insgesamt 236 Wörter und 100 Grammatikfragen (B2–C2).
+
 ## 2026-11-05 – C2-Paket „Geld & Finanzen“
 - 10 neue C2-Wörter: die Vergütung, die Abrechnung, das Honorar, die Steuererklärung, der Steuerbescheid, die Sozialabgaben, die Rückerstattung, die Vorauszahlung, die Altersvorsorge, der Zahltag.
 - 4 neue C2-Grammatikfragen (gemäß + Dativ, Passiv „aufgeklärt wird“, Relativsatz „um die“, konzessives „wie … auch sein mögen“).
