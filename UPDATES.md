@@ -1,5 +1,15 @@
 # Updates
 
+## 2026-11-08 – C2-Paket „Kultur & Kunst“
+- 10 neue C2-Wörter: die Ausstellung, die Inszenierung, die Aufführung, das Kunstwerk, die Ästhetik, die Interpretation, bewundern, die Schöpfung, der Stilbruch, die Ausdrucksform.
+- 4 neue C2-Grammatikfragen (Konjunktiv I „habe“, Relativsatz „um das“, „ungeachtet“ + Genitiv, Infinitiv mit „zu“ bei „es gilt“).
+- Jetzt insgesamt 256 Wörter und 108 Grammatikfragen (B2–C2).
+
+## 2026-11-07 – C1-Paket „Medien & Nachrichten“
+- 10 neue C1-Wörter: die Schlagzeile, die Berichterstattung, der Kommentar, die Quelle, glaubwürdig, die Falschmeldung, die Debatte, die Sendung, der Interviewpartner, die Öffentlichkeit.
+- 4 neue C1-Grammatikfragen (Konjunktiv I „habe“, Relativsatz „in der“, sowohl–als auch, damit-Satz).
+- Jetzt insgesamt 246 Wörter und 104 Grammatikfragen (B2–C2).
+
 ## 2026-11-06 – B2-Paket „Freizeit & Hobbys“
 - 10 neue B2-Wörter: das Hobby, entspannen, das Wochenende, das Treffen, die Einladung, der Ausflug, die Erholung, die Feier, die Verabredung, der Feierabend.
 - 4 neue B2-Grammatikfragen (reflexives Verb „sich entspannen“, „sich freuen über“, Relativsatz „den“, trennbares Verb „einladen“).

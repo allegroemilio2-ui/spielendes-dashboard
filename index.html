@@ -167,6 +167,32 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c2-kultur-kunst-2026-11-08", date:"8. November 2026", level:"C2", title:"C2-Paket: Kultur & Kunst",
+  words:[
+   {de:"die Ausstellung",ka:"გამოფენა",img:"🖼️",ex:"Die Ausstellung georgischer Kunst in Saarbrücken war sehr gut besucht."},
+   {de:"die Inszenierung",ka:"დადგმა",img:"🎭",ex:"Die Inszenierung des Theaterstücks hat das Publikum begeistert."},
+   {de:"die Aufführung",ka:"წარმოდგენა",img:"🎭",ex:"Bei der Aufführung am Freitag saß Ana in der ersten Reihe."},
+   {de:"das Kunstwerk",ka:"ხელოვნების ნიმუში",img:"🎨",ex:"Dieses Kunstwerk hat die Künstlerin aus Tiflis selbst gemalt."},
+   {de:"die Ästhetik",ka:"ესთეტიკა",img:"✨",ex:"Die Ästhetik des alten Hauses erinnert Ana an Georgien."},
+   {de:"die Interpretation",ka:"ინტერპრეტაცია",img:"🎵",ex:"Jede Interpretation des Gedichts klingt ein bisschen anders."},
+   {de:"bewundern",ka:"აღფრთოვანება",img:"😍",ex:"Sie bewundert die Geduld der Pflegekräfte, die sie vermittelt."},
+   {de:"die Schöpfung",ka:"ქმნილება",img:"🌟",ex:"Die Schöpfung des Künstlers hängt jetzt im Wohnzimmer der Familie."},
+   {de:"der Stilbruch",ka:"სტილის დარღვევა",img:"🎨",ex:"Der Stilbruch zwischen Alt und Modern macht das Haus besonders."},
+   {de:"die Ausdrucksform",ka:"გამოხატვის ფორმა",img:"💬",ex:"Musik ist für sie eine wichtige Ausdrucksform ihrer Gefühle."}
+  ]},
+{ id:"c1-medien-2026-11-07", date:"7. November 2026", level:"C1", title:"C1-Paket: Medien & Nachrichten",
+  words:[
+   {de:"die Schlagzeile",ka:"სათაური, ძირითადი ამბავი",img:"📰",ex:"Die Schlagzeile in der Zeitung lautete: „Pflegekräfte dringend gesucht“."},
+   {de:"die Berichterstattung",ka:"გაშუქება, რეპორტაჟი",img:"📺",ex:"In der Berichterstattung ging es um die neuen Regeln für die 24-Stunden-Betreuung."},
+   {de:"der Kommentar",ka:"კომენტარი, შეფასება",img:"💭",ex:"Unter dem Artikel stehen viele Kommentare von Familien, die eine Pflegekraft suchen."},
+   {de:"die Quelle",ka:"წყარო",img:"🔍",ex:"Bevor Ana eine Nachricht weitergibt, prüft sie immer die Quelle."},
+   {de:"glaubwürdig",ka:"სანდო, დამაჯერებელი",img:"✅",ex:"Eine glaubwürdige Agentur zeigt Verträge und Referenzen, bevor sie vermittelt."},
+   {de:"die Falschmeldung",ka:"ყალბი ამბავი",img:"⚠️",ex:"Eine Falschmeldung behauptete, es gäbe keine freien Stellen mehr – das stimmte nicht."},
+   {de:"die Debatte",ka:"დებატები, კამათი",img:"🎙️",ex:"In der Debatte im Radio ging es um bessere Arbeitsbedingungen in der Pflege."},
+   {de:"die Sendung",ka:"გადაცემა",img:"📻",ex:"Ana hört gern eine Sendung über Gesundheit und Pflege im Radio."},
+   {de:"der Interviewpartner",ka:"ინტერვიუს მონაწილე",img:"🎤",ex:"Der Interviewpartner erzählte, wie er als Pflegekraft nach Deutschland kam."},
+   {de:"die Öffentlichkeit",ka:"საზოგადოება, საზოგადოებრიობა",img:"🌍",ex:"Das Thema Pflege betrifft viele Familien und wird in der Öffentlichkeit oft diskutiert."}
+  ]},
 { id:"b2-freizeit-2026-11-06", date:"6. November 2026", level:"B2", title:"B2-Paket: Freizeit & Hobbys",
   words:[
    {de:"das Hobby",ka:"ჰობი",img:"🎨",ex:"Ihr Hobby ist das Kochen: am Wochenende probiert sie neue georgische Rezepte aus."},
@@ -474,6 +500,14 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"C2",q:"Die Kritikerin schrieb, die Ausstellung ______ großen Anklang gefunden.",opts:["habe","hat","hätte","haben"],a:0},
+ {lvl:"C2",q:"Das Kunstwerk, ______ sich alle Besucher versammelten, stammt aus Georgien.",opts:["um das","um dem","um den","um der"],a:0},
+ {lvl:"C2",q:"______ der Kritik besuchte sie die Aufführung ein zweites Mal.",opts:["Ungeachtet","Trotz","Wegen","Anstatt"],a:0},
+ {lvl:"C2",q:"Es gilt, die Ästhetik des Hauses ______ und zu bewahren.",opts:["zu schätzen","schätzen","geschätzt","schätzend"],a:0},
+ {lvl:"C1",q:"Die Journalistin berichtete, die Agentur ______ die neuen Regeln bereits veröffentlicht.",opts:["habe","hat","hätte","haben"],a:0},
+ {lvl:"C1",q:"Die Sendung, in ______ über Pflege berichtet wurde, war sehr informativ.",opts:["der","die","dem","den"],a:0},
+ {lvl:"C1",q:"Sowohl die Familien ______ auch die Pflegekräfte profitieren von klaren Verträgen.",opts:["als","wie","oder","und"],a:0},
+ {lvl:"C1",q:"Sie prüft jede Nachricht genau, ______ sie keine Falschmeldung weitergibt.",opts:["indem","damit","obwohl","sodass"],a:1},
  {lvl:"B2",q:"Am Wochenende ______ sie sich bei einem guten Buch.",opts:["entspannt","entspannen","entspannst","entspannen sich"],a:0},
  {lvl:"B2",q:"Sie freut sich ______ die Einladung zum Geburtstag.",opts:["über","auf","an","für"],a:0},
  {lvl:"B2",q:"Der Ausflug, ______ Ana mit Emilio plant, findet am Samstag statt.",opts:["den","der","dem","die"],a:0},
