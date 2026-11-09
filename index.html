@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"b2-einkaufen-2026-11-09", date:"9. November 2026", level:"B2", title:"B2-Paket: Einkaufen & Markt",
+  words:[
+   {de:"der Einkaufswagen",ka:"საყიდლების ურიკა",img:"🛒",ex:"Den Einkaufswagen stellt man nach dem Einkauf wieder zurück."},
+   {de:"die Kasse",ka:"სალარო",img:"🧾",ex:"An der Kasse bezahlt Ana die Lebensmittel für die Familie."},
+   {de:"der Rabatt",ka:"ფასდაკლება",img:"🏷️",ex:"Heute gibt es zwanzig Prozent Rabatt auf frisches Obst und Gemüse."},
+   {de:"das Angebot",ka:"შეთავაზება, აქცია",img:"🛍️",ex:"Das Angebot im Supermarkt gilt nur diese Woche."},
+   {de:"die Quittung",ka:"ქვითარი",img:"📄",ex:"Bitte bewahren Sie die Quittung auf, falls Sie etwas umtauschen möchten."},
+   {de:"der Wochenmarkt",ka:"კვირის ბაზარი",img:"🥕",ex:"Auf dem Wochenmarkt kauft sie frisches Gemüse für die Seniorin ein."},
+   {de:"frisch",ka:"ახალი, ახლად მომზადებული",img:"🍎",ex:"Das Brot vom Markt ist noch warm und frisch."},
+   {de:"die Tüte",ka:"პარკი",img:"👜",ex:"Eine Tüte für den Einkauf kostet im Supermarkt dreißig Cent."},
+   {de:"umtauschen",ka:"გაცვლა",img:"🔄",ex:"Wenn die Jacke nicht passt, kann man sie im Laden umtauschen."},
+   {de:"die Öffnungszeiten",ka:"სამუშაო საათები",img:"🕙",ex:"Die Öffnungszeiten des Supermarkts stehen an der Tür."}
+  ]},
 { id:"c2-kultur-kunst-2026-11-08", date:"8. November 2026", level:"C2", title:"C2-Paket: Kultur & Kunst",
   words:[
    {de:"die Ausstellung",ka:"გამოფენა",img:"🖼️",ex:"Die Ausstellung georgischer Kunst in Saarbrücken war sehr gut besucht."},
@@ -500,6 +513,10 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"B2",q:"Am Samstag kauft Ana auf dem Wochenmarkt frisches Gemüse ______.",opts:["ein","aus","an","auf"],a:0},
+ {lvl:"B2",q:"Ana stellt den Einkaufswagen ______ Kasse ab und holt eine Tüte.",opts:["an der","an die","an dem","an den"],a:0},
+ {lvl:"B2",q:"Ich ______ gern wissen, ob das Angebot noch bis Samstag gilt.",opts:["werde","wollte","würde","will"],a:2},
+ {lvl:"B2",q:"Auf dem Wochenmarkt ist das Gemüse oft ______ als im Supermarkt.",opts:["frisch","am frischsten","frischer","frischere"],a:2},
  {lvl:"C2",q:"Die Kritikerin schrieb, die Ausstellung ______ großen Anklang gefunden.",opts:["habe","hat","hätte","haben"],a:0},
  {lvl:"C2",q:"Das Kunstwerk, ______ sich alle Besucher versammelten, stammt aus Georgien.",opts:["um das","um dem","um den","um der"],a:0},
  {lvl:"C2",q:"______ der Kritik besuchte sie die Aufführung ein zweites Mal.",opts:["Ungeachtet","Trotz","Wegen","Anstatt"],a:0},
@@ -740,7 +757,18 @@ const HOERPRUEFUNG=[
   {q:"Welche weiteren Beschwerden hat sie?",opts:["Sie hat auch Fieber.","Sie hat Halsschmerzen.","Sie hat keine weiteren Beschwerden, kein Fieber."],a:2},
   {q:"Wogegen ist Frau Yilmaz allergisch?",opts:["gegen Paracetamol","gegen Aspirin","gegen Ibuprofen"],a:1},
   {q:"Wie soll sie das empfohlene Medikament einnehmen?",opts:["alle sechs Stunden eine Tablette, höchstens vier am Tag","zwei Tabletten morgens und abends","eine Tablette nur bei sehr starken Schmerzen"],a:0},
-  {q:"Was rät der Apotheker außerdem?",opts:["Die Tabletten immer auf leeren Magen nehmen.","Die Tabletten nach dem Essen nehmen und nach drei Tagen ohne Besserung zum Arzt gehen.","Eine Woche lang im Bett bleiben."],a:1}]}
+  {q:"Was rät der Apotheker außerdem?",opts:["Die Tabletten immer auf leeren Magen nehmen.","Die Tabletten nach dem Essen nehmen und nach drei Tagen ohne Besserung zum Arzt gehen.","Eine Woche lang im Bett bleiben."],a:1}]},
+{title:"Übung 8: Durchsage im Supermarkt (B2)",names:["Durchsage"],
+ turns:[
+  {s:0,t:"Sehr geehrte Kundinnen und Kunden, herzlich willkommen im Supermarkt Frischmarkt! Heute haben wir ein besonderes Angebot für Sie: Frisches Obst und Gemüse vom Wochenmarkt gibt es heute zwanzig Prozent günstiger. Äpfel, Tomaten und Salat sind im Angebot – nur solange der Vorrat reicht."},
+  {s:0,t:"Bitte beachten Sie: Die Kasse 3 bleibt heute wegen einer technischen Störung geschlossen. Nutzen Sie bitte die Kassen 1, 2 und 4. An der Kasse 4 können Sie auch mit Karte bezahlen. Am Samstag ändern sich unsere Öffnungszeiten: Wir sind dann von 7 Uhr bis 22 Uhr für Sie da."},
+  {s:0,t:"Und noch eine Information für alle, die heute mit dem Einkaufswagen einkaufen: Bitte stellen Sie den Wagen nach dem Einkauf wieder zurück und nehmen Sie Ihre Quittung mit. Vielen Dank für Ihren Einkauf – wir wünschen Ihnen einen schönen Tag!"}],
+ questions:[
+  {q:"Um wie viel Prozent günstiger sind Obst und Gemüse heute?",opts:["Um 10 Prozent","Um 20 Prozent","Um 30 Prozent"],a:1},
+  {q:"Welche Kasse bleibt heute geschlossen?",opts:["Die Kasse 3","Die Kasse 1","Die Kasse 4"],a:0},
+  {q:"Wie lange ist der Supermarkt am Samstag geöffnet?",opts:["Von 8 bis 20 Uhr","Von 7 bis 20 Uhr","Von 7 bis 22 Uhr"],a:2},
+  {q:"Womit kann man an der Kasse 4 bezahlen?",opts:["Nur bar","Auch mit Karte","Nur mit Gutschein"],a:1},
+  {q:"Was soll man nach dem Einkauf mit dem Einkaufswagen tun?",opts:["Ihn mit nach Hause nehmen","Ihn einfach stehen lassen","Ihn wieder zurückstellen"],a:2}]}
 ];
 </script>
 <script>

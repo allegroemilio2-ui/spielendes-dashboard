@@ -1,5 +1,11 @@
 # Updates
 
+## 2026-11-09 – B2-Paket „Einkaufen & Markt“
+- 10 neue B2-Wörter: der Einkaufswagen, die Kasse, der Rabatt, das Angebot, die Quittung, der Wochenmarkt, frisch, die Tüte, umtauschen, die Öffnungszeiten.
+- 4 neue B2-Grammatikfragen (trennbares Verb „einkaufen“, „an der Kasse“ + Dativ, Konjunktiv II „würde gern wissen“, Komparativ „frischer“).
+- 🎧 Neue Hör-Prüfung-Übung 8: „Durchsage im Supermarkt (B2)“ – jetzt 8 Übungen in der Hör-Prüfung.
+- Jetzt insgesamt 266 Wörter und 112 Grammatikfragen (B2–C2).
+
 ## 2026-11-08 – C2-Paket „Kultur & Kunst“
 - 10 neue C2-Wörter: die Ausstellung, die Inszenierung, die Aufführung, das Kunstwerk, die Ästhetik, die Interpretation, bewundern, die Schöpfung, der Stilbruch, die Ausdrucksform.
 - 4 neue C2-Grammatikfragen (Konjunktiv I „habe“, Relativsatz „um das“, „ungeachtet“ + Genitiv, Infinitiv mit „zu“ bei „es gilt“).
