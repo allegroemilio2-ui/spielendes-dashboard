@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c1-behoerden-2026-11-10", date:"10. November 2026", level:"C1", title:"C1-Paket: Behörden & Ämter",
+  words:[
+   {de:"die Behörde",ka:"უწყება, სახელმწიფო ორგანო",img:"🏛️",ex:"Die Behörde prüft den Antrag der Pflegekraft und schickt dann den Bescheid."},
+   {de:"der Antrag",ka:"განაცხადი",img:"📝",ex:"Für die Aufenthaltserlaubnis muss sie einen Antrag stellen."},
+   {de:"die Anmeldung",ka:"რეგისტრაცია",img:"📋",ex:"Nach dem Umzug ist die Anmeldung beim Einwohnermeldeamt Pflicht."},
+   {de:"die Aufenthaltserlaubnis",ka:"ბინადრობის ნებართვა",img:"🪪",ex:"Ohne gültige Aufenthaltserlaubnis darf die Pflegekraft nicht in Deutschland arbeiten."},
+   {de:"das Formular",ka:"ფორმა, ბლანკი",img:"📄",ex:"Ana hilft der Pflegekraft, das Formular richtig auszufüllen."},
+   {de:"der Bescheid",ka:"ოფიციალური გადაწყვეტილება",img:"✉️",ex:"Der Bescheid der Behörde kam nach vier Wochen per Post."},
+   {de:"beantragen",ka:"განაცხადის შეტანა",img:"✍️",ex:"Sie beantragt eine neue Aufenthaltserlaubnis, bevor die alte abläuft."},
+   {de:"die Bearbeitungszeit",ka:"განხილვის ვადა",img:"⏰",ex:"Die Bearbeitungszeit für den Antrag beträgt etwa sechs Wochen."},
+   {de:"die Bescheinigung",ka:"ცნობა, მოწმობა",img:"📜",ex:"Die Familie braucht eine Bescheinigung über die Anmeldung der Pflegekraft."},
+   {de:"die Sachbearbeiterin",ka:"საქმის განმხილველი (ქალი)",img:"👩‍💼",ex:"Die Sachbearbeiterin im Amt erklärt geduldig, welche Unterlagen noch fehlen."}
+  ]},
 { id:"b2-einkaufen-2026-11-09", date:"9. November 2026", level:"B2", title:"B2-Paket: Einkaufen & Markt",
   words:[
    {de:"der Einkaufswagen",ka:"საყიდლების ურიკა",img:"🛒",ex:"Den Einkaufswagen stellt man nach dem Einkauf wieder zurück."},
@@ -513,6 +526,10 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"C1",q:"Der Antrag auf eine Aufenthaltserlaubnis muss ______ der Ausländerbehörde gestellt werden.",opts:["bei","an","in","auf"],a:0},
+ {lvl:"C1",q:"Die Pflegekraft, ______ Aufenthaltserlaubnis bald abläuft, beantragt eine Verlängerung.",opts:["deren","derer","dessen","welcher"],a:0},
+ {lvl:"C1",q:"______ die Bearbeitungszeit lang ist, sollte man den Antrag früh stellen.",opts:["Da","Obwohl","Trotzdem","Während"],a:0},
+ {lvl:"C1",q:"Die Sachbearbeiterin bat die Familie, die fehlenden Unterlagen ______.",opts:["nachzureichen","nachreichen","nachgereicht","nachreichend"],a:0},
  {lvl:"B2",q:"Am Samstag kauft Ana auf dem Wochenmarkt frisches Gemüse ______.",opts:["ein","aus","an","auf"],a:0},
  {lvl:"B2",q:"Ana stellt den Einkaufswagen ______ Kasse ab und holt eine Tüte.",opts:["an der","an die","an dem","an den"],a:0},
  {lvl:"B2",q:"Ich ______ gern wissen, ob das Angebot noch bis Samstag gilt.",opts:["werde","wollte","würde","will"],a:2},
@@ -768,7 +785,23 @@ const HOERPRUEFUNG=[
   {q:"Welche Kasse bleibt heute geschlossen?",opts:["Die Kasse 3","Die Kasse 1","Die Kasse 4"],a:0},
   {q:"Wie lange ist der Supermarkt am Samstag geöffnet?",opts:["Von 8 bis 20 Uhr","Von 7 bis 20 Uhr","Von 7 bis 22 Uhr"],a:2},
   {q:"Womit kann man an der Kasse 4 bezahlen?",opts:["Nur bar","Auch mit Karte","Nur mit Gutschein"],a:1},
-  {q:"Was soll man nach dem Einkauf mit dem Einkaufswagen tun?",opts:["Ihn mit nach Hause nehmen","Ihn einfach stehen lassen","Ihn wieder zurückstellen"],a:2}]}
+  {q:"Was soll man nach dem Einkauf mit dem Einkaufswagen tun?",opts:["Ihn mit nach Hause nehmen","Ihn einfach stehen lassen","Ihn wieder zurückstellen"],a:2}]},
+{title:"Übung 9: Beratungsgespräch im Amt – Aufenthaltserlaubnis verlängern (C1)",names:["Frau Neumann (Sachbearbeiterin)","Frau Kapanadze (Pflegekraft)"],
+ turns:[
+  {s:0,t:"Guten Tag, Frau Kapanadze. Sie möchten Ihre Aufenthaltserlaubnis verlängern – richtig?"},
+  {s:1,t:"Guten Tag. Ja, genau. Meine Erlaubnis läuft in sechs Wochen ab, und ich arbeite weiter bei der Familie in Dillingen."},
+  {s:0,t:"Gut, dann brauchen wir einen Antrag und ein paar Unterlagen. Haben Sie Ihren Pass und den Arbeitsvertrag dabei?"},
+  {s:1,t:"Ja, den Pass und den Vertrag habe ich hier. Aber die Bescheinigung über meine Anmeldung fehlt noch – die bekomme ich erst nächste Woche."},
+  {s:0,t:"Das ist kein Problem. Reichen Sie die Bescheinigung einfach nach, sobald Sie sie haben. Die Bearbeitungszeit beträgt etwa vier bis sechs Wochen, also stellen wir den Antrag heute noch."},
+  {s:1,t:"Und was kostet die Verlängerung? Muss ich die Gebühr heute bezahlen?"},
+  {s:0,t:"Die Gebühr beträgt 100 Euro. Sie bekommen den Bescheid per Post, und erst dann zahlen Sie. Bitte achten Sie darauf, dass die neue Erlaubnis erst gilt, wenn der Bescheid da ist."},
+  {s:1,t:"Vielen Dank! Dann schicke ich die Bescheinigung nächste Woche nach und warte auf den Bescheid."}],
+ questions:[
+  {q:"Warum ist Frau Kapanadze im Amt?",opts:["Sie will sich ummelden.","Sie will ihre Aufenthaltserlaubnis verlängern.","Sie will einen neuen Pass beantragen."],a:1},
+  {q:"Wann läuft ihre Aufenthaltserlaubnis ab?",opts:["In zwei Wochen","In sechs Wochen","In drei Monaten"],a:1},
+  {q:"Welche Unterlage fehlt noch?",opts:["Der Arbeitsvertrag","Der Pass","Die Bescheinigung über ihre Anmeldung"],a:2},
+  {q:"Wie lange dauert die Bearbeitung etwa?",opts:["Eine Woche","Vier bis sechs Wochen","Drei Monate"],a:1},
+  {q:"Wie hoch ist die Gebühr und wann muss sie zahlen?",opts:["50 Euro, sofort bar","100 Euro, erst nach dem Bescheid","200 Euro, vor der Antragstellung"],a:1}]}
 ];
 </script>
 <script>

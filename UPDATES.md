@@ -1,5 +1,11 @@
 # Updates
 
+## 2026-11-10 – C1-Paket „Behörden & Ämter“
+- 10 neue C1-Wörter: die Behörde, der Antrag, die Anmeldung, die Aufenthaltserlaubnis, das Formular, der Bescheid, beantragen, die Bearbeitungszeit, die Bescheinigung, die Sachbearbeiterin.
+- 4 neue C1-Grammatikfragen („bei der Ausländerbehörde“, Relativsatz „deren“, „da“ als Begründung, Infinitiv mit „zu“ – „nachzureichen“).
+- 🎧 Neue Hör-Prüfung-Übung 9: „Beratungsgespräch im Amt – Aufenthaltserlaubnis verlängern (C1)“ – jetzt 9 Übungen in der Hör-Prüfung.
+- Jetzt insgesamt 276 Wörter und 116 Grammatikfragen (B2–C2).
+
 ## 2026-11-09 – B2-Paket „Einkaufen & Markt“
 - 10 neue B2-Wörter: der Einkaufswagen, die Kasse, der Rabatt, das Angebot, die Quittung, der Wochenmarkt, frisch, die Tüte, umtauschen, die Öffnungszeiten.
 - 4 neue B2-Grammatikfragen (trennbares Verb „einkaufen“, „an der Kasse“ + Dativ, Konjunktiv II „würde gern wissen“, Komparativ „frischer“).
