@@ -101,8 +101,9 @@ a{color:var(--gold)}
   <canvas id="heart3d"></canvas>
   <div class="cssheart" id="cssheart"></div>
   <div class="txt">
-    <h1>Für dich, Ana</h1>
-    <p>Ein Herz fliegt zu dir … 💋</p>
+    <h1>🇬🇪 Für dich, Ana</h1>
+    <p>Ein Herz in Georgiens Farben fliegt zu dir … 💋</p>
+    <p style="font-size:clamp(15px,3.6vw,20px)">შენთვის, ანა — ისწავლე გერმანული გულით ❤</p>
   </div>
   <button id="skipBtn">Öffne dein Herz ❤</button>
 </div>
@@ -110,6 +111,7 @@ a{color:var(--gold)}
 <header>
   <h1><span class="grad">Deutsch mit Herz</span><br>für Ana ❤</h1>
   <p class="sub">Deine <b>komplett neue</b> Lernseite — neue Wörter, neue Fragen, neue Spiele. Deutsch <b>B2 bis C1</b>, mit Liebe gemacht: Pflege, Gefühle, Zuhause &amp; Telefon.</p>
+  <p class="sub" style="font-size:16px">🇬🇪 <b>ქართველი ქალებისთვის:</b> ისწავლე გერმანული ენა თამაშით — ახალი სიტყვები, გრამატიკა, მოსმენა და თამაშები (დონე B2–C1). ყოველი სწორი პასუხი = +10 XP!</p>
   <span class="badge">✨ NEU · Alle Fragen sind neu · 12. November 2026</span>
   <div class="lvlbar"><span class="muted"><b>Niveau wählen:</b></span>
     <button class="lvlbtn" data-lvl="Alle">Alle</button>
@@ -122,7 +124,7 @@ a{color:var(--gold)}
   <div class="hero">
     <div class="herocard big">
       <h2>„Du lernst nicht nur Deutsch.<br>Du eroberst Herzen.“ 💋</h2>
-      <p class="muted">Jede richtige Antwort: <b style="color:#fff">+10 XP</b> · Perfekte Runde: <b style="color:#fff">+25 Bonus</b>. Dein Fortschritt bleibt auf diesem Handy gespeichert — auch deine alten Punkte von der früheren Seite.</p>
+      <p class="muted">🇬🇪 დაიწყე დღესვე — ყოველი სწორი პასუხი = +10 XP!<br>Jede richtige Antwort: <b style="color:#fff">+10 XP</b> · Perfekte Runde: <b style="color:#fff">+25 Bonus</b>. Dein Fortschritt bleibt auf diesem Handy gespeichert — auch deine alten Punkte von der früheren Seite.</p>
       <div><button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">▶ Jetzt spielen</button>
       <button class="ghost" onclick="replayIntro()">💗 Herz nochmal fliegen lassen</button></div>
     </div>
@@ -432,7 +434,13 @@ function startHeart(){
   shape.bezierCurveTo(x+7,y,x+5,y+5,x+5,y+5);
   const geo=new THREE.ExtrudeGeometry(shape,{depth:4,bevelEnabled:true,bevelSegments:6,bevelSteps:3,bevelSize:1.6,bevelThickness:1.6,curveSegments:24});
   geo.center();
-  const mat=new THREE.MeshPhysicalMaterial({color:0xff1f5a,roughness:.16,metalness:.1,clearcoat:1,clearcoatRoughness:.15,emissive:0x55001c});
+  /* Georgische Flagge auf eine Leinwand zeichnen (weiss, grosses rotes Kreuz + 4 kleine Kreuze) */
+  const fc=document.createElement("canvas");fc.width=512;fc.height=448;const fx=fc.getContext("2d");
+  fx.fillStyle="#ffffff";fx.fillRect(0,0,512,448);fx.fillStyle="#d90429";
+  fx.fillRect(226,0,60,448);fx.fillRect(0,194,512,60);
+  [[128,97],[384,97],[128,351],[384,351]].forEach(function(c){fx.fillRect(c[0]-11,c[1]-30,22,60);fx.fillRect(c[0]-30,c[1]-11,60,22)});
+  const flagTex=new THREE.CanvasTexture(fc);flagTex.repeat.set(1/22,1/19);flagTex.offset.set(6/22,0);
+  const mat=new THREE.MeshPhysicalMaterial({map:flagTex,color:0xffffff,roughness:.22,metalness:.05,clearcoat:1,clearcoatRoughness:.2,emissive:0x33000a});
   const heart=new THREE.Mesh(geo,mat);heart.rotation.z=Math.PI;heart.position.z=-160;heart.scale.setScalar(.4);scene.add(heart);
   scene.add(new THREE.AmbientLight(0xffffff,.55));
   const l1=new THREE.PointLight(0xff8fab,900,0,1.6);l1.position.set(25,25,40);scene.add(l1);
