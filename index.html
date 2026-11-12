@@ -167,6 +167,19 @@ a{color:var(--acc)}
 "use strict";
 /* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
 const PACKS=[
+{ id:"c2-gesellschaft-2026-11-11", date:"11. November 2026", level:"C2", title:"C2-Paket: Gesellschaft & Politik",
+  words:[
+   {de:"die Demokratie",ka:"დემოკრატია",img:"🏛️",ex:"In einer Demokratie dürfen alle Bürgerinnen und Bürger wählen und ihre Meinung frei sagen."},
+   {de:"der Rechtsstaat",ka:"სამართლებრივი სახელმწიფო",img:"⚖️",ex:"Im Rechtsstaat gelten die Gesetze für alle Menschen gleich, auch für die Politiker."},
+   {de:"die Meinungsfreiheit",ka:"აზრის გამოხატვის თავისუფლება",img:"🗣️",ex:"Die Meinungsfreiheit ist ein Grundrecht: Man darf seine Meinung offen sagen, ohne Angst zu haben."},
+   {de:"der Bürger",ka:"მოქალაქე",img:"👤",ex:"Als Bürger kann man bei der Wahl mitentscheiden, wer die Stadt regiert."},
+   {de:"die Gesetzgebung",ka:"კანონმდებლობა",img:"📜",ex:"Die Gesetzgebung bestimmt, welche Regeln für Pflegekräfte und Familien gelten."},
+   {de:"die Wahlbeteiligung",ka:"არჩევნებში მონაწილეობა",img:"🗳️",ex:"Die Wahlbeteiligung war diesmal hoch: Viele Menschen gingen zur Wahl."},
+   {de:"die Bürgerinitiative",ka:"მოქალაქეთა ინიციატივა",img:"✊",ex:"Eine Bürgerinitiative sammelte Unterschriften, damit das Stadtteilzentrum erhalten bleibt."},
+   {de:"die Entscheidungsfindung",ka:"გადაწყვეტილების მიღება",img:"🤝",ex:"Bei der Entscheidungsfindung in der Familie ist es wichtig, dass alle zu Wort kommen."},
+   {de:"die Transparenz",ka:"გამჭვირვალობა",img:"🔍",ex:"Transparenz schafft Vertrauen: Die Familie sieht genau, wofür sie zahlt."},
+   {de:"die Grundrechte",ka:"ძირითადი უფლებები",img:"📖",ex:"Zu den Grundrechten gehören die Meinungsfreiheit und die Gleichheit vor dem Gesetz."}
+  ]},
 { id:"c1-behoerden-2026-11-10", date:"10. November 2026", level:"C1", title:"C1-Paket: Behörden & Ämter",
   words:[
    {de:"die Behörde",ka:"უწყება, სახელმწიფო ორგანო",img:"🏛️",ex:"Die Behörde prüft den Antrag der Pflegekraft und schickt dann den Bescheid."},
@@ -526,6 +539,10 @@ const PACKS=[
   ]},
 ];
 const GRAMMAR=[
+ {lvl:"C2",q:"Die Sprecherin erklärte, die Gesetzgebung ______ im nächsten Jahr geändert.",opts:["werde","wird","würde","werden"],a:0},
+ {lvl:"C2",q:"Der von der Bürgerinitiative ______ Vorschlag wurde im Parlament diskutiert.",opts:["eingebrachte","einbringen","eingebracht zu","einbringende"],a:0},
+ {lvl:"C2",q:"______ der Grundrechte darf niemand wegen seiner Herkunft benachteiligt werden.",opts:["Aufgrund","Wegen dem","Trotz dem","Anstatt"],a:0},
+ {lvl:"C2",q:"Die Wahlbeteiligung ist in den letzten Jahren gestiegen, ______ viele Bürger sich stärker engagieren.",opts:["weil","obwohl","damit","statt"],a:0},
  {lvl:"C1",q:"Der Antrag auf eine Aufenthaltserlaubnis muss ______ der Ausländerbehörde gestellt werden.",opts:["bei","an","in","auf"],a:0},
  {lvl:"C1",q:"Die Pflegekraft, ______ Aufenthaltserlaubnis bald abläuft, beantragt eine Verlängerung.",opts:["deren","derer","dessen","welcher"],a:0},
  {lvl:"C1",q:"______ die Bearbeitungszeit lang ist, sollte man den Antrag früh stellen.",opts:["Da","Obwohl","Trotzdem","Während"],a:0},
@@ -801,7 +818,18 @@ const HOERPRUEFUNG=[
   {q:"Wann läuft ihre Aufenthaltserlaubnis ab?",opts:["In zwei Wochen","In sechs Wochen","In drei Monaten"],a:1},
   {q:"Welche Unterlage fehlt noch?",opts:["Der Arbeitsvertrag","Der Pass","Die Bescheinigung über ihre Anmeldung"],a:2},
   {q:"Wie lange dauert die Bearbeitung etwa?",opts:["Eine Woche","Vier bis sechs Wochen","Drei Monate"],a:1},
-  {q:"Wie hoch ist die Gebühr und wann muss sie zahlen?",opts:["50 Euro, sofort bar","100 Euro, erst nach dem Bescheid","200 Euro, vor der Antragstellung"],a:1}]}
+  {q:"Wie hoch ist die Gebühr und wann muss sie zahlen?",opts:["50 Euro, sofort bar","100 Euro, erst nach dem Bescheid","200 Euro, vor der Antragstellung"],a:1}]},
+{title:"Übung 10: Radioreportage – Bürgerinitiative rettet das Stadtteilzentrum (C2)",names:["Reporterin"],
+ turns:[
+  {s:0,t:"In der Kleinstadt Dillingen hat eine Bürgerinitiative Großes erreicht: Das alte Stadtteilzentrum, das eigentlich abgerissen werden sollte, bleibt erhalten. Mehr als zweitausend Bürgerinnen und Bürger haben innerhalb von drei Wochen Unterschriften gesammelt und einen Vorschlag bei der Stadt eingereicht."},
+  {s:0,t:"Die Stadtverwaltung hatte geplant, das Gebäude durch ein neues Parkhaus zu ersetzen. Doch die Initiative, die von der Lehrerin Maria Hoffmann gegründet wurde, überzeugte die Politiker mit einem klaren Konzept: Das Zentrum soll ein Treffpunkt für Jung und Alt werden – mit einem Café, einem Leseraum und Kursen für Seniorinnen und Senioren."},
+  {s:0,t:"Am Dienstagabend stimmte der Stadtrat mit großer Mehrheit für den Erhalt. Die Wahlbeteiligung bei der letzten Kommunalwahl lag in Dillingen bei über siebzig Prozent – ein Zeichen dafür, dass die Bürgerinnen und Bürger sich für ihre Stadt engagieren. Die Initiative will jetzt Transparenz bei den weiteren Entscheidungen und plant ein erstes Treffen im Januar."}],
+ questions:[
+  {q:"Was sollte mit dem alten Stadtteilzentrum in Dillingen eigentlich passieren?",opts:["Es sollte renoviert werden.","Es sollte abgerissen werden.","Es sollte verkauft werden."],a:1},
+  {q:"Wie viele Unterschriften hat die Bürgerinitiative gesammelt?",opts:["Mehr als zweitausend","Etwa fünfhundert","Genau eintausend"],a:0},
+  {q:"Wer hat die Bürgerinitiative gegründet?",opts:["Die Stadtverwaltung","Eine Lehrerin namens Maria Hoffmann","Der Stadtrat"],a:1},
+  {q:"Wann stimmte der Stadtrat über den Erhalt ab?",opts:["Am Montagmorgen","Am Dienstagabend","Am Freitagmittag"],a:1},
+  {q:"Was plant die Initiative als Nächstes?",opts:["Ein erstes Treffen im Januar","Einen neuen Antrag auf ein Parkhaus","Eine Unterschriftensammlung in einer anderen Stadt"],a:0}]}
 ];
 </script>
 <script>

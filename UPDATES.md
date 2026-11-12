@@ -1,5 +1,11 @@
 # Updates
 
+## 2026-11-11 – C2-Paket „Gesellschaft & Politik“
+- 10 neue C2-Wörter: die Demokratie, der Rechtsstaat, die Meinungsfreiheit, der Bürger, die Gesetzgebung, die Wahlbeteiligung, die Bürgerinitiative, die Entscheidungsfindung, die Transparenz, die Grundrechte.
+- 4 neue C2-Grammatikfragen („die Gesetzgebung … werde“ – Konjunktiv I, „der von der Bürgerinitiative eingebrachte Vorschlag“ – erweitertes Attribut, „Aufgrund der Grundrechte“, „die Wahlbeteiligung … weil“).
+- 🎧 Neue Hör-Prüfung-Übung 10: „Radioreportage – Bürgerinitiative rettet das Stadtteilzentrum (C2)“ – jetzt 10 Übungen in der Hör-Prüfung.
+- Jetzt insgesamt 286 Wörter und 120 Grammatikfragen (B2–C2).
+
 ## 2026-11-10 – C1-Paket „Behörden & Ämter“
 - 10 neue C1-Wörter: die Behörde, der Antrag, die Anmeldung, die Aufenthaltserlaubnis, das Formular, der Bescheid, beantragen, die Bearbeitungszeit, die Bescheinigung, die Sachbearbeiterin.
 - 4 neue C1-Grammatikfragen („bei der Ausländerbehörde“, Relativsatz „deren“, „da“ als Begründung, Infinitiv mit „zu“ – „nachzureichen“).
