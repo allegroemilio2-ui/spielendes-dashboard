@@ -1,5 +1,7 @@
 # Updates
 
+## 2026-11-12 – Verbesserung: Neue Fragen im Grammatik-Duell zuerst
+- Das Grammatik-Duell zeigt jetzt die 4 neuesten Fragen des gewählten Niveaus immer zuerst, markiert mit „🆕 NEU“; danach folgen die übrigen Fragen in Zufallsreihenfolge. (Auf Anas Wunsch vom 11./12. November 2026.)
 ## 2026-11-11 – C2-Paket „Gesellschaft & Politik“
 - 10 neue C2-Wörter: die Demokratie, der Rechtsstaat, die Meinungsfreiheit, der Bürger, die Gesetzgebung, die Wahlbeteiligung, die Bürgerinitiative, die Entscheidungsfindung, die Transparenz, die Grundrechte.
 - 4 neue C2-Grammatikfragen („die Gesetzgebung … werde“ – Konjunktiv I, „der von der Bürgerinitiative eingebrachte Vorschlag“ – erweitertes Attribut, „Aufgrund der Grundrechte“, „die Wahlbeteiligung … weil“).

@@ -33,6 +33,7 @@ button:disabled{opacity:.45;cursor:default}
 .opt.correct{border-color:var(--acc2);background:#173d31}
 .opt.wrong{border-color:var(--pink);background:#42203a}
 .feedback{font-weight:700;margin:10px 0;min-height:24px}
+.neu-badge{display:inline-block;background:#ffd23f;color:#4a3200;font-size:12px;font-weight:800;letter-spacing:.4px;padding:2px 9px;border-radius:999px;margin-right:8px;vertical-align:middle}
 .ok{color:var(--acc2)}.bad{color:var(--pink)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .flip{background:var(--card2);border:1px solid #39407a;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;gap:4px}
@@ -900,7 +901,7 @@ function runQuiz(boxId,questions,label){const box=document.getElementById(boxId)
  function start(){i=0;score=0;step()} start()}
 function wordQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.de);const opts=shuffle([w.de].concat(others));return{q:"Was heißt „"+w.ka+"“ auf Deutsch?",opts:opts,a:opts.indexOf(w.de)}})}
 function hearQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.ka);const opts=shuffle([w.ka].concat(others));return{q:"Was bedeutet das gehörte Wort?",audio:w.de,opts:opts,a:opts.indexOf(w.ka)}})}
-function grammarQuestions(){const pool=CURLEVEL==="Alle"?GRAMMAR:GRAMMAR.filter(g=>g.lvl===CURLEVEL);const use=pool.length?pool:GRAMMAR;return shuffle(use).map(g=>({q:g.q,opts:g.opts,a:g.a}))}
+function grammarQuestions(){const pool=CURLEVEL==="Alle"?GRAMMAR:GRAMMAR.filter(g=>g.lvl===CURLEVEL);const use=pool.length?pool:GRAMMAR;const neu=use.slice(0,4);const rest=shuffle(use.slice(4));return neu.map(g=>({q:'<span class="neu-badge">🆕 NEU</span>'+g.q,opts:g.opts,a:g.a})).concat(rest.map(g=>({q:g.q,opts:g.opts,a:g.a})))}
 document.getElementById("quizStart").onclick=()=>runQuiz("quizBox",wordQuestions(),"Wortschatz-Quiz");
 document.getElementById("hearStart").onclick=()=>runQuiz("hearBox",hearQuestions(),"Hör-Quiz");
 document.getElementById("gramStart").onclick=()=>runQuiz("gramBox",grammarQuestions(),"Grammatik-Duell");
