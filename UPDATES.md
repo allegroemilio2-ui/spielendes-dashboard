@@ -1,5 +1,11 @@
 # Updates
 
+## 2026-11-12 – B2-Paket „Wetter & Jahreszeiten“
+- 10 neue B2-Wörter: das Gewitter, der Schneefall, die Hitze, der Nebel, die Jahreszeit, der Frühling, der Herbst, windig, die Vorhersage, der Regenschirm.
+- 4 neue B2-Grammatikfragen („Der Wetterbericht sagt, dass es morgen stark regnen wird“, Konjunktiv II „wenn es nicht so kalt wäre“, Relativsatz „Der Regenschirm, den Ana gekauft hat“, „sodass wir einen Ausflug planen können“).
+- 🎧 Neue Hör-Prüfung-Übung 11: „Alltagsdialog – Spaziergang bei Herbstwetter (B2)“ – jetzt 11 Übungen in der Hör-Prüfung.
+- Jetzt insgesamt 296 Wörter und 124 Grammatikfragen (B2–C2).
+
 ## 2026-11-12 – Verbesserung: Neue Fragen im Grammatik-Duell zuerst
 - Das Grammatik-Duell zeigt jetzt die 4 neuesten Fragen des gewählten Niveaus immer zuerst, markiert mit „🆕 NEU“; danach folgen die übrigen Fragen in Zufallsreihenfolge. (Auf Anas Wunsch vom 11./12. November 2026.)
 ## 2026-11-11 – C2-Paket „Gesellschaft & Politik“
