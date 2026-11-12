@@ -3,877 +3,312 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spielendes Dashboard – Deutsch B2–C2 mit Ana</title>
-<meta name="description" content="Spielerisch Deutsch B2 bis C2 lernen: Wortschatz-Quiz, Hör-Quiz, Bild-Karten, Grammatik-Duell, Karteikarten und Memory. Alle paar Tage neue Inhalte.">
+<title>Für Ana ❤ Deutsch mit Herz – B2 bis C1</title>
+<meta name="description" content="Anas neue Lernseite: Deutsch B2–C1 mit Herz. Komplett neue Fragen, Wortschatz, Hör-Quiz, Grammatik, Karteikarten & Memory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600;1,800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <style>
-:root{--bg:#0f1226;--card:#1b1f3a;--card2:#232850;--text:#f4f5ff;--muted:#aab0d6;--acc:#ffb020;--acc2:#37d99a;--pink:#ff6b9d;--radius:18px}
+:root{--bg:#160818;--card:rgba(255,255,255,.06);--line:rgba(255,150,180,.25);--text:#fff5f7;--muted:#e8b7c8;--hot:#ff2e63;--coral:#ff7a59;--gold:#ffc65c;--green:#3ddc97;--radius:22px}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(1000px 500px at 80% -10%,#3b2f7a 0,transparent 60%),radial-gradient(800px 400px at -10% 10%,#123a5e 0,transparent 55%),var(--bg);color:var(--text)}
-header{padding:28px 18px 8px;max-width:980px;margin:0 auto}
-h1{font-size:clamp(26px,5vw,40px);margin:0 0 6px}
-.sub{color:var(--muted);margin:0 0 4px}
-.badge{display:inline-block;background:var(--card2);border:1px solid #39407a;padding:4px 12px;border-radius:999px;font-size:13px;color:var(--acc);margin-top:8px}
-main{max-width:980px;margin:0 auto;padding:14px 18px 48px}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Outfit',system-ui,sans-serif;color:var(--text);background:
+ radial-gradient(900px 500px at 85% -10%,rgba(255,46,99,.35),transparent 60%),
+ radial-gradient(800px 500px at -10% 20%,rgba(140,40,180,.30),transparent 55%),
+ radial-gradient(700px 400px at 50% 110%,rgba(255,122,89,.22),transparent 60%),var(--bg);overflow-x:hidden}
+.serif{font-family:'Playfair Display',serif}
+/* ===== 3D-Herz-Intro ===== */
+#intro{position:fixed;inset:0;z-index:999;background:radial-gradient(800px 500px at 50% 40%,#3d0a2e 0,#160818 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .8s,visibility .8s}
+#intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+#heart3d{position:absolute;inset:0;width:100%;height:100%}
+#intro .txt{position:relative;z-index:2;pointer-events:none;padding:0 20px}
+#intro h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:clamp(38px,9vw,74px);margin:0;background:linear-gradient(90deg,#fff,#ffb3c9,#ffc65c);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+#intro p{color:var(--muted);font-size:clamp(16px,4vw,21px);margin:10px 0 0}
+#skipBtn{position:relative;z-index:3;margin-top:26px;background:linear-gradient(90deg,var(--hot),var(--coral));color:#fff;border:0;border-radius:999px;padding:14px 30px;font-weight:800;font-size:17px;cursor:pointer;box-shadow:0 10px 34px rgba(255,46,99,.55);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.cssheart{position:absolute;left:50%;top:42%;width:90px;height:90px;background:var(--hot);transform:translate(-50%,-50%) rotate(45deg) scale(.2);border-radius:14px;animation:cssfly 3.4s ease forwards;display:none}
+.cssheart:before,.cssheart:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:var(--hot)}
+.cssheart:before{left:-45px;top:0}.cssheart:after{top:-45px;left:0}
+@keyframes cssfly{to{transform:translate(-50%,-50%) rotate(45deg) scale(2.6);opacity:0}}
+.flyheart{position:fixed;z-index:998;font-size:26px;pointer-events:none;animation:flyup 2.6s ease-out forwards}
+@keyframes flyup{to{transform:translateY(-70vh) rotate(40deg) scale(1.5);opacity:0}}
+/* ===== Layout ===== */
+header{padding:38px 18px 6px;max-width:1000px;margin:0 auto;text-align:center}
+header h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:clamp(36px,7vw,60px);margin:0;line-height:1.05}
+header h1 .grad{background:linear-gradient(92deg,#ff2e63,#ff7a59,#ffc65c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:12px auto 4px;max-width:640px;line-height:1.55;font-size:17px}
+.badge{display:inline-block;background:rgba(255,46,99,.16);border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:13px;color:#ffb3c9;margin-top:12px;font-weight:700}
+main{max-width:1000px;margin:0 auto;padding:14px 18px 56px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin:18px 0}
+@media(max-width:700px){.hero{grid-template-columns:1fr}}
+.herocard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;backdrop-filter:blur(8px)}
+.herocard.big{display:flex;flex-direction:column;justify-content:center}
+.herocard.big h2{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(24px,4vw,34px);margin:0 0 8px}
+.herocard.art{display:flex;align-items:center;justify-content:center;font-size:110px;min-height:190px;background:linear-gradient(150deg,rgba(255,46,99,.35),rgba(255,197,92,.18) 55%,rgba(140,40,180,.30));animation:heartbeat 2.2s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.03)}24%{transform:scale(1)}36%{transform:scale(1.03)}}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
-.stat{background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:16px;text-align:center}
-.stat b{font-size:26px;display:block}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center;backdrop-filter:blur(8px)}
+.stat b{font-size:27px;display:block;background:linear-gradient(90deg,#fff,#ffb3c9);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{color:var(--muted);font-size:13px}
-.ringwrap{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:16px}
-.ring{transform:rotate(-90deg)}
-.ring .bgc{stroke:#2c3160}.ring .fgc{stroke:var(--acc);transition:stroke-dashoffset .5s}
-section{background:var(--card);border:1px solid #2c3160;border-radius:var(--radius);padding:18px;margin:14px 0}
-h2{margin:0 0 8px;font-size:21px}
-h3{margin:14px 0 6px}
-p{line-height:1.55}
-.muted{color:var(--muted)}
-button{background:var(--acc);color:#191200;border:0;border-radius:12px;padding:11px 18px;font-weight:700;font-size:15px;cursor:pointer;margin:4px 4px 4px 0}
-button.ghost{background:var(--card2);color:var(--text);border:1px solid #39407a}
+.ringwrap{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.ring{transform:rotate(-90deg)}.ring .bgc{stroke:rgba(255,255,255,.12)}.ring .fgc{stroke:var(--hot);transition:stroke-dashoffset .5s}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:14px 0;backdrop-filter:blur(8px)}
+h2{margin:0 0 8px;font-size:22px;font-family:'Playfair Display',serif}
+p{line-height:1.55}.muted{color:var(--muted)}
+button{background:linear-gradient(90deg,var(--hot),var(--coral));color:#fff;border:0;border-radius:999px;padding:11px 20px;font-weight:800;font-size:15px;cursor:pointer;margin:4px 4px 4px 0;box-shadow:0 6px 20px rgba(255,46,99,.35)}
+button.ghost{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none}
 button:disabled{opacity:.45;cursor:default}
-.opt{display:block;width:100%;text-align:left;background:var(--card2);color:var(--text);border:1px solid #39407a;border-radius:12px;padding:12px 14px;margin:7px 0;font-weight:600}
-.opt.correct{border-color:var(--acc2);background:#173d31}
-.opt.wrong{border-color:var(--pink);background:#42203a}
-.feedback{font-weight:700;margin:10px 0;min-height:24px}
-.neu-badge{display:inline-block;background:#ffd23f;color:#4a3200;font-size:12px;font-weight:800;letter-spacing:.4px;padding:2px 9px;border-radius:999px;margin-right:8px;vertical-align:middle}
-.ok{color:var(--acc2)}.bad{color:var(--pink)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.flip{background:var(--card2);border:1px solid #39407a;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;gap:4px}
-.flip.ka{color:var(--acc)}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin:7px 0;font-weight:600;box-shadow:none}
+.opt.correct{border-color:var(--green);background:rgba(61,220,151,.16)}
+.opt.wrong{border-color:var(--hot);background:rgba(255,46,99,.18)}
+.feedback{font-weight:800;margin:10px 0;min-height:24px}
+.ok{color:var(--green)}.bad{color:#ff8fab}
+.qbig{font-size:24px;font-weight:800;margin:8px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}
+.flip{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:16px;padding:18px 10px;text-align:center;cursor:pointer;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;gap:4px;transition:transform .25s}
+.flip:hover{transform:translateY(-3px)}
+.flip.ka{color:var(--gold)}
 .picgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
-.piccard{background:linear-gradient(160deg,#2a2f5e,#1b1f3a);border:1px solid #39407a;border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer}
-.piccard .big{font-size:46px;line-height:1.15;display:block}
+.piccard{background:linear-gradient(160deg,rgba(255,46,99,.22),rgba(255,255,255,.05));border:1px solid var(--line);border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer}
+.piccard .big{font-size:48px;line-height:1.15;display:block}
 .piccard .wd{font-weight:800;display:block;margin-top:6px}
-.piccard .ka2{color:var(--acc);font-weight:700;display:block;min-height:20px}
-.spk{background:var(--card2);border:1px solid #39407a;color:var(--text);border-radius:999px;padding:4px 10px;font-size:14px;margin:2px}
-.lvlbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
-.lvlbtn{background:var(--card2);color:var(--text);border:1px solid #39407a}
-.lvlbtn.active{background:var(--acc);color:#191200;border-color:var(--acc)}
-.mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:8px}
-.memcard{background:var(--card2);border:1px solid #39407a;border-radius:12px;padding:14px 6px;text-align:center;cursor:pointer;min-height:64px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
-.memcard.open{border-color:var(--acc)}
-.memcard.done{border-color:var(--acc2);background:#173d31;cursor:default}
-table{width:100%;border-collapse:collapse}
-td,th{padding:8px 6px;border-bottom:1px solid #2c3160;text-align:left;vertical-align:top}
+.piccard .ka2{color:var(--gold);font-weight:700;display:block;min-height:20px}
+.spk{background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:5px 11px;font-size:14px;box-shadow:none}
+.lvlbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0;justify-content:center}
+.lvlbtn{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none}
+.lvlbtn.active{background:linear-gradient(90deg,var(--hot),var(--coral));color:#fff}
+.mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:8px}
+.memcard{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:14px;padding:14px 6px;text-align:center;cursor:pointer;min-height:66px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.memcard.open{border-color:var(--gold)}
+.memcard.done{border-color:var(--green);background:rgba(61,220,151,.15);cursor:default}
+table{width:100%;border-collapse:collapse}td,th{padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.10);text-align:left;vertical-align:top}
 .bars{display:flex;gap:8px;align-items:flex-end;height:110px;margin-top:8px}
-.bar{flex:1;background:var(--card2);border-radius:8px 8px 0 0;position:relative;min-height:6px}
+.bar{flex:1;background:linear-gradient(180deg,var(--coral),var(--hot));border-radius:8px 8px 0 0;position:relative;min-height:6px}
 .bar i{position:absolute;top:-20px;left:0;right:0;text-align:center;font-style:normal;font-size:12px;color:var(--muted)}
 .barlbl{display:flex;gap:8px}.barlbl span{flex:1;text-align:center;font-size:12px;color:var(--muted)}
-.quest{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #2c3160}
-.pack{border-left:4px solid var(--acc);padding:4px 0 4px 12px;margin:10px 0}
-.lvltag{display:inline-block;background:#39407a;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;color:var(--acc)}
+.quest{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.10)}
+.pack{border-left:4px solid var(--hot);padding:4px 0 4px 12px;margin:10px 0}
+.lvltag{display:inline-block;background:rgba(255,46,99,.25);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;color:#ffb3c9}
 footer{color:var(--muted);text-align:center;padding:20px;font-size:13px}
-a{color:var(--acc)}
+a{color:var(--gold)}
+#replayHeart{position:fixed;right:16px;bottom:16px;z-index:50;border-radius:50%;width:58px;height:58px;font-size:26px;padding:0}
 </style>
 </head>
 <body>
+
+<!-- ===== INTRO: 3D-HERZ FÜR ANA ===== -->
+<div id="intro">
+  <canvas id="heart3d"></canvas>
+  <div class="cssheart" id="cssheart"></div>
+  <div class="txt">
+    <h1>Für dich, Ana</h1>
+    <p>Ein Herz fliegt zu dir … 💋</p>
+  </div>
+  <button id="skipBtn">Öffne dein Herz ❤</button>
+</div>
+
 <header>
-<h1>🎮 Spielendes Dashboard</h1>
-<p class="sub">Deutsch <b>B2 bis C2</b> spielerisch lernen — für Ana. Wortschatz, Hören, Bilder, Grammatik, Karteikarten &amp; Memory.</p>
-<span class="badge">🔄 Alle paar Tage kommen neue Wörter &amp; Aufgaben dazu</span>
-<div class="lvlbar"><span class="muted"><b>Niveau wählen:</b></span>
-<button class="lvlbtn" data-lvl="Alle">Alle</button>
-<button class="lvlbtn" data-lvl="B2">B2</button>
-<button class="lvlbtn" data-lvl="C1">C1</button>
-<button class="lvlbtn" data-lvl="C2">C2</button>
-<span class="muted">Quiz, Karten, Memory &amp; Wortliste passen sich an.</span></div>
+  <h1><span class="grad">Deutsch mit Herz</span><br>für Ana ❤</h1>
+  <p class="sub">Deine <b>komplett neue</b> Lernseite — neue Wörter, neue Fragen, neue Spiele. Deutsch <b>B2 bis C1</b>, mit Liebe gemacht: Pflege, Gefühle, Zuhause &amp; Telefon.</p>
+  <span class="badge">✨ NEU · Alle Fragen sind neu · 12. November 2026</span>
+  <div class="lvlbar"><span class="muted"><b>Niveau wählen:</b></span>
+    <button class="lvlbtn" data-lvl="Alle">Alle</button>
+    <button class="lvlbtn" data-lvl="B2">B2</button>
+    <button class="lvlbtn" data-lvl="C1">C1</button>
+  </div>
 </header>
+
 <main>
-<div class="ringwrap">
-<svg class="ring" width="92" height="92" viewBox="0 0 92 92">
-<circle class="bgc" cx="46" cy="46" r="40" fill="none" stroke-width="9"></circle>
-<circle class="fgc" id="ringFg" cx="46" cy="46" r="40" fill="none" stroke-width="9" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
-</svg>
-<div>
-<div style="font-size:22px;font-weight:800">Level <span id="level">1</span> · <span id="xp">0</span> XP</div>
-<div class="muted" id="levelHint">Noch 100 XP bis zum nächsten Level</div>
-<div class="muted">Jede richtige Antwort: <b style="color:var(--acc)">+10 XP</b> · Perfekte Runde: <b style="color:var(--acc)">+25 Bonus</b></div>
-</div>
-</div>
+  <div class="hero">
+    <div class="herocard big">
+      <h2>„Du lernst nicht nur Deutsch.<br>Du eroberst Herzen.“ 💋</h2>
+      <p class="muted">Jede richtige Antwort: <b style="color:#fff">+10 XP</b> · Perfekte Runde: <b style="color:#fff">+25 Bonus</b>. Dein Fortschritt bleibt auf diesem Handy gespeichert — auch deine alten Punkte von der früheren Seite.</p>
+      <div><button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">▶ Jetzt spielen</button>
+      <button class="ghost" onclick="replayIntro()">💗 Herz nochmal fliegen lassen</button></div>
+    </div>
+    <div class="herocard art">💖</div>
+  </div>
 
-<div class="stats">
-<div class="stat"><b id="streak">0 🔥</b><span>Tage-Streak</span></div>
-<div class="stat"><b id="accuracy">–</b><span>Trefferquote</span></div>
-<div class="stat"><b id="answered">0</b><span>Antworten gesamt</span></div>
-<div class="stat"><b id="wordCount">0</b><span>Wörter zum Lernen</span></div>
-</div>
+  <div class="ringwrap">
+    <svg class="ring" width="92" height="92"><circle class="bgc" cx="46" cy="46" r="40" fill="none" stroke-width="9"/><circle class="fgc" id="ringFg" cx="46" cy="46" r="40" fill="none" stroke-width="9" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"/></svg>
+    <div><div style="font-size:20px;font-weight:800">Level <span id="level">1</span> · <span id="xp">0</span> XP</div>
+    <div class="muted" id="levelHint">Noch 100 XP bis zum nächsten Level</div></div>
+  </div>
 
-<section>
-<h2>📅 Tages-Quests</h2>
-<div class="quest"><span>Beantworte 5 Quiz-Fragen</span><span id="q1">0 / 5</span></div>
-<div class="quest"><span>Sammle heute 30 XP</span><span id="q2">0 / 30 XP</span></div>
-<div class="quest"><span>Schau dir 4 Karteikarten an</span><span id="q3">0 / 4</span></div>
-</section>
+  <div class="stats">
+    <div class="stat"><b id="streak">0 🔥</b><span>Tage-Streak</span></div>
+    <div class="stat"><b id="accuracy">–</b><span>Trefferquote</span></div>
+    <div class="stat"><b id="answered">0</b><span>Antworten gesamt</span></div>
+    <div class="stat"><b id="wordcount">0</b><span>Neue Wörter</span></div>
+  </div>
 
-<section>
-<h2>🆕 Neues auf dieser Seite</h2>
-<div id="packs"></div>
-</section>
+  <section>
+    <h2>📅 Tages-Quests</h2>
+    <div class="quest"><span>Beantworte 5 Quiz-Fragen</span><b id="q1">0 / 5</b></div>
+    <div class="quest"><span>Sammle heute 30 XP</span><b id="q2">0 / 30 XP</b></div>
+    <div class="quest" style="border-bottom:0"><span>Schau dir 4 Karteikarten an</span><b id="q3">0 / 4</b></div>
+  </section>
 
-<section>
-<h2>🧠 Wortschatz-Quiz spielen</h2>
-<p class="muted">Georgisch → Deutsch. Wähle die richtige Antwort.</p>
-<div id="quizBox"><button id="quizStart">Quiz starten</button></div>
-</section>
+  <section id="quiz">
+    <h2>💘 Wortschatz-Quiz — neu</h2>
+    <p class="muted">Georgisch → Deutsch. Wähle die richtige Antwort.</p>
+    <div id="quizBox"></div>
+  </section>
 
-<section>
-<h2>🎧 Hör-Quiz</h2>
-<p class="muted">Du hörst ein deutsches Wort — wähle die richtige georgische Bedeutung. Tippe auf 🔊, um es (noch einmal) zu hören.</p>
-<div id="hearBox"><button id="hearStart">Hör-Quiz starten</button></div>
-</section>
+  <section>
+    <h2>🎧 Hör-Quiz — neu</h2>
+    <p class="muted">Du hörst ein deutsches Wort — wähle die richtige georgische Bedeutung. Tippe auf 🔊, um es noch einmal zu hören.</p>
+    <div id="hoerBox"></div>
+  </section>
 
-<section>
-<h2>🎧 Hör-Prüfung (B2) – Antworten antippen</h2>
-<p class="muted">Wie in der echten B2-Prüfung: Höre dir den Text mit ▶ an und tippe dann bei jeder Frage auf die richtige Antwort. Du bekommst sofort Rückmeldung – und für jede richtige Antwort +10 XP. Das Transkript kannst du dir am Ende jeder Übung anzeigen lassen.</p>
-<div id="hpBox"></div>
-</section>
+  <section>
+    <h2>🎧 Hör-Prüfung (B2/C1) — neu: „Der Anruf“</h2>
+    <p class="muted">Wie in der echten Prüfung: Text mit ▶ anhören, dann jede Frage antippen. Transkript am Ende anzeigen.</p>
+    <div id="pruefBox"></div>
+  </section>
 
-<section>
-<h2>⚔️ Grammatik-Duell</h2>
-<p class="muted">Grammatik für B2, C1 und C2 — passend zum gewählten Niveau: Konjunktiv, Passiv &amp; Passiv-Ersatz, Relativsätze, Nominalstil und mehr.</p>
-<div id="gramBox"><button id="gramStart">Duell starten</button></div>
-</section>
+  <section>
+    <h2>⚔️ Grammatik-Duell — neu</h2>
+    <p class="muted">Neue Themen: weil &amp; obwohl, höfliche Bitten, <i>sich freuen auf</i>, <i>zu</i> + Infinitiv, Komparativ und mehr.</p>
+    <div id="gramBox"></div>
+  </section>
 
-<section>
-<h2>🖼️ Bild-Karten</h2>
-<p class="muted">Lernen mit Bildern: Tippe auf eine Karte — du hörst das Wort und siehst die Übersetzung.</p>
-<div class="picgrid" id="picCards"></div>
-</section>
+  <section>
+    <h2>🖼️ Bild-Karten — neu</h2>
+    <p class="muted">Tippe auf eine Karte — du hörst das Wort und siehst die Übersetzung.</p>
+    <div class="picgrid" id="picBox"></div>
+  </section>
 
-<section>
-<h2>🃏 Karteikarten (Deutsch ↔ ქართული)</h2>
-<p class="muted">Tippe auf eine Karte, um die Übersetzung zu sehen. Mit 🔊 hörst du die Aussprache.</p>
-<div class="cards" id="flash"></div>
-</section>
+  <section>
+    <h2>🃏 Karteikarten (Deutsch ↔ ქართული)</h2>
+    <p class="muted">Tippe auf eine Karte, um die Übersetzung zu sehen. Mit 🔊 hörst du die Aussprache.</p>
+    <div class="cards" id="flipBox"></div>
+  </section>
 
-<section>
-<h2>🧩 Memory</h2>
-<p class="muted">Finde die Paare: deutsches Wort ↔ georgische Bedeutung.</p>
-<div id="memInfo" class="feedback"></div>
-<div class="mem" id="mem"></div>
-<p><button class="ghost" id="memRestart">Neues Memory-Spiel</button></p>
-</section>
+  <section>
+    <h2>🧩 Memory — neu</h2>
+    <p class="muted">Finde die Paare: deutsches Wort ↔ georgische Bedeutung.</p>
+    <div class="mem" id="memBox"></div>
+    <p class="feedback" id="memFb"></p>
+    <button class="ghost" onclick="buildMemory()">🔄 Neu mischen</button>
+  </section>
 
-<section>
-<h2>📈 Deine letzten 7 Tage</h2>
-<div class="bars" id="bars"></div>
-<div class="barlbl" id="barlbl"></div>
-</section>
+  <section>
+    <h2>📈 Deine letzten 7 Tage</h2>
+    <div class="bars" id="bars"></div><div class="barlbl" id="barlbl"></div>
+  </section>
 
-<section>
-<h2>📚 Wortliste</h2>
-<div style="overflow-x:auto"><table><thead><tr><th>Deutsch</th><th>🔊</th><th>ქართული</th><th>Beispiel</th><th>Niveau</th></tr></thead><tbody id="wordTable"></tbody></table></div>
-</section>
+  <section>
+    <h2>📚 Wortliste — alle neuen Wörter</h2>
+    <div style="overflow-x:auto"><table><thead><tr><th>Deutsch</th><th>🔊</th><th>ქართული</th><th>Beispiel</th><th>Niveau</th></tr></thead><tbody id="wordTable"></tbody></table></div>
+  </section>
+
+  <footer>Mit ❤ gemacht für Ana · Deutsch mit Herz · Neue Fragen: 12. November 2026</footer>
 </main>
-<footer>Gemacht für Ana · Deutsch B2–C2 · Fortschritt wird nur in deinem Browser gespeichert.<br>Code auf GitHub: <a href="https://github.com/allegroemilio2-ui/spielendes-dashboard">allegroemilio2-ui/spielendes-dashboard</a></footer>
+<button id="replayHeart" title="Herz-Intro noch einmal" onclick="replayIntro()">💗</button>
+
 <script>
 "use strict";
-/* ===== Inhalte: neue Pakete werden hier oben ergänzt (Update alle paar Tage) ===== */
+/* ===== KOMPLETT NEUE INHALTE — 12.11.2026 (keine Fragen von der alten Seite) ===== */
 const PACKS=[
-{ id:"b2-wetter-2026-11-12", date:"12. November 2026", level:"B2", title:"B2-Paket: Wetter & Jahreszeiten",
+{ id:"ana-pflege-herz", date:"12. November 2026", level:"B2", title:"B2-Paket: Pflege mit Herz",
   words:[
-   {de:"das Gewitter",ka:"ჭექა-ქუხილი",img:"⛈️",ex:"Bei einem Gewitter bleiben wir lieber zu Hause und gehen nicht spazieren."},
-   {de:"der Schneefall",ka:"თოვა",img:"❄️",ex:"Der Schneefall gestern war so stark, dass die Straßen ganz weiß waren."},
-   {de:"die Hitze",ka:"სიცხე",img:"☀️",ex:"Bei großer Hitze trinkt die Seniorin viel Wasser und bleibt im Schatten."},
-   {de:"der Nebel",ka:"ნისლი",img:"🌫️",ex:"Am Morgen ist der Nebel so dicht, dass man die Straße kaum sehen kann."},
-   {de:"die Jahreszeit",ka:"სეზონი, წელიწადის დრო",img:"🍂",ex:"Jede Jahreszeit hat ihren Reiz: Im Frühling blühen die Bäume, im Winter liegt Schnee."},
-   {de:"der Frühling",ka:"გაზაფხული",img:"🌸",ex:"Im Frühling gehen wir mit der Seniorin wieder öfter in den Park."},
-   {de:"der Herbst",ka:"შემოდგომა",img:"🍁",ex:"Im Herbst fallen die Blätter von den Bäumen und die Tage werden kürzer."},
-   {de:"windig",ka:"ქარიანი",img:"💨",ex:"Heute ist es sehr windig, deshalb nehmen wir eine warme Jacke mit."},
-   {de:"die Vorhersage",ka:"პროგნოზი",img:"📺",ex:"Die Wettervorhersage für morgen verspricht Sonne und achtzehn Grad."},
-   {de:"der Regenschirm",ka:"ქოლგა",img:"☂️",ex:"Nimm bitte den Regenschirm mit, es soll am Nachmittag regnen."}
+   {de:"der Blutdruck",ka:"სისხლის წნევა",img:"🩺",ex:"Ich messe der Seniorin jeden Morgen den Blutdruck und schreibe den Wert auf."},
+   {de:"die Tablette",ka:"აბი",img:"💊",ex:"Die Tablette nimmt sie immer nach dem Frühstück mit einem Glas Wasser."},
+   {de:"der Rollstuhl",ka:"ეტლი",img:"🦽",ex:"Mit dem Rollstuhl fahren wir bei schönem Wetter in den Park."},
+   {de:"die Geduld",ka:"მოთმინება",img:"🌿",ex:"Für diese Arbeit braucht man viel Geduld und ein großes Herz."},
+   {de:"vorsichtig",ka:"ფრთხილად",img:"👐",ex:"Bitte seien Sie vorsichtig, der Boden ist nach dem Wischen noch nass."},
+   {de:"begleiten",ka:"თანხლება",img:"🤝",ex:"Ich begleite Frau Müller morgen zu ihrem Termin beim Arzt."},
+   {de:"aufmuntern",ka:"გამხნევება",img:"🌞",ex:"Mit einem Lächeln und einem netten Wort kann man jeden Menschen aufmuntern."},
+   {de:"die Decke",ka:"საბანი",img:"🛏️",ex:"Am Abend lege ich ihr eine warme Decke über die Beine."},
+   {de:"zuverlässig",ka:"საიმედო",img:"⭐",ex:"Die Familie sagt, Ana ist zuverlässig und immer pünktlich."},
+   {de:"sich wohlfühlen",ka:"თავი კარგად გრძნობა",img:"🏡",ex:"Bei Ana fühlt sich die Seniorin sicher und wohl."}
   ]},
-{ id:"c2-gesellschaft-2026-11-11", date:"11. November 2026", level:"C2", title:"C2-Paket: Gesellschaft & Politik",
+{ id:"ana-gefuehle-liebe", date:"12. November 2026", level:"B2", title:"B2-Paket: Gefühle & Liebe",
   words:[
-   {de:"die Demokratie",ka:"დემოკრატია",img:"🏛️",ex:"In einer Demokratie dürfen alle Bürgerinnen und Bürger wählen und ihre Meinung frei sagen."},
-   {de:"der Rechtsstaat",ka:"სამართლებრივი სახელმწიფო",img:"⚖️",ex:"Im Rechtsstaat gelten die Gesetze für alle Menschen gleich, auch für die Politiker."},
-   {de:"die Meinungsfreiheit",ka:"აზრის გამოხატვის თავისუფლება",img:"🗣️",ex:"Die Meinungsfreiheit ist ein Grundrecht: Man darf seine Meinung offen sagen, ohne Angst zu haben."},
-   {de:"der Bürger",ka:"მოქალაქე",img:"👤",ex:"Als Bürger kann man bei der Wahl mitentscheiden, wer die Stadt regiert."},
-   {de:"die Gesetzgebung",ka:"კანონმდებლობა",img:"📜",ex:"Die Gesetzgebung bestimmt, welche Regeln für Pflegekräfte und Familien gelten."},
-   {de:"die Wahlbeteiligung",ka:"არჩევნებში მონაწილეობა",img:"🗳️",ex:"Die Wahlbeteiligung war diesmal hoch: Viele Menschen gingen zur Wahl."},
-   {de:"die Bürgerinitiative",ka:"მოქალაქეთა ინიციატივა",img:"✊",ex:"Eine Bürgerinitiative sammelte Unterschriften, damit das Stadtteilzentrum erhalten bleibt."},
-   {de:"die Entscheidungsfindung",ka:"გადაწყვეტილების მიღება",img:"🤝",ex:"Bei der Entscheidungsfindung in der Familie ist es wichtig, dass alle zu Wort kommen."},
-   {de:"die Transparenz",ka:"გამჭვირვალობა",img:"🔍",ex:"Transparenz schafft Vertrauen: Die Familie sieht genau, wofür sie zahlt."},
-   {de:"die Grundrechte",ka:"ძირითადი უფლებები",img:"📖",ex:"Zu den Grundrechten gehören die Meinungsfreiheit und die Gleichheit vor dem Gesetz."}
+   {de:"vermissen",ka:"მენატრება",img:"💭",ex:"Wenn Ana in Georgien ist, vermisst Emilio sie sehr."},
+   {de:"dankbar",ka:"მადლიერი",img:"🙏",ex:"Ich bin dir von Herzen dankbar für alles, was du für mich tust."},
+   {de:"stolz",ka:"ამაყი",img:"🦁",ex:"Sie ist stolz, weil sie die deutsche Prüfung so gut geschafft hat."},
+   {de:"das Lächeln",ka:"ღიმილი",img:"😊",ex:"Dein Lächeln macht meinen ganzen Tag schöner."},
+   {de:"umarmen",ka:"ჩახუტება",img:"🤗",ex:"Zur Begrüßung umarmen sie sich herzlich."},
+   {de:"vertrauen",ka:"ნდობა",img:"💞",ex:"Vertrauen ist die Basis für eine gute Beziehung und gute Pflege."},
+   {de:"der Kuss",ka:"კოცნა",img:"💋",ex:"Zum Abschied gibt er ihr einen Kuss auf die Wange."},
+   {de:"bezaubernd",ka:"მომხიბვლელი",img:"✨",ex:"Sie sieht heute Abend einfach bezaubernd aus."},
+   {de:"die Sehnsucht",ka:"ძლიერი მონატრება",img:"🌙",ex:"Nachts hat sie große Sehnsucht nach ihrer Familie in Georgien."},
+   {de:"hinreißend",ka:"მომაჯადოებელი",img:"🔥",ex:"Mit diesem Kleid siehst du hinreißend aus."}
   ]},
-{ id:"c1-behoerden-2026-11-10", date:"10. November 2026", level:"C1", title:"C1-Paket: Behörden & Ämter",
+{ id:"ana-zuhause-kueche", date:"12. November 2026", level:"B2", title:"B2-Paket: Zuhause & Küche",
   words:[
-   {de:"die Behörde",ka:"უწყება, სახელმწიფო ორგანო",img:"🏛️",ex:"Die Behörde prüft den Antrag der Pflegekraft und schickt dann den Bescheid."},
-   {de:"der Antrag",ka:"განაცხადი",img:"📝",ex:"Für die Aufenthaltserlaubnis muss sie einen Antrag stellen."},
-   {de:"die Anmeldung",ka:"რეგისტრაცია",img:"📋",ex:"Nach dem Umzug ist die Anmeldung beim Einwohnermeldeamt Pflicht."},
-   {de:"die Aufenthaltserlaubnis",ka:"ბინადრობის ნებართვა",img:"🪪",ex:"Ohne gültige Aufenthaltserlaubnis darf die Pflegekraft nicht in Deutschland arbeiten."},
-   {de:"das Formular",ka:"ფორმა, ბლანკი",img:"📄",ex:"Ana hilft der Pflegekraft, das Formular richtig auszufüllen."},
-   {de:"der Bescheid",ka:"ოფიციალური გადაწყვეტილება",img:"✉️",ex:"Der Bescheid der Behörde kam nach vier Wochen per Post."},
-   {de:"beantragen",ka:"განაცხადის შეტანა",img:"✍️",ex:"Sie beantragt eine neue Aufenthaltserlaubnis, bevor die alte abläuft."},
-   {de:"die Bearbeitungszeit",ka:"განხილვის ვადა",img:"⏰",ex:"Die Bearbeitungszeit für den Antrag beträgt etwa sechs Wochen."},
-   {de:"die Bescheinigung",ka:"ცნობა, მოწმობა",img:"📜",ex:"Die Familie braucht eine Bescheinigung über die Anmeldung der Pflegekraft."},
-   {de:"die Sachbearbeiterin",ka:"საქმის განმხილველი (ქალი)",img:"👩‍💼",ex:"Die Sachbearbeiterin im Amt erklärt geduldig, welche Unterlagen noch fehlen."}
+   {de:"die Zutat",ka:"ინგრედიენტი",img:"🥕",ex:"Für die Suppe fehlen noch zwei Zutaten: Karotten und Sellerie."},
+   {de:"würzen",ka:"შეკმაზვა",img:"🧂",ex:"Bitte würze die Suppe nicht zu scharf, die Seniorin mag es mild."},
+   {de:"köcheln",ka:"ნელ ცეცხლზე ხარშვა",img:"🍲",ex:"Die Soße muss noch zwanzig Minuten leise köcheln."},
+   {de:"der Löffel",ka:"კოვზი",img:"🥄",ex:"Sie isst die Suppe langsam mit einem kleinen Löffel."},
+   {de:"aufräumen",ka:"დალაგება",img:"🧹",ex:"Nach dem Essen räumen wir zusammen die Küche auf."},
+   {de:"die Wäsche",ka:"სარეცხი",img:"👕",ex:"Die Wäsche hängt schon auf der Leine und trocknet in der Sonne."},
+   {de:"gemütlich",ka:"მყუდრო",img:"🛋️",ex:"Am Abend ist es im Wohnzimmer warm und gemütlich."},
+   {de:"der Duft",ka:"სურნელი",img:"🌹",ex:"Der Duft von frischem Kaffee zieht durch die ganze Wohnung."},
+   {de:"probieren",ka:"გასინჯვა",img:"👩‍🍳",ex:"Probier mal! Die Suppe ist heute besonders lecker."},
+   {de:"das Rezept",ka:"რეცეპტი",img:"📖",ex:"Dieses Rezept hat sie von ihrer Großmutter aus Georgien."}
   ]},
-{ id:"b2-einkaufen-2026-11-09", date:"9. November 2026", level:"B2", title:"B2-Paket: Einkaufen & Markt",
+{ id:"ana-telefon-familie", date:"12. November 2026", level:"C1", title:"C1-Paket: Telefon & Familie",
   words:[
-   {de:"der Einkaufswagen",ka:"საყიდლების ურიკა",img:"🛒",ex:"Den Einkaufswagen stellt man nach dem Einkauf wieder zurück."},
-   {de:"die Kasse",ka:"სალარო",img:"🧾",ex:"An der Kasse bezahlt Ana die Lebensmittel für die Familie."},
-   {de:"der Rabatt",ka:"ფასდაკლება",img:"🏷️",ex:"Heute gibt es zwanzig Prozent Rabatt auf frisches Obst und Gemüse."},
-   {de:"das Angebot",ka:"შეთავაზება, აქცია",img:"🛍️",ex:"Das Angebot im Supermarkt gilt nur diese Woche."},
-   {de:"die Quittung",ka:"ქვითარი",img:"📄",ex:"Bitte bewahren Sie die Quittung auf, falls Sie etwas umtauschen möchten."},
-   {de:"der Wochenmarkt",ka:"კვირის ბაზარი",img:"🥕",ex:"Auf dem Wochenmarkt kauft sie frisches Gemüse für die Seniorin ein."},
-   {de:"frisch",ka:"ახალი, ახლად მომზადებული",img:"🍎",ex:"Das Brot vom Markt ist noch warm und frisch."},
-   {de:"die Tüte",ka:"პარკი",img:"👜",ex:"Eine Tüte für den Einkauf kostet im Supermarkt dreißig Cent."},
-   {de:"umtauschen",ka:"გაცვლა",img:"🔄",ex:"Wenn die Jacke nicht passt, kann man sie im Laden umtauschen."},
-   {de:"die Öffnungszeiten",ka:"სამუშაო საათები",img:"🕙",ex:"Die Öffnungszeiten des Supermarkts stehen an der Tür."}
-  ]},
-{ id:"c2-kultur-kunst-2026-11-08", date:"8. November 2026", level:"C2", title:"C2-Paket: Kultur & Kunst",
-  words:[
-   {de:"die Ausstellung",ka:"გამოფენა",img:"🖼️",ex:"Die Ausstellung georgischer Kunst in Saarbrücken war sehr gut besucht."},
-   {de:"die Inszenierung",ka:"დადგმა",img:"🎭",ex:"Die Inszenierung des Theaterstücks hat das Publikum begeistert."},
-   {de:"die Aufführung",ka:"წარმოდგენა",img:"🎭",ex:"Bei der Aufführung am Freitag saß Ana in der ersten Reihe."},
-   {de:"das Kunstwerk",ka:"ხელოვნების ნიმუში",img:"🎨",ex:"Dieses Kunstwerk hat die Künstlerin aus Tiflis selbst gemalt."},
-   {de:"die Ästhetik",ka:"ესთეტიკა",img:"✨",ex:"Die Ästhetik des alten Hauses erinnert Ana an Georgien."},
-   {de:"die Interpretation",ka:"ინტერპრეტაცია",img:"🎵",ex:"Jede Interpretation des Gedichts klingt ein bisschen anders."},
-   {de:"bewundern",ka:"აღფრთოვანება",img:"😍",ex:"Sie bewundert die Geduld der Pflegekräfte, die sie vermittelt."},
-   {de:"die Schöpfung",ka:"ქმნილება",img:"🌟",ex:"Die Schöpfung des Künstlers hängt jetzt im Wohnzimmer der Familie."},
-   {de:"der Stilbruch",ka:"სტილის დარღვევა",img:"🎨",ex:"Der Stilbruch zwischen Alt und Modern macht das Haus besonders."},
-   {de:"die Ausdrucksform",ka:"გამოხატვის ფორმა",img:"💬",ex:"Musik ist für sie eine wichtige Ausdrucksform ihrer Gefühle."}
-  ]},
-{ id:"c1-medien-2026-11-07", date:"7. November 2026", level:"C1", title:"C1-Paket: Medien & Nachrichten",
-  words:[
-   {de:"die Schlagzeile",ka:"სათაური, ძირითადი ამბავი",img:"📰",ex:"Die Schlagzeile in der Zeitung lautete: „Pflegekräfte dringend gesucht“."},
-   {de:"die Berichterstattung",ka:"გაშუქება, რეპორტაჟი",img:"📺",ex:"In der Berichterstattung ging es um die neuen Regeln für die 24-Stunden-Betreuung."},
-   {de:"der Kommentar",ka:"კომენტარი, შეფასება",img:"💭",ex:"Unter dem Artikel stehen viele Kommentare von Familien, die eine Pflegekraft suchen."},
-   {de:"die Quelle",ka:"წყარო",img:"🔍",ex:"Bevor Ana eine Nachricht weitergibt, prüft sie immer die Quelle."},
-   {de:"glaubwürdig",ka:"სანდო, დამაჯერებელი",img:"✅",ex:"Eine glaubwürdige Agentur zeigt Verträge und Referenzen, bevor sie vermittelt."},
-   {de:"die Falschmeldung",ka:"ყალბი ამბავი",img:"⚠️",ex:"Eine Falschmeldung behauptete, es gäbe keine freien Stellen mehr – das stimmte nicht."},
-   {de:"die Debatte",ka:"დებატები, კამათი",img:"🎙️",ex:"In der Debatte im Radio ging es um bessere Arbeitsbedingungen in der Pflege."},
-   {de:"die Sendung",ka:"გადაცემა",img:"📻",ex:"Ana hört gern eine Sendung über Gesundheit und Pflege im Radio."},
-   {de:"der Interviewpartner",ka:"ინტერვიუს მონაწილე",img:"🎤",ex:"Der Interviewpartner erzählte, wie er als Pflegekraft nach Deutschland kam."},
-   {de:"die Öffentlichkeit",ka:"საზოგადოება, საზოგადოებრიობა",img:"🌍",ex:"Das Thema Pflege betrifft viele Familien und wird in der Öffentlichkeit oft diskutiert."}
-  ]},
-{ id:"b2-freizeit-2026-11-06", date:"6. November 2026", level:"B2", title:"B2-Paket: Freizeit & Hobbys",
-  words:[
-   {de:"das Hobby",ka:"ჰობი",img:"🎨",ex:"Ihr Hobby ist das Kochen: am Wochenende probiert sie neue georgische Rezepte aus."},
-   {de:"entspannen",ka:"დასვენება, მოდუნება",img:"😌",ex:"Nach einem langen Arbeitstag entspannt sie sich bei einem guten Buch und einer Tasse Tee."},
-   {de:"das Wochenende",ka:"შაბათ-კვირა",img:"🗓️",ex:"Am Wochenende besucht Ana ihre Familie und lädt Freunde zum Essen ein."},
-   {de:"das Treffen",ka:"შეხვედრა",img:"👥",ex:"Am Sonntag plant sie ein Treffen mit einer Freundin im Café."},
-   {de:"die Einladung",ka:"მოწვევა",img:"💌",ex:"Sie bekommt eine Einladung zu einem Geburtstag und freut sich sehr."},
-   {de:"der Ausflug",ka:"გასეირნება, ექსკურსია",img:"🚗",ex:"Am Samstag macht sie mit Emilio einen Ausflug an den See."},
-   {de:"die Erholung",ka:"დასვენება, ძალების აღდგენა",img:"🌿",ex:"Ein freier Tag ohne Anrufe ist für sie echte Erholung."},
-   {de:"die Feier",ka:"დღესასწაული, ზეიმი",img:"🎉",ex:"Zur Feier bringt sie einen georgischen Kuchen mit."},
-   {de:"die Verabredung",ka:"შეხვედრაზე შეთანხმება",img:"📅",ex:"Sie hat eine Verabredung mit der Familie, um den neuen Einsatz zu besprechen."},
-   {de:"der Feierabend",ka:"სამუშაო დღის დასასრული",img:"🌆",ex:"Nach dem Feierabend schaltet sie das Handy aus und genießt die Ruhe."}
-  ]},
-{ id:"c2-geld-finanzen-2026-11-05", date:"5. November 2026", level:"C2", title:"C2-Paket: Geld & Finanzen",
-  words:[
-   {de:"die Vergütung",ka:"ანაზღაურება",img:"💶",ex:"Die Vergütung für den 24-Stunden-Einsatz wird am Monatsende überwiesen."},
-   {de:"die Abrechnung",ka:"ანგარიშსწორება",img:"🧾",ex:"Ana schickt der Familie am Ende des Monats eine genaue Abrechnung."},
-   {de:"das Honorar",ka:"ჰონორარი",img:"💵",ex:"Das Honorar für die Vermittlung steht im Vertrag."},
-   {de:"die Steuererklärung",ka:"საგადასახადო დეკლარაცია",img:"📝",ex:"Einmal im Jahr muss sie ihre Steuererklärung beim Finanzamt abgeben."},
-   {de:"der Steuerbescheid",ka:"საგადასახადო გადაწყვეტილება",img:"📮",ex:"Im Steuerbescheid steht, ob sie Geld zurückbekommt oder nachzahlen muss."},
-   {de:"die Sozialabgaben",ka:"სოციალური შენატანები",img:"🏦",ex:"Von der Vergütung werden auch Sozialabgaben abgezogen."},
-   {de:"die Rückerstattung",ka:"თანხის დაბრუნება",img:"💸",ex:"Wenn zu viel gezahlt wurde, gibt es eine Rückerstattung."},
-   {de:"die Vorauszahlung",ka:"წინასწარი გადახდა",img:"💳",ex:"Manchmal verlangt die Agentur eine Vorauszahlung für den ersten Monat."},
-   {de:"die Altersvorsorge",ka:"საპენსიო უზრუნველყოფა",img:"👵",ex:"Auch als Selbstständige sollte man rechtzeitig an die Altersvorsorge denken."},
-   {de:"der Zahltag",ka:"ხელფასის დღე",img:"🗓️",ex:"Der Zahltag ist immer der erste Werktag im Monat."}
-  ]},
-{ id:"c1-vertrauen-2026-11-04", date:"4. November 2026", level:"C1", title:"C1-Paket: Vertrauen & Zusammenarbeit",
-  words:[
-   {de:"das Vertrauen",ka:"ნდობა",img:"🤝",ex:"Vertrauen wächst, wenn die Pflegekraft pünktlich kommt und ehrlich spricht."},
-   {de:"die Zuverlässigkeit",ka:"საიმედოობა",img:"🛡️",ex:"Zuverlässigkeit ist für eine Familie das Wichtigste bei einer 24-Stunden-Betreuung."},
-   {de:"die Absprache",ka:"შეთანხმება",img:"📋",ex:"Vor dem ersten Einsatz klären Ana und die Familie in einer Absprache die Arbeitszeiten."},
-   {de:"die Rücksicht",ka:"სხვების გათვალისწინება",img:"💛",ex:"Mit Rücksicht auf die Ruhezeiten der Seniorin spricht sie am Abend leise."},
-   {de:"einfühlsam",ka:"ემპათიური, თანაგრძნობით სავსე",img:"🫶",ex:"Eine einfühlsame Pflegekraft merkt sofort, wenn die Seniorin traurig ist."},
-   {de:"respektvoll",ka:"პატივისცემით",img:"🙏",ex:"Sie geht respektvoll mit den Gewohnheiten und Wünschen der Familie um."},
-   {de:"die Zusammenarbeit",ka:"თანამშრომლობა",img:"🤲",ex:"Gute Zusammenarbeit zwischen Familie und Pflegekraft macht den Alltag leichter."},
-   {de:"die Verantwortung",ka:"პასუხისმგებლობა",img:"⚖️",ex:"Die Pflegekraft trägt große Verantwortung, wenn sie allein im Haus arbeitet."},
-   {de:"die Offenheit",ka:"ღიაობა",img:"🗣️",ex:"Mit Offenheit über Probleme kann man schnell eine Lösung finden."},
-   {de:"die Geduld",ka:"მოთმინება",img:"⏳",ex:"Bei einer langsamen Seniorin braucht man viel Geduld und ein ruhiges Tempo."}
-  ]},
-{ id:"b2-telefonieren-2026-11-03", date:"3. November 2026", level:"B2", title:"B2-Paket: Telefonieren & Nachrichten",
-  words:[
-   {de:"der Anruf",ka:"ზარი",img:"📞",ex:"Am Morgen bekommt Ana einen Anruf von einer Familie, die eine Pflegekraft sucht."},
-   {de:"anrufen",ka:"დარეკვა",img:"📲",ex:"Sie ruft die Familie noch am selben Tag an, um den Einsatz zu besprechen."},
-   {de:"die Nachricht",ka:"შეტყობინება",img:"💬",ex:"Eine Nachricht auf WhatsApp fragt, ob es eine neue Stelle gibt."},
-   {de:"die Mailbox",ka:"ხმოვანი ფოსტა",img:"🎙️",ex:"Wenn Ana nicht ans Telefon geht, hinterlässt die Familie eine Nachricht auf der Mailbox."},
-   {de:"zurückrufen",ka:"უკან დარეკვა",img:"↩️",ex:"Am Abend ruft sie alle zurück, die tagsüber angerufen haben."},
-   {de:"der Absender",ka:"გამგზავნი",img:"👤",ex:"Am Absender erkennt sie sofort, ob die Nachricht von einer Familie oder einer Pflegekraft kommt."},
-   {de:"erreichbar",ka:"მისაწვდომი",img:"📶",ex:"Tagsüber ist Ana für Familien und Pflegekräfte gut erreichbar."},
-   {de:"die Rufnummer",ka:"ტელეფონის ნომერი",img:"🔢",ex:"Bitte gib mir deine Rufnummer, damit ich dich direkt anrufen kann."},
-   {de:"die Sprachnachricht",ka:"ხმოვანი შეტყობინება",img:"🎤",ex:"In einer Sprachnachricht erklärt die Pflegekraft kurz, ab wann sie frei ist."},
-   {de:"verpassen",ka:"გამოტოვება",img:"⏰",ex:"Sie will keinen wichtigen Anruf verpassen, deshalb hört sie die Mailbox jeden Abend ab."}
-  ]},
-{ id:"c2-achtsamkeit-2026-11-02", date:"2. November 2026", level:"C2", title:"C2-Paket: Achtsamkeit & innere Balance",
-  words:[
-   {de:"die Achtsamkeit",ka:"გაცნობიერებული ყურადღება",img:"🧘",ex:"Mit Achtsamkeit bemerkt sie früher, wenn eine Seniorin müde oder traurig ist."},
-   {de:"die Entschleunigung",ka:"ცხოვრების ტემპის შენელება",img:"🐢",ex:"Nach der Schicht hilft ihr eine bewusste Entschleunigung: kein Handy, ein Spaziergang, eine Tasse Tee."},
-   {de:"die Resilienz",ka:"ფსიქოლოგიური მდგრადობა",img:"💪",ex:"Resilienz bedeutet, nach einem schweren Tag wieder Kraft zu finden und weiterzumachen."},
-   {de:"die Weitsicht",ka:"შორსმჭვრეტელობა",img:"🔭",ex:"Mit Weitsicht plant Ana die Einsätze so, dass Pflegekraft und Familie langfristig zusammenpassen."},
-   {de:"die Selbstreflexion",ka:"თვითანალიზი",img:"🪞",ex:"Selbstreflexion hilft ihr zu erkennen, was im Gespräch mit einer Familie gut gelaufen ist."},
-   {de:"die Zäsur",ka:"გარდამტეხი მომენტი",img:"✂️",ex:"Der Umzug nach Deutschland war eine Zäsur in ihrem Leben: Danach begann ein neuer Abschnitt."},
-   {de:"die Ambivalenz",ka:"ორგვარი, წინააღმდეგობრივი გრძნობა",img:"🎭",ex:"Manchmal spürt sie eine Ambivalenz: Sie freut sich auf den neuen Einsatz und ist zugleich traurig über den Abschied."},
-   {de:"innehalten",ka:"გაჩერება და დაფიქრება",img:"⏸️",ex:"Zwischen zwei Terminen sollte man kurz innehalten und tief durchatmen."},
-   {de:"die Belastbarkeit",ka:"დატვირთვის მიმართ გამძლეობა",img:"🏋️",ex:"Hohe Belastbarkeit ist in der 24-Stunden-Betreuung wichtig, aber auch Pausen gehören dazu."},
-   {de:"die Ausgeglichenheit",ka:"შინაგანი წონასწორობა",img:"🌿",ex:"Ausgeglichenheit entsteht, wenn Arbeit, Ruhe und Zeit für sich selbst im Gleichgewicht sind."}
-  ]},
-{ id:"c1-ernaehrung-2026-11-01", date:"1. November 2026", level:"C1", title:"C1-Paket: Ernährung & Wohlbefinden",
-  words:[
-   {de:"die Ernährung",ka:"კვება",img:"🥗",ex:"Eine ausgewogene Ernährung ist für Seniorinnen und Senioren besonders wichtig."},
-   {de:"ausgewogen",ka:"დაბალანსებული",img:"⚖️",ex:"Sie kocht ausgewogen: Gemüse, Eiweiß und Vollkorn gehören zu jeder Mahlzeit."},
-   {de:"die Nährstoffe",ka:"საკვები ნივთიერებები",img:"🥦",ex:"Gemüse und Obst liefern viele wichtige Nährstoffe."},
-   {de:"der Stoffwechsel",ka:"ნივთიერებათა ცვლა",img:"🔄",ex:"Im Alter verlangsamt sich der Stoffwechsel, deshalb sind kleinere Mahlzeiten oft besser."},
-   {de:"die Verdauung",ka:"მონელება",img:"🫄",ex:"Warme Suppen und viel Wasser unterstützen eine gute Verdauung."},
-   {de:"der Appetit",ka:"მადა",img:"🍽️",ex:"Wenn die Seniorin wenig Appetit hat, kocht sie etwas Leichtes und Duftendes."},
-   {de:"die Unverträglichkeit",ka:"აუტანლობა",img:"⚠️",ex:"Bei einer Unverträglichkeit muss man die Zutat unbedingt vermeiden und die Familie informieren."},
-   {de:"der Blutzucker",ka:"სისხლში შაქრის დონე",img:"🩸",ex:"Der Arzt kontrolliert regelmäßig den Blutzucker der Patientin."},
-   {de:"die Mangelernährung",ka:"არასრულფასოვანი კვება",img:"📉",ex:"Mangelernährung kann man vorbeugen, wenn man regelmäßig und abwechslungsreich isst."},
-   {de:"vorbeugen",ka:"თავიდან აცილება, პრევენცია",img:"🛡️",ex:"Mit gesunder Ernährung und Bewegung kann man vielen Krankheiten vorbeugen."}
-  ]},
-{ id:"b2-kleidung-2026-10-31", date:"31. Oktober 2026", level:"B2", title:"B2-Paket: Kleidung & Winter",
-  words:[
-   {de:"die Jacke",ka:"ქურთუკი",img:"🧥",ex:"Am Morgen zieht sie ihre warme Jacke an, bevor sie zur Familie geht."},
-   {de:"der Pullover",ka:"სვიტრი",img:"🧶",ex:"Die Seniorin trägt gern einen weichen Pullover, wenn es kalt ist."},
-   {de:"die Mütze",ka:"ქუდი",img:"🧢",ex:"Bei Wind und Kälte setzt sie der Seniorin eine warme Mütze auf."},
-   {de:"der Schal",ka:"შარფი",img:"🧣",ex:"Mit einem Schal um den Hals bleibt sie beim Spaziergang warm."},
-   {de:"die Handschuhe",ka:"ხელთათმანები",img:"🧤",ex:"Im Winter braucht sie Handschuhe, wenn sie einkaufen geht."},
-   {de:"die Stiefel",ka:"ჩექმები",img:"👢",ex:"Feste Stiefel sind wichtig, wenn der Weg nass oder glatt ist."},
-   {de:"anziehen",ka:"ჩაცმა",img:"👕",ex:"Morgens hilft sie der Seniorin, sich langsam anzuziehen."},
-   {de:"die Größe",ka:"ზომა",img:"📏",ex:"Beim Kauf von Stiefeln muss man die richtige Größe wissen."},
-   {de:"warm",ka:"თბილი",img:"🔥",ex:"Warme Kleidung schützt vor Kälte."},
-   {de:"passen",ka:"მორგება, შესაფერისი ყოფნა",img:"👌",ex:"Die neuen Stiefel passen gut und drücken nicht."}
-  ]},
-{ id:"c2-technik-2026-10-30", date:"30. Oktober 2026", level:"C2", title:"C2-Paket: Technik & Digitalisierung",
-  words:[
-   {de:"die Digitalisierung",ka:"ციფრულიზაცია",img:"💻",ex:"Durch die Digitalisierung kann Ana Termine und Unterlagen viel schneller mit den Familien abstimmen."},
-   {de:"die Vernetzung",ka:"ქსელში გაერთიანება",img:"🌐",ex:"Die Vernetzung von Pflegekräften und Familien erleichtert den Austausch von Informationen."},
-   {de:"die Datensicherheit",ka:"მონაცემთა დაცვა",img:"🔐",ex:"Datensicherheit ist wichtig, damit private Daten der Familien geschützt bleiben."},
-   {de:"verschlüsseln",ka:"დაშიფვრა",img:"🔒",ex:"Sie verschlüsselt die Nachricht, bevor sie persönliche Daten an die Familie schickt."},
-   {de:"der Algorithmus",ka:"ალგორითმი",img:"🤖",ex:"Ein Algorithmus schlägt passende Pflegekräfte für eine Familie vor."},
-   {de:"die Automatisierung",ka:"ავტომატიზაცია",img:"⚙️",ex:"Durch Automatisierung werden wiederkehrende Aufgaben, zum Beispiel Erinnerungen, einfacher."},
-   {de:"die Schnittstelle",ka:"ინტერფეისი",img:"🔌",ex:"Die neue App ist eine Schnittstelle zwischen Familie und Pflegekraft."},
-   {de:"die Benutzerfreundlichkeit",ka:"მომხმარებლისთვის მოხერხებულობა",img:"👍",ex:"Die Benutzerfreundlichkeit der App ist wichtig, damit auch ältere Menschen sie nutzen können."},
-   {de:"die Fernbetreuung",ka:"დისტანციური მოვლა",img:"📱",ex:"Durch Fernbetreuung kann sie auch aus der Ferne nach einer Seniorin schauen."},
-   {de:"die Künstliche Intelligenz",ka:"ხელოვნური ინტელექტი",img:"🧠",ex:"Künstliche Intelligenz kann helfen, Dienstpläne schneller zu erstellen."}
-  ]},
-{ id:"c1-umwelt-2026-10-29", date:"29. Oktober 2026", level:"C1", title:"C1-Paket: Umwelt & Nachhaltigkeit",
-  words:[
-   {de:"die Nachhaltigkeit",ka:"მდგრადობა",img:"🌱",ex:"Nachhaltigkeit bedeutet, auch an die Zukunft der nächsten Generationen zu denken."},
-   {de:"der Klimawandel",ka:"კლიმატის ცვლილება",img:"🌍",ex:"Der Klimawandel macht die Sommer in Deutschland immer heißer."},
-   {de:"die Mülltrennung",ka:"ნარჩენების დახარისხება",img:"♻️",ex:"Zur Mülltrennung gehören Papier, Glas und Plastik in verschiedene Tonnen."},
-   {de:"recyceln",ka:"გადამუშავება",img:"🔄",ex:"Wenn wir recyceln, müssen weniger neue Rohstoffe abgebaut werden."},
-   {de:"umweltfreundlich",ka:"ეკოლოგიურად სუფთა",img:"🌿",ex:"Sie fährt umweltfreundlich mit dem Fahrrad zur Arbeit."},
-   {de:"erneuerbar",ka:"განახლებადი",img:"☀️",ex:"Erneuerbare Energien kommen aus Sonne, Wind und Wasser."},
-   {de:"der Klimaschutz",ka:"კლიმატის დაცვა",img:"🛡️",ex:"Klimaschutz beginnt im Alltag, zum Beispiel beim Energiesparen."},
-   {de:"die Verschmutzung",ka:"დაბინძურება",img:"🏭",ex:"Die Verschmutzung der Luft ist in großen Städten ein Problem."},
-   {de:"der Ressourcenverbrauch",ka:"რესურსების მოხმარება",img:"⛏️",ex:"Der Ressourcenverbrauch sinkt, wenn wir weniger wegwerfen."},
-   {de:"die Energieeffizienz",ka:"ენერგოეფექტურობა",img:"💡",ex:"Durch Energieeffizienz spart die Familie jeden Monat Stromkosten."}
-  ]},
-{ id:"b2-familie-alltag-2026-10-28", date:"28. Oktober 2026", level:"B2", title:"B2-Paket: Familie & Alltag",
-  words:[
-   {de:"der Alltag",ka:"ყოველდღიური ცხოვრება",img:"🏠",ex:"Im Alltag der Familie hilft die Pflegekraft bei vielen Aufgaben."},
-   {de:"der Tagesablauf",ka:"დღის განრიგი",img:"🗓️",ex:"Der Tagesablauf beginnt am Morgen mit dem Frühstück."},
-   {de:"die Routine",ka:"რუტინა, ჩვეული წესრიგი",img:"🔁",ex:"Eine feste Routine gibt der Familie Sicherheit."},
-   {de:"die Hausarbeit",ka:"სახლის სამუშაო",img:"🧹",ex:"Zur Hausarbeit gehören Kochen, Putzen und Waschen."},
-   {de:"die Mahlzeit",ka:"კვება, ჭამა",img:"🍽️",ex:"Die Pflegekraft bereitet drei Mahlzeiten am Tag vor."},
-   {de:"einkaufen",ka:"საყიდლებზე წასვლა, ყიდვა",img:"🛒",ex:"Am Samstag geht sie für die Familie einkaufen."},
-   {de:"kochen",ka:"საჭმლის მომზადება",img:"🍳",ex:"Sie kocht gern einfache und gesunde Gerichte."},
-   {de:"aufräumen",ka:"დალაგება, მოწესრიგება",img:"🧺",ex:"Nach dem Mittagessen räumt sie die Küche auf."},
-   {de:"der Spaziergang",ka:"გასეირნება",img:"🚶‍♀️",ex:"Am Nachmittag macht sie mit der Seniorin einen Spaziergang."},
-   {de:"die Freizeit",ka:"თავისუფალი დრო",img:"🌳",ex:"In ihrer Freizeit liest sie gern und telefoniert mit ihrer Familie."}
-  ]},
-{ id:"c2-vertrag-2026-10-27", date:"27. Oktober 2026", level:"C2", title:"C2-Paket: Verträge & Formalitäten",
-  words:[
-   {de:"die Klausel",ka:"მუხლი, პუნქტი (ხელშეკრულებაში)",img:"📜",ex:"Eine Klausel im Vertrag regelt die Arbeitszeiten genau."},
-   {de:"die Frist",ka:"ვადა, დადგენილი დრო",img:"⏳",ex:"Die Frist für die Unterschrift endet am Freitag."},
-   {de:"verbindlich",ka:"სავალდებულო, აუცილებლად შესასრულებელი",img:"🔒",ex:"Die Vereinbarung ist für beide Seiten verbindlich."},
-   {de:"rechtskräftig",ka:"კანონიერ ძალაში შესული",img:"⚖️",ex:"Erst nach der Unterschrift ist der Vertrag rechtskräftig."},
-   {de:"die Schweigepflicht",ka:"კონფიდენციალურობის დაცვის ვალდებულება",img:"🤫",ex:"Wegen der Schweigepflicht darf sie keine privaten Details weitererzählen."},
-   {de:"die Haftung",ka:"პასუხისმგებლობა (ზიანისთვის)",img:"🛡️",ex:"Die Haftung für Schäden ist im Vertrag klar geregelt."},
-   {de:"der Widerruf",ka:"ხელშეკრულებიდან უარის თქმა, გაუქმება",img:"↩️",ex:"Der Widerruf des Vertrags muss schriftlich erfolgen."},
-   {de:"die Vollmacht",ka:"მინდობილობა, უფლებამოსილება",img:"📝",ex:"Mit einer Vollmacht darf sie Dokumente für die Familie unterschreiben."},
-   {de:"unterzeichnen",ka:"ხელის მოწერა",img:"✍️",ex:"Beide Seiten unterzeichnen den Vertrag vor dem ersten Arbeitstag."},
-   {de:"die Vertraulichkeit",ka:"კონფიდენციალურობა",img:"🔐",ex:"Vertraulichkeit ist in der Pflege besonders wichtig."}
-  ]},
-{ id:"c1-bildung-2026-10-26", date:"26. Oktober 2026", level:"C1", title:"C1-Paket: Bildung & Weiterbildung",
-  words:[
-   {de:"die Weiterbildung",ka:"კვალიფიკაციის ამაღლება",img:"🎓",ex:"Durch eine Weiterbildung kann sie bessere Stellen in der Pflege bekommen."},
-   {de:"der Lehrgang",ka:"სასწავლო კურსი",img:"📚",ex:"Der Lehrgang für Pflegekräfte dauert drei Monate."},
-   {de:"sich weiterbilden",ka:"კვალიფიკაციის ამაღლება (საკუთარი)",img:"📖",ex:"Sie bildet sich neben der Arbeit in einem Abendkurs weiter."},
-   {de:"die Vorkenntnisse",ka:"წინასწარი ცოდნა",img:"🧠",ex:"Für diesen Kurs sind gute Deutsch-Vorkenntnisse nötig."},
-   {de:"die Zulassung",ka:"დაშვება, ნებართვა",img:"✅",ex:"Nach der Zulassung darf sie an der Prüfung teilnehmen."},
-   {de:"die Anerkennung",ka:"აღიარება (დიპლომის, კვალიფიკაციის)",img:"📜",ex:"Die Anerkennung ihres georgischen Diploms dauert einige Wochen."},
-   {de:"der Nachweis",ka:"დამადასტურებელი დოკუმენტი, ცნობა",img:"🧾",ex:"Als Nachweis braucht die Agentur eine Kopie des Zertifikats."},
-   {de:"die Förderung",ka:"მხარდაჭერა, დაფინანსება",img:"💶",ex:"Es gibt eine Förderung für Weiterbildungskurse in der Pflege."},
-   {de:"der Fernkurs",ka:"დისტანციური კურსი",img:"💻",ex:"Im Fernkurs lernt sie bequem von zu Hause aus."},
-   {de:"der Abschluss",ka:"დამთავრება, დიპლომი",img:"🏅",ex:"Nach dem Abschluss des Kurses bekommt sie ein Zertifikat."}
-  ]},
-{ id:"b2-arbeit-2026-10-25", date:"25. Oktober 2026", level:"B2", title:"B2-Paket: Arbeit & Termine",
-  words:[
-   {de:"der Termin",ka:"დანიშნული შეხვედრა",img:"📅",ex:"Der Termin mit der Familie ist am Dienstag um 10 Uhr."},
-   {de:"die Besprechung",ka:"განხილვა, შეხვედრა",img:"💬",ex:"In der Besprechung klären wir alle Fragen zur Betreuung."},
-   {de:"verschieben",ka:"გადადება",img:"🔄",ex:"Wir müssen den Termin wegen Krankheit leider verschieben."},
-   {de:"der Lebenslauf",ka:"რეზიუმე, ბიოგრაფია",img:"📄",ex:"Bitte schicke mir deinen Lebenslauf per E-Mail."},
-   {de:"die Schicht",ka:"სამუშაო ცვლა",img:"🌙",ex:"Heute arbeitet sie in der Nachtschicht."},
-   {de:"pünktlich",ka:"დროული, პუნქტუალური",img:"⏰",ex:"Sie kommt immer pünktlich zur Arbeit."},
-   {de:"die Arbeitszeit",ka:"სამუშაო დრო",img:"🕘",ex:"Die Arbeitszeit ist von 8 bis 16 Uhr."},
-   {de:"die Überstunden",ka:"ზეგანაკვეთური სამუშაო",img:"⏱️",ex:"Für Überstunden bekommt sie einen Zuschlag."},
-   {de:"der Arbeitsvertrag",ka:"შრომითი ხელშეკრულება",img:"📝",ex:"Im Arbeitsvertrag stehen Gehalt und Urlaubstage."},
-   {de:"die Probezeit",ka:"გამოსაცდელი ვადა",img:"🧪",ex:"Die Probezeit bei der neuen Familie dauert einen Monat."}
-  ]},
-{ id:"c2-kommunikation-2026-10-24", date:"24. Oktober 2026", level:"C2", title:"C2-Paket: Kommunikation & Verhandlung",
-  words:[
-   {de:"die Verhandlung",ka:"მოლაპარაკება",img:"🤝",ex:"Die Verhandlung über den Lohn dauerte fast eine Stunde."},
-   {de:"aushandeln",ka:"მოლაპარაკებით შეთანხმება",img:"💬",ex:"Familie und Pflegekraft handeln die Arbeitszeiten gemeinsam aus."},
-   {de:"die Kompromissbereitschaft",ka:"კომპრომისისადმი მზადყოფნა",img:"⚖️",ex:"Mit etwas Kompromissbereitschaft findet man fast immer eine Lösung."},
-   {de:"überzeugend",ka:"დამაჯერებელი",img:"🎯",ex:"Ihre überzeugenden Argumente machten die Familie sofort neugierig."},
-   {de:"der Einwand",ka:"შენიშვნა, წინააღმდეგობა",img:"✋",ex:"Gegen den späten Arbeitsbeginn gab es keinen Einwand."},
-   {de:"entgegnen",ka:"პასუხის გაცემა, შენიშვნის გაკეთება",img:"🗣️",ex:"Auf die Frage nach dem Gehalt entgegnete sie ruhig und freundlich."},
-   {de:"die Zusage",ka:"დაპირება, თანხმობა",img:"✅",ex:"Nach der Zusage der Familie konnte die Vermittlung abgeschlossen werden."},
-   {de:"die Absage",ka:"უარი, უარყოფა",img:"❌",ex:"Nach der Absage suchte Ana sofort nach einer anderen Familie."},
-   {de:"nachdrücklich",ka:"დაჟინებით, კატეგორიულად",img:"❗",ex:"Sie wies nachdrücklich darauf hin, dass freie Tage eingehalten werden müssen."},
-   {de:"die Einigung",ka:"შეთანხმება",img:"🤝",ex:"Am Ende stand eine Einigung, mit der beide Seiten zufrieden waren."}
-  ]},
-{ id:"c1-gefuehle-2026-10-23", date:"23. Oktober 2026", level:"C1", title:"C1-Paket: Gefühle & Meinungen",
-  words:[
-   {de:"die Begeisterung",ka:"აღფრთოვანება",img:"😍",ex:"Ihre Begeisterung für die Pflegearbeit steckt die ganze Familie an."},
-   {de:"die Enttäuschung",ka:"იმედგაცრუება",img:"😞",ex:"Die Enttäuschung war groß, als der Termin in letzter Minute platzte."},
-   {de:"die Überzeugung",ka:"ღრმა რწმენა, დარწმუნება",img:"🧠",ex:"Aus Überzeugung arbeitet sie seit Jahren in der Pflege."},
-   {de:"empört",ka:"აღშფოთებული",img:"😠",ex:"Die Familie war empört über die Absage ohne Vorwarnung."},
-   {de:"die Sehnsucht",ka:"მონატრება, ძლიერი სწრაფვა",img:"💭",ex:"Die Sehnsucht nach Georgien wird in den Feiertagen besonders stark."},
-   {de:"nachdenklich",ka:"დაფიქრებული, ჩაფიქრებული",img:"🤔",ex:"Nachdenklich saß sie am Telefon und plante die nächste Vermittlung."},
-   {de:"die Erleichterung",ka:"შვება, განთავისუფლება",img:"🍃",ex:"Als die neue Pflegekraft endlich ankam, war die Erleichterung groß."},
-   {de:"skeptisch",ka:"სკეპტიკურად განწყობილი",img:"🧐",ex:"Am Anfang war sie skeptisch, doch das Vertrauen wuchs schnell."},
-   {de:"stolz auf",ka:"ამაყი (ვინმეთი/რაღაცით)",img:"🏆",ex:"Sie ist stolz auf ihre Vermittlungsarbeit."},
-   {de:"die Besorgnis",ka:"შეშფოთება",img:"😟",ex:"Ihre Besorgnis um die alte Dame war deutlich zu spüren."}
-  ]},
-{ id:"b2-reisen-2026-10-22", date:"22. Oktober 2026", level:"B2", title:"B2-Paket: Reisen & Unterwegs",
-  words:[
-   {de:"der Abflug",ka:"აფრენა",img:"🛫",ex:"Der Abflug nach Tiflis ist um 14 Uhr."},
-   {de:"die Unterkunft",ka:"საცხოვრებელი, განთავსება",img:"🏨",ex:"Wir haben eine gemütliche Unterkunft im Zentrum gebucht."},
-   {de:"die Rundreise",ka:"წრიული მოგზაურობა",img:"🗺️",ex:"Sie machen eine Rundreise durch ganz Georgien."},
-   {de:"sich verlaufen",ka:"გზის აბნევა, დაკარგვა",img:"🧭",ex:"In der Altstadt kann man sich leicht verlaufen."},
-   {de:"die Sehenswürdigkeit",ka:"ღირსშესანიშნაობა",img:"🏰",ex:"Die Burg ist die bekannteste Sehenswürdigkeit der Stadt."},
-   {de:"übernachten",ka:"ღამის გათევა",img:"🌙",ex:"Wir übernachten in einem kleinen Hotel am Meer."},
-   {de:"die Verspätung",ka:"დაგვიანება",img:"⏰",ex:"Der Zug hat heute zwanzig Minuten Verspätung."},
-   {de:"umsteigen",ka:"გადაჯდომა",img:"🔄",ex:"In München müssen wir in einen anderen Zug umsteigen."},
-   {de:"die Buchung",ka:"ჯავშანი",img:"📅",ex:"Die Buchung des Fluges hat nur fünf Minuten gedauert."},
-   {de:"das Handgepäck",ka:"ხელბარგი",img:"🎒",ex:"Mein Koffer ist zu groß für das Handgepäck."}
-  ]},
-{ id:"c1-gesundheitssystem-2026-10-22", date:"22. Oktober 2026", level:"C1", title:"C1-Paket: Gesundheitssystem & Versicherung",
-  words:[
-   {de:"die Versicherung",ka:"დაზღვევა",img:"🛡️",ex:"Eine private Versicherung übernimmt mehr Leistungen."},
-   {de:"der Beitrag",ka:"შენატანი",img:"💳",ex:"Der monatliche Beitrag steigt nächstes Jahr leicht an."},
-   {de:"die Leistung",ka:"მომსახურება, შეღავათი",img:"📋",ex:"Welche Leistungen übernimmt die Krankenkasse eigentlich?"},
-   {de:"der Versicherungsnehmer",ka:"დაზღვეული პირი",img:"🧾",ex:"Der Versicherungsnehmer muss den Schaden sofort melden."},
-   {de:"die Selbstbeteiligung",ka:"საკუთარი თანამონაწილეობა გადახდაში",img:"🤝",ex:"Mit einer Selbstbeteiligung wird die Versicherung günstiger."},
-   {de:"die Vorsorgeuntersuchung",ka:"პროფილაქტიკური გამოკვლევა",img:"🩺",ex:"Die Vorsorgeuntersuchung ist einmal im Jahr kostenlos."},
-   {de:"der Hausarzt",ka:"ოჯახის ექიმი",img:"👨‍⚕️",ex:"Zuerst gehe ich immer zu meinem Hausarzt."},
-   {de:"die Überweisung",ka:"მიმართვა (სპეციალისტთან)",img:"📄",ex:"Für den Facharzt brauche ich eine Überweisung."},
-   {de:"versichert sein",ka:"დაზღვეული ყოფნა",img:"✅",ex:"In Deutschland muss jeder krankenversichert sein."},
-   {de:"die Zusatzversicherung",ka:"დამატებითი დაზღვევა",img:"➕",ex:"Viele schließen eine Zusatzversicherung für die Zähne ab."}
-  ]},
-{ id:"c2-abstrakt-2026-10-22", date:"22. Oktober 2026", level:"C2", title:"C2-Paket: Abstrakte Begriffe & Stil",
-  words:[
-   {de:"die Vergänglichkeit",ka:"წარმავლობა",img:"🍂",ex:"Das Gedicht handelt von der Vergänglichkeit des Lebens."},
-   {de:"zwiespältig",ka:"ორაზროვანი, წინააღმდეგობრივი",img:"⚖️",ex:"Er hinterließ einen zwiespältigen Eindruck."},
-   {de:"die Einsicht",ka:"გააზრება, შეგნება",img:"💡",ex:"Mit den Jahren kam die Einsicht, dass Zeit wichtiger ist als Geld."},
-   {de:"sich entfalten",ka:"გაშლა, განვითარება",img:"🌸",ex:"Ihr Talent konnte sich in dieser Umgebung frei entfalten."},
-   {de:"der Grundsatz",ka:"ძირითადი პრინციპი",img:"🧭",ex:"Ehrlichkeit ist sein oberster Grundsatz."},
-   {de:"unerschütterlich",ka:"შეურყეველი, მტკიცე",img:"🗿",ex:"Sie blieb auch in der Krise unerschütterlich ruhig."},
-   {de:"die Wechselwirkung",ka:"ურთიერთქმედება",img:"🔄",ex:"Die Wechselwirkung zwischen Körper und Seele ist stark."},
-   {de:"flüchtig",ka:"წარმავალი, სწრაფად გამქრალი",img:"💨",ex:"Es war nur ein flüchtiger Moment des Glücks."},
-   {de:"die Betrachtungsweise",ka:"ხედვის კუთხე, მიდგომა",img:"👁️",ex:"Aus dieser Betrachtungsweise ergibt sich ein ganz anderes Bild."},
-   {de:"zugrunde liegen",ka:"საფუძვლად დადება",img:"🧱",ex:"Dem Konflikt liegt ein altes Missverständnis zugrunde."}
-  ]},
-{ id:"c1-wohnen-2026-10-22", date:"22. Oktober 2026", level:"C1", title:"C1-Paket: Wohnen & Umzug",
-  words:[
-   {de:"die Wohnungssuche",ka:"ბინის ძებნა",img:"🏘️",ex:"Die Wohnungssuche in Berlin ist sehr anstrengend."},
-   {de:"die Miete",ka:"ქირა",img:"💰",ex:"Die Miete wird jeden Monat pünktlich überwiesen."},
-   {de:"die Kaution",ka:"დეპოზიტი",img:"🔐",ex:"Vor dem Einzug muss man die Kaution zahlen."},
-   {de:"der Mietvertrag",ka:"იჯარის ხელშეკრულება",img:"📝",ex:"Lies den Mietvertrag genau durch, bevor du unterschreibst."},
-   {de:"kündigen",ka:"შეწყვეტა (ხელშეკრულების)",img:"✂️",ex:"Sie will die Wohnung zum Jahresende kündigen."},
-   {de:"einziehen",ka:"გადასვლა (ბინაში შესვლა)",img:"📦",ex:"Nächste Woche ziehen wir in die neue Wohnung ein."},
-   {de:"renovieren",ka:"განახლება, რემონტი",img:"🛠️",ex:"Die Familie lässt die Wohnung vor dem Einzug renovieren."},
-   {de:"die Nachbarschaft",ka:"სამეზობლო",img:"🏡",ex:"In unserer Nachbarschaft kennt man sich gut."},
-   {de:"der Umzug",ka:"გადასახლება",img:"🚚",ex:"Der Umzug der Möbel dauert den ganzen Tag."},
-   {de:"möbliert",ka:"ავეჯით მოწყობილი",img:"🛋️",ex:"Die Ferienwohnung ist komplett möbliert."}
-  ]},
-{ id:"b2-gesundheit-2026-10-21", date:"21. Oktober 2026", level:"B2", title:"B2-Paket: Gesundheit & Arztbesuch",
-  words:[
-   {de:"die Untersuchung",ka:"გამოკვლევა",img:"🩺",ex:"Der Arzt macht morgen eine gründliche Untersuchung."},
-   {de:"das Rezept",ka:"რეცეპტი",img:"🧾",ex:"Die Apotheke braucht das Rezept für die Medikamente."},
-   {de:"die Schmerzen",ka:"ტკივილი",img:"🤕",ex:"Sie hat starke Schmerzen im Rücken."},
-   {de:"die Behandlung",ka:"მკურნალობა",img:"🏥",ex:"Die Behandlung dauert etwa zwei Wochen."},
-   {de:"der Blutdruck",ka:"არტერიული წნევა",img:"🩸",ex:"Wir messen jeden Morgen den Blutdruck."},
-   {de:"sich erholen",ka:"გამოჯანმრთელება, დასვენება",img:"🌿",ex:"Nach der Operation muss sie sich gut erholen."},
-   {de:"die Krankenkasse",ka:"ჯანმრთელობის დაზღვევა (კასა)",img:"📑",ex:"Die Krankenkasse übernimmt die Kosten."},
-   {de:"der Notfall",ka:"გადაუდებელი შემთხვევა",img:"🚨",ex:"Im Notfall rufen wir sofort den Notarzt."},
-   {de:"die Tablette",ka:"ტაბლეტი, აბები",img:"💊",ex:"Sie nimmt die Tablette immer nach dem Essen."},
-   {de:"regelmäßig",ka:"რეგულარულად",img:"🔁",ex:"Sie nimmt ihre Medikamente regelmäßig ein."}
-  ]},
-{ id:"c2-2026-10-21", date:"21. Oktober 2026", level:"C2", title:"C2-Paket: Gehobene Sprache & Präzision",
-  words:[
-   {de:"augenscheinlich",ka:"აშკარად, თვალსაჩინოდ",img:"👀",ex:"Er war augenscheinlich sehr müde."},
-   {de:"die Vorreiterrolle",ka:"წინამძღოლის როლი",img:"🚩",ex:"Die Agentur übernimmt in der Region eine Vorreiterrolle."},
-   {de:"unabdingbar",ka:"აუცილებელი",img:"🔒",ex:"Vertrauen ist für diese Arbeit unabdingbar."},
-   {de:"die Tragweite",ka:"მასშტაბი, მნიშვნელობა",img:"🌐",ex:"Die Tragweite der Entscheidung war allen klar."},
-   {de:"sich bewähren",ka:"საიმედოდ თავის გამართლება",img:"🏅",ex:"Die neue Pflegekraft hat sich schnell bewährt."},
-   {de:"der Werdegang",ka:"ცხოვრების გზა, კარიერა",img:"🛤️",ex:"Ihr beruflicher Werdegang ist beeindruckend."},
-   {de:"nahezu",ka:"თითქმის",img:"🌗",ex:"Das ist nahezu unmöglich."},
-   {de:"die Gelassenheit",ka:"სიმშვიდე, თავშეკავებულობა",img:"🧘",ex:"Sie reagiert auch im Stress mit Gelassenheit."},
-   {de:"von vornherein",ka:"თავიდანვე",img:"🏁",ex:"Das war von vornherein so vereinbart."},
-   {de:"die Wertschätzung",ka:"დაფასება",img:"🙏",ex:"Die Familie zeigt ihr viel Wertschätzung."},
-   {de:"einwandfrei",ka:"უნაკლო, უხარვეზო",img:"✨",ex:"Ihre Arbeit ist immer einwandfrei."},
-   {de:"die Beharrlichkeit",ka:"შეუპოვრობა, სიმტკიცე",img:"⛰️",ex:"Mit Beharrlichkeit erreicht sie jedes Ziel."}
-  ]},
-{ id:"c1-2026-10-21", date:"21. Oktober 2026", level:"C1", title:"C1-Paket: Beruf & Gesellschaft",
-  words:[
-   {de:"die Auswirkung",ka:"შედეგი, გავლენა",img:"🌊",ex:"Die Entscheidung hat große Auswirkungen auf die Familie."},
-   {de:"berücksichtigen",ka:"გათვალისწინება",img:"🔍",ex:"Wir müssen die Wünsche der Familie berücksichtigen."},
-   {de:"der Anspruch",ka:"მოთხოვნა",img:"🎯",ex:"Die Arbeit stellt hohe Ansprüche an sie."},
-   {de:"gewährleisten",ka:"უზრუნველყოფა",img:"🛡️",ex:"So können wir eine gute Betreuung gewährleisten."},
-   {de:"die Maßnahme",ka:"ღონისძიება",img:"🛠️",ex:"Diese Maßnahme verbessert die Pflege deutlich."},
-   {de:"erheblich",ka:"მნიშვნელოვანი, საგრძნობი",img:"📈",ex:"Die Kosten sind erheblich gestiegen."},
-   {de:"die Grundlage",ka:"საფუძველი",img:"🧱",ex:"Vertrauen ist die Grundlage unserer Arbeit."},
-   {de:"sich auswirken auf",ka:"გავლენის მოხდენა, ასახვა",img:"🌡️",ex:"Stress wirkt sich auf die Gesundheit aus."},
-   {de:"der Zugang",ka:"წვდომა",img:"🔑",ex:"Sie hat Zugang zu allen wichtigen Unterlagen."},
-   {de:"verantwortungsbewusst",ka:"პასუხისმგებლიანი",img:"💎",ex:"Sie arbeitet sehr verantwortungsbewusst."},
-   {de:"die Herausforderung",ka:"გამოწვევა",img:"🧗",ex:"Die neue Aufgabe ist eine große Herausforderung."},
-   {de:"im Voraus",ka:"წინასწარ",img:"⏩",ex:"Bitte sagen Sie mir Änderungen im Voraus."}
-  ]},
-{ id:"start-2026-10-20", date:"20. Oktober 2026", level:"B2", title:"Start-Paket: Pflege & Vermittlung",
-  words:[
-   {de:"die Vermittlung",ka:"შუამავლობა",img:"🤝",ex:"Die Vermittlung einer Pflegekraft dauert manchmal zwei Wochen."},
-   {de:"die Pflegekraft",ka:"მომვლელი",img:"🧑‍⚕️",ex:"Die Familie sucht eine erfahrene Pflegekraft."},
-   {de:"die Betreuung",ka:"მოვლა, მზრუნველობა",img:"💙",ex:"Die alte Dame braucht den ganzen Tag Betreuung."},
-   {de:"die Provision",ka:"საკომისიო",img:"💶",ex:"Die Agentur bekommt eine Provision für die Vermittlung."},
-   {de:"zuverlässig",ka:"სანდო",img:"✅",ex:"Es ist wichtig, zuverlässig zu sein."},
-   {de:"die Bewerbung",ka:"განაცხადი (სამსახურზე)",img:"📄",ex:"Sie schickt ihre Bewerbung an die Familie."},
-   {de:"sich kümmern um",ka:"ზრუნვა ვინმეზე",img:"🤲",ex:"Sie kümmert sich um ihre Großmutter."},
-   {de:"der Haushalt",ka:"საშინაო საქმეები, ოჯახის მართვა",img:"🏠",ex:"Er hilft ihr im Haushalt."},
-   {de:"vereinbaren",ka:"შეთანხმება, დანიშვნა",img:"📅",ex:"Wir müssen einen Termin vereinbaren."},
-   {de:"die Erfahrung",ka:"გამოცდილება",img:"⭐",ex:"Er hat viel Erfahrung als Pflegekraft."},
-   {de:"die Voraussetzung",ka:"წინაპირობა",img:"📋",ex:"Gute Deutschkenntnisse sind eine wichtige Voraussetzung."},
-   {de:"zuständig",ka:"პასუხისმგებელი",img:"🗂️",ex:"Wer ist für die Organisation zuständig?"}
-  ]},
+   {de:"der Anruf",ka:"ზარი",img:"📞",ex:"Der Anruf der Tochter kommt jeden Sonntag um zehn Uhr."},
+   {de:"zurückrufen",ka:"გადმორეკვა",img:"📲",ex:"Ich habe die Familie nicht erreicht, aber sie ruft mich heute noch zurück."},
+   {de:"vereinbaren",ka:"შეთანხმება",img:"📅",ex:"Wir vereinbaren am Telefon einen Termin für das erste Kennenlernen."},
+   {de:"Bescheid sagen",ka:"აცნობო",img:"📢",ex:"Bitte sagen Sie mir Bescheid, wenn etwas fehlt oder nicht stimmt."},
+   {de:"die Absprache",ka:"შეთანხმებული პირობა",img:"📝",ex:"Nach unserer Absprache komme ich jeden Morgen um acht Uhr."},
+   {de:"sich erkundigen",ka:"გამოკითხვა",img:"❓",ex:"Die Tochter erkundigt sich jeden Tag, wie es ihrer Mutter geht."},
+   {de:"erreichbar",ka:"კავშირზე ყოფნა",img:"📶",ex:"In der Nacht bin ich für Notfälle immer telefonisch erreichbar."},
+   {de:"die Angehörigen",ka:"ახლობლები",img:"👨‍👩‍👧",ex:"Die Angehörigen freuen sich sehr über die liebevolle Betreuung."},
+   {de:"der Termin",ka:"ვიზიტი, შეხვედრის დრო",img:"🗓️",ex:"Der nächste Termin beim Hausarzt ist am Donnerstag um elf Uhr."},
+   {de:"absagen",ka:"გაუქმება",img:"🚫",ex:"Den Termin mussten wir absagen, weil die Seniorin krank war."}
+  ]}
 ];
 const GRAMMAR=[
- {lvl:"B2",q:"Der Wetterbericht sagt, dass es morgen stark ______ wird.",opts:["regnen","regnet","geregnet","regnend"],a:0},
- {lvl:"B2",q:"Wenn es nicht so kalt ______, würden wir länger draußen bleiben.",opts:["ist","wäre","war","sein"],a:1},
- {lvl:"B2",q:"Der Regenschirm, ______ Ana gestern gekauft hat, ist sehr praktisch.",opts:["der","den","dem","die"],a:1},
- {lvl:"B2",q:"Die Vorhersage für das Wochenende ist gut, ______ wir einen Ausflug planen können.",opts:["sodass","weil","obwohl","trotzdem"],a:0},
- {lvl:"C2",q:"Die Sprecherin erklärte, die Gesetzgebung ______ im nächsten Jahr geändert.",opts:["werde","wird","würde","werden"],a:0},
- {lvl:"C2",q:"Der von der Bürgerinitiative ______ Vorschlag wurde im Parlament diskutiert.",opts:["eingebrachte","einbringen","eingebracht zu","einbringende"],a:0},
- {lvl:"C2",q:"______ der Grundrechte darf niemand wegen seiner Herkunft benachteiligt werden.",opts:["Aufgrund","Wegen dem","Trotz dem","Anstatt"],a:0},
- {lvl:"C2",q:"Die Wahlbeteiligung ist in den letzten Jahren gestiegen, ______ viele Bürger sich stärker engagieren.",opts:["weil","obwohl","damit","statt"],a:0},
- {lvl:"C1",q:"Der Antrag auf eine Aufenthaltserlaubnis muss ______ der Ausländerbehörde gestellt werden.",opts:["bei","an","in","auf"],a:0},
- {lvl:"C1",q:"Die Pflegekraft, ______ Aufenthaltserlaubnis bald abläuft, beantragt eine Verlängerung.",opts:["deren","derer","dessen","welcher"],a:0},
- {lvl:"C1",q:"______ die Bearbeitungszeit lang ist, sollte man den Antrag früh stellen.",opts:["Da","Obwohl","Trotzdem","Während"],a:0},
- {lvl:"C1",q:"Die Sachbearbeiterin bat die Familie, die fehlenden Unterlagen ______.",opts:["nachzureichen","nachreichen","nachgereicht","nachreichend"],a:0},
- {lvl:"B2",q:"Am Samstag kauft Ana auf dem Wochenmarkt frisches Gemüse ______.",opts:["ein","aus","an","auf"],a:0},
- {lvl:"B2",q:"Ana stellt den Einkaufswagen ______ Kasse ab und holt eine Tüte.",opts:["an der","an die","an dem","an den"],a:0},
- {lvl:"B2",q:"Ich ______ gern wissen, ob das Angebot noch bis Samstag gilt.",opts:["werde","wollte","würde","will"],a:2},
- {lvl:"B2",q:"Auf dem Wochenmarkt ist das Gemüse oft ______ als im Supermarkt.",opts:["frisch","am frischsten","frischer","frischere"],a:2},
- {lvl:"C2",q:"Die Kritikerin schrieb, die Ausstellung ______ großen Anklang gefunden.",opts:["habe","hat","hätte","haben"],a:0},
- {lvl:"C2",q:"Das Kunstwerk, ______ sich alle Besucher versammelten, stammt aus Georgien.",opts:["um das","um dem","um den","um der"],a:0},
- {lvl:"C2",q:"______ der Kritik besuchte sie die Aufführung ein zweites Mal.",opts:["Ungeachtet","Trotz","Wegen","Anstatt"],a:0},
- {lvl:"C2",q:"Es gilt, die Ästhetik des Hauses ______ und zu bewahren.",opts:["zu schätzen","schätzen","geschätzt","schätzend"],a:0},
- {lvl:"C1",q:"Die Journalistin berichtete, die Agentur ______ die neuen Regeln bereits veröffentlicht.",opts:["habe","hat","hätte","haben"],a:0},
- {lvl:"C1",q:"Die Sendung, in ______ über Pflege berichtet wurde, war sehr informativ.",opts:["der","die","dem","den"],a:0},
- {lvl:"C1",q:"Sowohl die Familien ______ auch die Pflegekräfte profitieren von klaren Verträgen.",opts:["als","wie","oder","und"],a:0},
- {lvl:"C1",q:"Sie prüft jede Nachricht genau, ______ sie keine Falschmeldung weitergibt.",opts:["indem","damit","obwohl","sodass"],a:1},
- {lvl:"B2",q:"Am Wochenende ______ sie sich bei einem guten Buch.",opts:["entspannt","entspannen","entspannst","entspannen sich"],a:0},
- {lvl:"B2",q:"Sie freut sich ______ die Einladung zum Geburtstag.",opts:["über","auf","an","für"],a:0},
- {lvl:"B2",q:"Der Ausflug, ______ Ana mit Emilio plant, findet am Samstag statt.",opts:["den","der","dem","die"],a:0},
- {lvl:"B2",q:"Wenn sie frei hat, ______ sie gern Freunde ein.",opts:["lädt","laden","ladet","lädtet"],a:0},
- {lvl:"C2",q:"Gemäß ______ Abrechnung muss die Familie die Vergütung bis zum Monatsende überweisen.",opts:["der","die","dem","den"],a:0},
- {lvl:"C2",q:"Es ist unerlässlich, dass die Pflegekraft über ihre Pflichten ______ wird.",opts:["aufklärt","aufgeklärt","aufklärend","aufzuklären"],a:1},
- {lvl:"C2",q:"Die Vermittlung, ______ Ana sich seit Wochen bemüht, steht kurz vor dem Abschluss.",opts:["um die","um der","für die","über die"],a:0},
- {lvl:"C2",q:"______ groß die Kosten auch sein mögen, auf Qualität darf nicht verzichtet werden.",opts:["Wie","So","Ob","Je"],a:0},
- {lvl:"C1",q:"Die Pflegekraft sagte, sie ______ am Montag mit dem neuen Einsatz beginnen.",opts:["wird","werde","würde","werden"],a:1},
- {lvl:"C1",q:"Die Familie, mit ______ Ana schon lange zusammenarbeitet, empfiehlt sie gern weiter.",opts:["der","die","dem","den"],a:0},
- {lvl:"C1",q:"Je mehr Vertrauen man aufbaut, ______ besser gelingt die Zusammenarbeit.",opts:["desto","so","dann","je"],a:0},
- {lvl:"C1",q:"Es ist wichtig, auf die Wünsche der Seniorin Rücksicht ______.",opts:["nehmen","zu nehmen","genommen","nehmend"],a:1},
- {lvl:"B2",q:"Wenn ich mehr Zeit ______, würde ich einen Deutschkurs besuchen.",opts:["habe","hätte","hatte gehabt","haben werde"],a:1},
- {lvl:"B2",q:"Das Haus ______ vor zwei Jahren gebaut.",opts:["wird","wurde","ist werden","hat"],a:1},
- {lvl:"B2",q:"Die Frau, ______ Mann im Krankenhaus liegt, braucht Unterstützung.",opts:["deren","dessen","der","die"],a:0},
- {lvl:"B2",q:"Er freut sich ______ deine Nachricht. Er hat sie gerade gelesen.",opts:["auf","über","für","an"],a:1},
- {lvl:"B2",q:"Sie interessiert sich sehr ______ gesunde Ernährung.",opts:["an","für","über","auf"],a:1},
- {lvl:"B2",q:"______ es stark regnete, gingen wir spazieren.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
- {lvl:"B2",q:"Er lernt Deutsch, ______ in Deutschland arbeiten zu können.",opts:["um","damit","statt","ohne"],a:0},
- {lvl:"B2",q:"Das ist das schönste Geschenk, ______ ich je bekommen habe.",opts:["der","den","das","dem"],a:2},
- {lvl:"B2",q:"Wenn der Termin verschoben werden ______, sage mir bitte Bescheid.",opts:["muss","musst","müssen","gemusst"],a:0},
- {lvl:"B2",q:"Je mehr du übst, ______ sprichst du Deutsch.",opts:["besser","am besten","gut","mehr gut"],a:0},
- {lvl:"C1",q:"Die Patientin sagte, sie ______ gestern starke Schmerzen gehabt.",opts:["hat","habe","hätte","hatte"],a:1},
- {lvl:"C1",q:"Das Formular ist von der Pflegekraft ______.",opts:["auszufüllen","ausfüllen","ausgefüllt werden","füllt aus"],a:0},
- {lvl:"C1",q:"______ der Medikamentengabe muss die Dosierung geprüft werden.",opts:["Vor","Bevor","Vorm","An"],a:0},
- {lvl:"C1",q:"Die Unterlagen lassen sich leicht ______.",opts:["zu ordnen","ordnen","geordnet","ordnend"],a:1},
- {lvl:"C1",q:"Der Arzt meinte, die Therapie ______ bald Wirkung zeigen.",opts:["wird","werde","würde","wurde"],a:1},
- {lvl:"C2",q:"Die von der Familie ______ Pflegekraft beginnt am Montag.",opts:["ausgewählte","auswählen","ausgewählt zu","wählende"],a:0},
- {lvl:"C2",q:"______ aller Bemühungen konnte die Familie keine Pflegekraft finden.",opts:["Trotz","Wegen","Anstatt","Statt"],a:0},
- {lvl:"C2",q:"Die neue Regelung tritt ______ 1. November in Kraft.",opts:["am","im","zum","beim"],a:0},
- {lvl:"C2",q:"Die Pflegekraft, ______ Einsatz alle lobten, blieb zwei Jahre bei der Familie.",opts:["deren","derer","dessen","welcher"],a:0},
- {lvl:"C2",q:"Kaum hatte sie angerufen, ______ die Familie schon zurück.",opts:["rief","ruft","gerufen","anrief"],a:0},
- {lvl:"B2",q:"Sie nimmt die Tabletten, ______ der Arzt es so verordnet hat.",opts:["weil","obwohl","damit","statt"],a:0},
- {lvl:"B2",q:"______ der Behandlung fühlte sie sich viel besser.",opts:["Nach","Nachdem","Währenddessen","Bevor"],a:0},
- {lvl:"B2",q:"Die Ärztin empfiehlt ihr, mehr Wasser ______.",opts:["zu trinken","trinken","trinkt","getrunken"],a:0},
- {lvl:"B2",q:"Anstatt lange zu warten, ______ wir gleich den Arzt an.",opts:["rufen","ruft","gerufen","anrufen"],a:0},
- {lvl:"C1",q:"Weder der Vermieter ______ die Mieterin waren mit dem Zustand zufrieden.",opts:["noch","oder","sondern","weder"],a:0},
- {lvl:"C1",q:"Der Umzug war teurer, ______ wir anfangs gedacht hatten.",opts:["wie","als","dass","obwohl"],a:1},
- {lvl:"C1",q:"Trotz ______ Kälte will sie nicht aus der Wohnung ausziehen.",opts:["der großen","die große","großer","den großen"],a:0},
- {lvl:"C1",q:"Er war so müde, ______ er kaum die Augen offen halten konnte.",opts:["dass","damit","weil","ob"],a:0},
- {lvl:"B2",q:"Wir bleiben heute zu Hause, ______ es den ganzen Tag regnet.",opts:["denn","obwohl","trotzdem","damit"],a:0},
- {lvl:"B2",q:"Das Zimmer, ______ wir seit März wohnen, ist sehr hell.",opts:["dem","in dem","den","in den"],a:1},
- {lvl:"B2",q:"______ du mir bitte die Unterlagen bis morgen schicken?",opts:["Könntest","Konntest","Könne","Könntet"],a:0},
- {lvl:"B2",q:"Statt ______ Taxi zu nehmen, ist sie zu Fuß gegangen.",opts:["ein","eines","einem","eins"],a:0},
- {lvl:"C1",q:"Er behauptete, von dem Unfall nichts ______.",opts:["gewusst zu haben","zu wissen gehabt","gewissen zu haben","wissen zu haben"],a:0},
- {lvl:"C1",q:"Er tat so, ______ er von nichts wüsste.",opts:["als ob","ob als","wie ob","als dass"],a:0},
- {lvl:"C1",q:"Die Kosten werden von der Versicherung ______, wenn der Antrag vollständig ist.",opts:["übernommen","übernehmen","übernehmend","übernahm"],a:0},
- {lvl:"C1",q:"Sie versicherte ihm, ______ Antrag noch heute zu bearbeiten.",opts:["den","der","dem","das"],a:0},
- {lvl:"C2",q:"______ des steigenden Bedarfs wurden zusätzliche Pflegekräfte eingestellt.",opts:["Angesichts","Anstatt","Zwecks","Während"],a:0},
- {lvl:"C2",q:"Es bedarf großer Anstrengungen, ______ Ziel zu erreichen.",opts:["dieses","diesem","diesen","dieser"],a:0},
- {lvl:"C2",q:"Der Vertrag gilt als ______, sobald beide Seiten unterschrieben haben.",opts:["geschlossen","schließen","schließenden","geschlossenem"],a:0},
- {lvl:"C2",q:"Dem Bericht ______ lässt sich die Entwicklung gut nachvollziehen.",opts:["zufolge","folgend","gefolgt","zufolgen"],a:0},
- {lvl:"C1",q:"Je mehr Erfahrung die Bewerberin hat, ______ einfacher wird die Vermittlung.",opts:["desto","so","dann","umso weniger"],a:0},
- {lvl:"C1",q:"Er erinnerte sie daran, ______ Antrag rechtzeitig einzureichen.",opts:["den","dem","der","des"],a:0},
- {lvl:"C1",q:"Nicht nur die Pflegekraft, ______ auch die Familie zeigte große Wertschätzung.",opts:["sondern","aber","dennoch","jedoch"],a:0},
- {lvl:"C1",q:"Der Vertrag, ______ beide Seiten sofort einverstanden waren, wurde unterschrieben.",opts:["mit dem","den","mit dessen","welches"],a:0},
- {lvl:"C2",q:"Die Agentur teilte mit, die neue Pflegekraft ______ am Montag.",opts:["beginne","beginnt","begänne","begonnen"],a:0},
- {lvl:"C2",q:"Ungeachtet ______ Einwände wurde der Vertrag unterschrieben.",opts:["der","den","die","dem"],a:0},
- {lvl:"C2",q:"Je überzeugender das Angebot, ______ eher stimmt die Familie zu.",opts:["desto","umso weniger","so","dann"],a:0},
- {lvl:"C2",q:"Die Verhandlung wurde vertagt, ______ noch offene Fragen zu klären.",opts:["um","damit","statt","ohne"],a:0},
- {lvl:"B2",q:"______ sie pünktlich war, konnte die Besprechung rechtzeitig beginnen.",opts:["Da","Trotzdem","Obwohl","Damit"],a:0},
- {lvl:"B2",q:"Der Lebenslauf muss bis Freitag ______ werden.",opts:["geschickt","schicken","schickt","geschickten"],a:0},
- {lvl:"B2",q:"Die Pflegekraft, ______ wir gestern angerufen haben, kommt am Montag.",opts:["die","der","den","dem"],a:0},
- {lvl:"B2",q:"Anstatt Überstunden zu machen, ______ sie lieber früher nach Hause.",opts:["geht","gehen","gegangen","gehen zu"],a:0},
- {lvl:"C1",q:"Die Anerkennung des Diploms ist Voraussetzung dafür, ______ in Deutschland arbeiten zu dürfen.",opts:["um","damit","dass","ohne"],a:0},
- {lvl:"C1",q:"Je mehr Vorkenntnisse die Teilnehmerin mitbringt, ______ schneller kann sie den Lehrgang abschließen.",opts:["desto","so","dann","umso"],a:0},
- {lvl:"C1",q:"Der Fernkurs richtet sich an alle, ______ sich neben der Arbeit weiterbilden wollen.",opts:["die","der","den","welche"],a:0},
- {lvl:"C1",q:"Sie hat den Lehrgang erfolgreich abgeschlossen, ______ sie nebenbei Vollzeit gearbeitet hat.",opts:["obwohl","trotzdem","denn","weil"],a:0},
- {lvl:"C2",q:"______ der Schweigepflicht darf die Pflegekraft keine privaten Details über die Familie weitererzählen.",opts:["Aufgrund","Wegen dem","Trotz dem","Anstatt"],a:0},
- {lvl:"C2",q:"Die Frist, ______ die Unterlagen eingereicht werden müssen, endet am Freitag.",opts:["bis zu der","bis zu die","bis zu dem","bis zu den"],a:0},
- {lvl:"C2",q:"Die Agentur betonte, die Pflegekraft ______ über alle Termine informiert worden.",opts:["sei","ist","wäre","werde"],a:0},
- {lvl:"C2",q:"Erst nachdem der Vertrag ______ worden war, begann die Pflegekraft mit der Arbeit.",opts:["unterzeichnet","unterzeichnen","unterzeichnete","unterzeichneten"],a:0},
- {lvl:"B2",q:"Sie räumt die Küche auf, ______ sie das Mittagessen kocht.",opts:["bevor","während","nachdem","trotzdem"],a:0},
- {lvl:"B2",q:"Am Wochenende hat sie viel Freizeit, ______ sie spazieren gehen kann.",opts:["damit","sodass","weil","obwohl"],a:1},
- {lvl:"B2",q:"Die Pflegekraft ______ jeden Morgen um 7 Uhr auf.",opts:["steht","stehe","gestanden","stehen"],a:0},
- {lvl:"B2",q:"Der Tagesablauf ______ am Morgen mit dem Frühstück.",opts:["beginnt","beginne","begonnen","beginnen"],a:0},
- {lvl:"C1",q:"Je mehr Müll wir recyceln, ______ weniger Ressourcen verbrauchen wir.",opts:["desto","so","dann","umso"],a:0},
- {lvl:"C1",q:"Die Regierung plant, den CO2-Ausstoß bis 2030 deutlich ______.",opts:["zu senken","senken","gesenkt","senkend"],a:0},
- {lvl:"C1",q:"Sie fordert, dass die Energieeffizienz ______ wird.",opts:["verbessert","verbessern","verbesserte","verbessernd"],a:0},
- {lvl:"C1",q:"Trotz ______ Bemühungen steigt der Ressourcenverbrauch weiter.",opts:["aller","alle","allen","alles"],a:0},
- {lvl:"C2",q:"______ der Digitalisierung lassen sich Termine heute viel schneller abstimmen.",opts:["Dank","Wegen","Trotz","Anstatt"],a:0},
- {lvl:"C2",q:"Die App, ______ Benutzerfreundlichkeit alle loben, wird oft empfohlen.",opts:["deren","dessen","derer","welche"],a:0},
- {lvl:"C2",q:"Die Digitalisierung schreitet voran, ______ viele ältere Menschen noch unsicher sind.",opts:["obwohl","trotzdem","denn","damit"],a:0},
- {lvl:"C2",q:"Es ist unabdingbar, dass persönliche Daten in der Vermittlung ______ werden.",opts:["geschützt","schützen","schützend","geschützten"],a:0},
- {lvl:"B2",q:"Es ist so kalt, ______ sie einen warmen Pullover anzieht.",opts:["dass","weil","obwohl","damit"],a:0},
- {lvl:"B2",q:"Im Winter ______ es oft schon um 17 Uhr dunkel.",opts:["wird","werden","ist","wurde"],a:0},
- {lvl:"B2",q:"Sie friert, ______ sie keine Mütze trägt.",opts:["weil","obwohl","trotzdem","damit"],a:0},
- {lvl:"B2",q:"Die Jacke, ______ sie gestern gekauft hat, ist sehr warm.",opts:["die","der","dem","das"],a:0},
- {lvl:"C1",q:"Je ausgewogener die Ernährung ist, ______ besser fühlt sie sich.",opts:["desto","so","dann","umso weniger"],a:0},
- {lvl:"C1",q:"Es ist wichtig, auf die Nährstoffe ______.",opts:["zu achten","achten","geachtet","achtend"],a:0},
- {lvl:"C1",q:"______ sie wenig Appetit hat, isst sie regelmäßig kleine Mahlzeiten.",opts:["Obwohl","Trotzdem","Weil","Damit"],a:0},
- {lvl:"C1",q:"Die Nährstoffe, ______ der Körper braucht, sind in Gemüse enthalten.",opts:["die","der","den","das"],a:0},
- {lvl:"C2",q:"Die Beraterin betonte, Achtsamkeit ______ im Pflegealltag eine wichtige Rolle.",opts:["spiele","spielt","spielte","spielen würde"],a:0},
- {lvl:"C2",q:"Ungeachtet ______ Belastungen blieb sie ausgeglichen.",opts:["der hohen","die hohen","den hohen","hoher"],a:0},
- {lvl:"C2",q:"Die Zäsur, ______ ihr Leben eine neue Richtung nahm, war der Umzug nach Deutschland.",opts:["mit der","durch die","mit dem","bei der"],a:0},
- {lvl:"C2",q:"Die bewusst ______ Pause hilft ihr, wieder Kraft zu schöpfen.",opts:["eingelegte","einlegen","eingelegt zu","einlegende"],a:0},
- {lvl:"B2",q:"Wenn Ana die Familie nicht erreicht, ______ sie eine Nachricht.",opts:["hinterlässt","hinterlassen","hinterlasse","hinterlässtet"],a:0},
- {lvl:"B2",q:"Die Pflegekraft, ______ Ana gestern angerufen hat, beginnt am Montag.",opts:["der","die","den","dem"],a:1},
- {lvl:"B2",q:"Sie ruft die Familie zurück, ______ sie die Mailbox abgehört hat.",opts:["nachdem","bevor","während","obwohl"],a:0},
- {lvl:"B2",q:"Bitte rufen Sie mich an, ______ Sie Fragen haben.",opts:["falls","obwohl","damit","während"],a:0},
+ {q:"Ich bleibe heute länger bei der Seniorin, ___ sie nicht allein ist.",opts:["weil","obwohl","trotzdem"],a:0,why:"„weil“ nennt den Grund."},
+ {q:"___ sie sehr müde ist, lächelt sie immer noch freundlich.",opts:["Weil","Obwohl","Deshalb"],a:1,why:"„obwohl“ = es ist so, aber trotzdem anders als erwartet."},
+ {q:"Höflich beim Arzt: „___ Sie mir bitte helfen?“",opts:["Kannst","Könnten","Willst"],a:1,why:"„Könnten Sie …?“ ist die höfliche Form (Konjunktiv II)."},
+ {q:"Ana freut sich ___ das Telefonat mit der Familie morgen.",opts:["über","auf","an"],a:1,why:"Etwas Zukünftiges: sich freuen AUF + Akkusativ."},
+ {q:"Ana freut sich ___ das schöne Geschenk von gestern.",opts:["auf","über","von"],a:1,why:"Etwas, das schon da ist: sich freuen ÜBER + Akkusativ."},
+ {q:"Es ist wichtig, die Tabletten pünktlich ___.",opts:["geben","zu geben","gibt"],a:1,why:"Nach „Es ist wichtig“ kommt „zu + Infinitiv“."},
+ {q:"Heute geht es der Seniorin viel ___ als gestern.",opts:["gut","besser","am besten"],a:1,why:"Vergleich mit „als“ → Komparativ: besser."},
+ {q:"Nach dem langen Spaziergang muss sie sich unbedingt ___.",opts:["ausruhen","ausruhst","ruhen aus sich"],a:0,why:"Reflexiv + Infinitiv: sich ausruhen."},
+ {q:"Das ist der Anruf, ___ ich den ganzen Tag gewartet habe.",opts:["auf den","über den","an dem"],a:0,why:"warten AUF + Akkusativ → auf den."},
+ {q:"Sie spricht leise, ___ die Seniorin nicht aufwacht.",opts:["damit","weil","obwohl"],a:0,why:"„damit“ nennt die Absicht: zu diesem Zweck."},
+ {q:"Können Sie mir sagen, wann der Arzt ___?",opts:["kommt morgen","morgen kommt","kommt er morgen"],a:1,why:"In der indirekten Frage steht das Verb am Ende."},
+ {q:"Je mehr Geduld man hat, ___ leichter wird diese Arbeit.",opts:["umso","als","wie"],a:0,why:"„Je …, umso/desto …“ vergleicht zwei Entwicklungen."}
 ];
-const ALLWORDS=[];PACKS.forEach(p=>p.words.forEach(w=>ALLWORDS.push({de:w.de,ka:w.ka,ex:w.ex,img:w.img||"📘",lvl:p.level})));
-let CURLEVEL="Alle";
-function curWords(){return CURLEVEL==="Alle"?ALLWORDS:ALLWORDS.filter(w=>w.lvl===CURLEVEL)}
-/* ===== Audio: Vorlesen mit deutscher Stimme (Web Speech API) ===== */
-/* Professionelle deutsche Stimme wählen: zuerst „Google Deutsch", dann Microsoft-Natural/Neural (z. B. Katja, Stefan, Conrad), dann andere Microsoft-de-DE-Stimmen; Fallback: erste deutsche Stimme. */
-function pickGermanVoice(){try{const vs=speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().replace("_","-").indexOf("de")===0);
- if(!vs.length)return null;
- const byName=function(n){return vs.find(v=>(v.name||"").toLowerCase().indexOf(n)>=0)};
- let v=byName("google deutsch")||byName("google");if(v)return v;
- const names=["katja","stefan","conrad","amala","killian","vicki","hans","marlene"];
- for(let i=0;i<names.length;i++){const c=vs.filter(x=>(x.name||"").toLowerCase().indexOf(names[i])>=0);
-  const nat=c.find(x=>/natural|neural/.test((x.name||"").toLowerCase()));if(nat)return nat;if(c.length)return c[0]}
- v=vs.find(x=>/natural|neural/.test((x.name||"").toLowerCase()));if(v)return v;
- v=vs.find(x=>(x.name||"").toLowerCase().indexOf("microsoft")===0);if(v)return v;
- return vs[0]}catch(e){return null}}
-function speak(txt){try{const u=new SpeechSynthesisUtterance(txt);u.lang="de-DE";u.rate=1.08;
- const dv=pickGermanVoice();if(dv)u.voice=dv;
- speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
-if("speechSynthesis" in window){speechSynthesis.getVoices()}
-function spkBtn(txt){const b=document.createElement("button");b.type="button";b.className="spk";b.textContent="🔊";b.title="Anhören";b.onclick=function(ev){ev.stopPropagation();speak(txt)};return b}
-/* ===== Hör-Prüfung: Dialoge/Texte mit zwei Stimmen abspielen ===== */
-function speakTurns(turns){try{speechSynthesis.cancel();const dv=pickGermanVoice();
- turns.forEach(function(tn){const u=new SpeechSynthesisUtterance(tn.t);u.lang="de-DE";u.rate=1.05;if(dv)u.voice=dv;if(tn.s===1)u.pitch=0.85;speechSynthesis.speak(u)})}catch(e){}}
-function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}}
-/* ===== Inhalte: Hör-Prüfung (B2) — turns: s=0/1 Sprecher, questions: q/opts/a ===== */
 const HOERPRUEFUNG=[
-{title:"Übung 1: Interview mit einer Pflegekraft",names:["Moderatorin","Frau Berger"],
- turns:[
-  {s:0,t:"Guten Morgen, liebe Hörerinnen und Hörer. Heute spreche ich mit Frau Berger. Sie arbeitet seit zehn Jahren als Pflegekraft in einem Seniorenheim. Frau Berger, wie sieht ein normaler Arbeitstag bei Ihnen aus?"},
-  {s:1,t:"Guten Morgen. Mein Tag beginnt um sechs Uhr. Zuerst bespreche ich mit meinen Kolleginnen, wie es den Bewohnern geht. Danach helfe ich den Senioren beim Waschen und Anziehen und bringe ihnen das Frühstück."},
-  {s:0,t:"Was gefällt Ihnen an Ihrem Beruf besonders?"},
-  {s:1,t:"Die Gespräche mit den alten Menschen. Viele erzählen gern von früher, und ich höre ihnen gern zu. Aber die Arbeit ist auch anstrengend. Wir haben oft zu wenig Zeit, weil Personal fehlt."},
-  {s:0,t:"Was müsste sich Ihrer Meinung nach ändern?"},
-  {s:1,t:"Wir brauchen mehr Kolleginnen und Kollegen, damit wir mehr Zeit für jeden Menschen haben. Und die Pflegekräfte sollten besser bezahlt werden. Trotzdem möchte ich keinen anderen Beruf haben. Die Dankbarkeit der Senioren gibt mir viel Kraft."},
-  {s:0,t:"Vielen Dank für das Gespräch, Frau Berger."},
-  {s:1,t:"Sehr gern."}],
- questions:[
-  {q:"Wann beginnt Frau Bergers Arbeitstag?",opts:["um 5 Uhr","um 6 Uhr","um 7 Uhr"],a:1},
-  {q:"Was macht sie zuerst?",opts:["Sie bespricht mit ihren Kolleginnen, wie es den Bewohnern geht.","Sie bringt den Senioren das Frühstück.","Sie hilft den Senioren beim Anziehen."],a:0},
-  {q:"Was ist ein Problem in ihrem Beruf?",opts:["Die Senioren sind unfreundlich.","Es gibt zu wenig Personal.","Die Arbeit ist langweilig."],a:1},
-  {q:"Was wünscht sich Frau Berger?",opts:["mehr Urlaub","weniger Bewohner","mehr Kolleginnen und Kollegen und bessere Bezahlung"],a:2},
-  {q:"Wie steht Frau Berger zu ihrem Beruf?",opts:["Sie möchte bald den Beruf wechseln.","Sie möchte keinen anderen Beruf haben.","Sie ist sehr unzufrieden."],a:1}]},
-{title:"Übung 2: Telefongespräch – Familie sucht eine Pflegekraft",names:["Frau Sommer (Agentur)","Herr Klein"],
- turns:[
-  {s:0,t:"Agentur PflegeStern, Anna Sommer am Apparat. Was kann ich für Sie tun?"},
-  {s:1,t:"Guten Tag, hier spricht Thomas Klein. Es geht um meine Mutter. Sie ist zweiundachtzig Jahre alt und wohnt allein. Nach ihrem Krankenhausaufenthalt braucht sie rund um die Uhr Hilfe."},
-  {s:0,t:"Das verstehe ich. Braucht Ihre Mutter nur Hilfe im Haushalt oder auch bei der Körperpflege?"},
-  {s:1,t:"Beides. Sie kann nicht mehr allein duschen, und auch das Kochen fällt ihr schwer. Wichtig ist uns, dass die Pflegekraft gut Deutsch spricht, weil meine Mutter gern erzählt."},
-  {s:0,t:"Das ist kein Problem. Unsere Pflegekräfte haben viel Erfahrung. Wann soll die Betreuung denn beginnen?"},
-  {s:1,t:"Am besten ab dem ersten November. Und was würde das ungefähr kosten?"},
-  {s:0,t:"Das hängt vom Pflegegrad Ihrer Mutter ab. Ich schicke Ihnen gern ein Angebot per E-Mail zu. Außerdem können wir einen Termin für ein Gespräch bei Ihrer Mutter zu Hause vereinbaren."},
-  {s:1,t:"Das wäre sehr gut. Am Freitag hätte ich ab sechzehn Uhr Zeit."},
-  {s:0,t:"Wunderbar, dann notiere ich: Freitag, sechzehn Uhr, bei Ihrer Mutter. Ich rufe Sie am Donnerstag noch einmal an, um den Termin zu bestätigen."}],
- questions:[
-  {q:"Warum ruft Herr Klein an?",opts:["Er sucht eine Arbeit als Pflegekraft.","Seine Mutter braucht nach dem Krankenhaus rund um die Uhr Hilfe.","Er möchte sich über die Agentur beschweren."],a:1},
-  {q:"Was kann die Mutter nicht mehr allein machen?",opts:["duschen und kochen","lesen und fernsehen","spazieren gehen und einkaufen"],a:0},
-  {q:"Was ist der Familie besonders wichtig?",opts:["Die Pflegekraft soll einen Führerschein haben.","Die Pflegekraft soll möglichst jung sein.","Die Pflegekraft soll gut Deutsch sprechen."],a:2},
-  {q:"Wann soll die Betreuung beginnen?",opts:["sofort, noch diese Woche","ab dem 1. November","erst im nächsten Jahr"],a:1},
-  {q:"Was vereinbaren die beiden am Ende?",opts:["einen Termin am Freitag um 16 Uhr bei der Mutter zu Hause","ein Telefonat am Freitag um 16 Uhr","einen Besuch in der Agentur am Donnerstag"],a:0}]},
-{title:"Übung 3: Radiobericht – Nachtzug Berlin–Wien",names:["Reporter"],
- turns:[
-  {s:0,t:"Gute Nachrichten für alle, die gern mit dem Zug reisen: Ab dem fünfzehnten Dezember gibt es eine neue Nachtzugverbindung von Berlin nach Wien. Der Zug fährt jeden Abend um neunzehn Uhr dreißig am Berliner Hauptbahnhof ab und kommt am nächsten Morgen um sieben Uhr fünfzehn in Wien an. Fahrkarten gibt es ab neunundzwanzig Euro, wenn man früh bucht. Im Zug gibt es Schlafwagen, ein Bordrestaurant und kostenloses WLAN. Die Bahn erwartet besonders viele Fahrgäste in der Weihnachtszeit und empfiehlt deshalb, die Tickets mindestens vier Wochen vorher zu kaufen. Wer mit dem Nachtzug fährt, spart sich nicht nur eine Hotelübernachtung, sondern reist auch umweltfreundlicher als mit dem Flugzeug."}],
- questions:[
-  {q:"Ab wann gibt es die neue Nachtzugverbindung?",opts:["ab dem 1. Dezember","ab dem 15. Dezember","ab dem 1. Januar"],a:1},
-  {q:"Wann kommt der Zug in Wien an?",opts:["um 7:15 Uhr","um 19:30 Uhr","um 6:45 Uhr"],a:0},
-  {q:"Ab welchem Preis gibt es Fahrkarten?",opts:["ab 19 Euro","ab 29 Euro","ab 39 Euro"],a:1},
-  {q:"Was empfiehlt die Bahn für die Weihnachtszeit?",opts:["die Tickets mindestens vier Wochen vorher zu kaufen","nur mit Handgepäck zu reisen","lieber das Auto zu nehmen"],a:0},
-  {q:"Welche Vorteile hat der Nachtzug laut Bericht?",opts:["Er ist schneller als das Flugzeug.","Man spart eine Hotelübernachtung und reist umweltfreundlicher.","Er fährt auch tagsüber."],a:1}]},
-{title:"Übung 4: Dialog – Freunde planen eine Wanderung",names:["Lena","Jonas"],
- turns:[
-  {s:0,t:"Hallo Jonas! Hast du am Wochenende schon etwas vor?"},
-  {s:1,t:"Hallo Lena! Nein, noch nichts. Warum fragst du?"},
-  {s:0,t:"Ich möchte gern in den Bergen bei Garmisch wandern gehen. Das Wetter soll sonnig werden, fünfundzwanzig Grad. Kommst du mit?"},
-  {s:1,t:"Sehr gern! Fahren wir mit dem Zug oder mit dem Auto?"},
-  {s:0,t:"Mit dem Zug ist es entspannter. Es gibt einen Zug um acht Uhr zehn ab Hauptbahnhof. Wir müssen die Tickets aber vorher online kaufen."},
-  {s:1,t:"Gut, das mache ich heute Abend. Und was nehmen wir zu essen mit?"},
-  {s:0,t:"Ich mache belegte Brote und nehme Obst mit. Du kannst etwas zu trinken mitbringen, am besten Wasser. Und vergiss deine Wanderschuhe nicht!"},
-  {s:1,t:"Keine Sorge! Wann treffen wir uns am Samstag?"},
-  {s:0,t:"Um halb acht am Bahnhof, damit wir den Zug nicht verpassen. Die Wanderung dauert ungefähr vier Stunden."},
-  {s:1,t:"Perfekt, ich freue mich schon!"}],
- questions:[
-  {q:"Was möchte Lena am Wochenende machen?",opts:["schwimmen gehen","in den Bergen wandern gehen","eine Stadt besichtigen"],a:1},
-  {q:"Wie wird das Wetter?",opts:["regnerisch und kalt","bewölkt, 15 Grad","sonnig, 25 Grad"],a:2},
-  {q:"Wie fahren die beiden?",opts:["mit dem Zug um 8:10 Uhr","mit dem Auto","mit dem Bus um 9 Uhr"],a:0},
-  {q:"Wer kauft die Tickets?",opts:["Lena, am Bahnhof","Jonas, heute Abend online","niemand, sie brauchen keine"],a:1},
-  {q:"Wann treffen sie sich am Samstag?",opts:["um 7:30 Uhr am Bahnhof","um 8:10 Uhr am Bahnhof","um 9 Uhr bei Lena"],a:0}]},
-{title:"Übung 5: Telefongespräch – Termin beim Arzt",names:["Frau Lehmann (Praxis)","Herr Wagner"],
- turns:[
-  {s:0,t:"Praxis Dr. Weber, guten Tag. Mein Name ist Frau Lehmann. Wie kann ich Ihnen helfen?"},
-  {s:1,t:"Guten Tag, hier ist Michael Wagner. Ich hätte gern einen Termin. Ich habe seit einer Woche starke Rückenschmerzen."},
-  {s:0,t:"Das tut mir leid. Waren Sie schon einmal bei uns?"},
-  {s:1,t:"Ja, vor zwei Jahren war ich schon einmal da."},
-  {s:0,t:"Gut, ich habe Ihre Daten gefunden. Der nächste freie Termin ist am Donnerstag um neun Uhr dreißig. Passt Ihnen das?"},
-  {s:1,t:"Am Donnerstag arbeite ich bis zwölf Uhr. Geht es auch später in der Woche?"},
-  {s:0,t:"Am Freitag um vierzehn Uhr wäre noch ein Termin frei."},
-  {s:1,t:"Freitag passt mir gut. Was soll ich zu dem Termin mitbringen?"},
-  {s:0,t:"Bitte bringen Sie Ihre Versichertenkarte und, wenn Sie welche haben, ältere Befunde mit. Und kommen Sie bitte zehn Minuten früher."},
-  {s:1,t:"Alles klar. Vielen Dank und bis Freitag!"},
-  {s:0,t:"Gern geschehen. Gute Besserung, Herr Wagner!"}],
- questions:[
-  {q:"Warum ruft Herr Wagner an?",opts:["Er möchte ein Rezept abholen.","Er braucht einen Termin wegen Rückenschmerzen.","Er möchte seine Versichertenkarte erneuern."],a:1},
-  {q:"Seit wann hat er Rückenschmerzen?",opts:["seit einer Woche","seit zwei Jahren","seit gestern"],a:0},
-  {q:"Warum passt ihm der Termin am Donnerstag nicht?",opts:["Er arbeitet donnerstags bis 12 Uhr.","Er ist donnerstags nicht in der Stadt.","Er hat donnerstags schon einen anderen Termin."],a:0},
-  {q:"Wann ist sein Termin jetzt?",opts:["Donnerstag, 9:30 Uhr","Freitag, 14:00 Uhr","Freitag, 9:30 Uhr"],a:1},
-  {q:"Was soll er mitbringen und beachten?",opts:["Versichertenkarte und ältere Befunde; 10 Minuten früher kommen","nur die Versichertenkarte; pünktlich um 14 Uhr kommen","einen Überweisungsschein; nüchtern kommen"],a:0}]},
-{title:"Übung 6: Wetterbericht – Unwetterwarnung für das Saarland",names:["Wetteransagerin"],
- turns:[
-  {s:0,t:"Und nun das Wetter für das Saarland, heute am Donnerstag: Am Vormittag ist es noch freundlich, mit Temperaturen um vierzehn Grad."},
-  {s:0,t:"Aber Achtung: Ab dem Nachmittag ziehen von Westen her schwere Gewitter auf. Es muss mit Starkregen, Hagel und Sturmböen bis zu neunzig Stundenkilometern gerechnet werden. Der Deutsche Wetterdienst hat eine Unwetterwarnung für die Landkreise Saarlouis und Merzig-Wadern herausgegeben."},
-  {s:0,t:"Die Warnung gilt von fünfzehn Uhr bis in die späten Abendstunden. Bitte bleiben Sie wenn möglich zu Hause, sichern Sie lose Gegenstände auf dem Balkon und meiden Sie den Wald. Am Freitag beruhigt sich das Wetter wieder, es bleibt aber kühl bei höchstens zwölf Grad."}],
- questions:[
-  {q:"Wie ist das Wetter am Vormittag?",opts:["schweres Gewitter mit Hagel","freundlich, um 14 Grad","stürmischer Dauerregen"],a:1},
-  {q:"Was wird für den Nachmittag erwartet?",opts:["Sonnenschein und Wärme","leichter Nieselregen","schwere Gewitter mit Starkregen und Hagel"],a:2},
-  {q:"Wie stark können die Sturmböen werden?",opts:["bis zu 90 Stundenkilometer","bis zu 50 Stundenkilometer","bis zu 120 Stundenkilometer"],a:0},
-  {q:"Für welche Landkreise gilt die Unwetterwarnung?",opts:["Saarbrücken und Neunkirchen","Saarlouis und Merzig-Wadern","St. Wendel und Homburg"],a:1},
-  {q:"Wie wird das Wetter am Freitag?",opts:["wieder Unwetter den ganzen Tag","wärmer, bis 20 Grad","ruhiger, aber kühl, höchstens 12 Grad"],a:2}]},
-{title:"Übung 7: In der Apotheke – Beratung zu Kopfschmerzen",names:["Frau Yilmaz (Kundin)","Apotheker"],
- turns:[
-  {s:0,t:"Guten Tag. Ich habe seit gestern starke Kopfschmerzen. Haben Sie etwas dagegen?"},
-  {s:1,t:"Guten Tag. Haben Sie nur Kopfschmerzen, oder auch andere Beschwerden, zum Beispiel Fieber?"},
-  {s:0,t:"Nein, Fieber habe ich nicht. Aber ich vertrage nicht alle Medikamente. Gegen Aspirin bin ich allergisch."},
-  {s:1,t:"Gut, dass Sie das sagen. Dann empfehle ich Ihnen Paracetamol. Das ist bei einer Aspirin-Allergie besser geeignet. Nehmen Sie alle sechs Stunden eine Tablette, höchstens vier am Tag."},
-  {s:0,t:"Und darf ich die Tabletten auf leeren Magen nehmen?"},
-  {s:1,t:"Besser nehmen Sie sie nach dem Essen und trinken dazu ein großes Glas Wasser. Und wichtig: Wenn die Schmerzen nach drei Tagen nicht besser werden, gehen Sie bitte zum Arzt."},
-  {s:0,t:"Vielen Dank für die gute Beratung!"},
-  {s:1,t:"Sehr gern. Gute Besserung!"}],
- questions:[
-  {q:"Warum kommt Frau Yilmaz in die Apotheke?",opts:["Sie hat Fieber und Halsschmerzen.","Sie hat seit gestern starke Kopfschmerzen.","Sie braucht ein Rezept vom Arzt."],a:1},
-  {q:"Welche weiteren Beschwerden hat sie?",opts:["Sie hat auch Fieber.","Sie hat Halsschmerzen.","Sie hat keine weiteren Beschwerden, kein Fieber."],a:2},
-  {q:"Wogegen ist Frau Yilmaz allergisch?",opts:["gegen Paracetamol","gegen Aspirin","gegen Ibuprofen"],a:1},
-  {q:"Wie soll sie das empfohlene Medikament einnehmen?",opts:["alle sechs Stunden eine Tablette, höchstens vier am Tag","zwei Tabletten morgens und abends","eine Tablette nur bei sehr starken Schmerzen"],a:0},
-  {q:"Was rät der Apotheker außerdem?",opts:["Die Tabletten immer auf leeren Magen nehmen.","Die Tabletten nach dem Essen nehmen und nach drei Tagen ohne Besserung zum Arzt gehen.","Eine Woche lang im Bett bleiben."],a:1}]},
-{title:"Übung 8: Durchsage im Supermarkt (B2)",names:["Durchsage"],
- turns:[
-  {s:0,t:"Sehr geehrte Kundinnen und Kunden, herzlich willkommen im Supermarkt Frischmarkt! Heute haben wir ein besonderes Angebot für Sie: Frisches Obst und Gemüse vom Wochenmarkt gibt es heute zwanzig Prozent günstiger. Äpfel, Tomaten und Salat sind im Angebot – nur solange der Vorrat reicht."},
-  {s:0,t:"Bitte beachten Sie: Die Kasse 3 bleibt heute wegen einer technischen Störung geschlossen. Nutzen Sie bitte die Kassen 1, 2 und 4. An der Kasse 4 können Sie auch mit Karte bezahlen. Am Samstag ändern sich unsere Öffnungszeiten: Wir sind dann von 7 Uhr bis 22 Uhr für Sie da."},
-  {s:0,t:"Und noch eine Information für alle, die heute mit dem Einkaufswagen einkaufen: Bitte stellen Sie den Wagen nach dem Einkauf wieder zurück und nehmen Sie Ihre Quittung mit. Vielen Dank für Ihren Einkauf – wir wünschen Ihnen einen schönen Tag!"}],
- questions:[
-  {q:"Um wie viel Prozent günstiger sind Obst und Gemüse heute?",opts:["Um 10 Prozent","Um 20 Prozent","Um 30 Prozent"],a:1},
-  {q:"Welche Kasse bleibt heute geschlossen?",opts:["Die Kasse 3","Die Kasse 1","Die Kasse 4"],a:0},
-  {q:"Wie lange ist der Supermarkt am Samstag geöffnet?",opts:["Von 8 bis 20 Uhr","Von 7 bis 20 Uhr","Von 7 bis 22 Uhr"],a:2},
-  {q:"Womit kann man an der Kasse 4 bezahlen?",opts:["Nur bar","Auch mit Karte","Nur mit Gutschein"],a:1},
-  {q:"Was soll man nach dem Einkauf mit dem Einkaufswagen tun?",opts:["Ihn mit nach Hause nehmen","Ihn einfach stehen lassen","Ihn wieder zurückstellen"],a:2}]},
-{title:"Übung 9: Beratungsgespräch im Amt – Aufenthaltserlaubnis verlängern (C1)",names:["Frau Neumann (Sachbearbeiterin)","Frau Kapanadze (Pflegekraft)"],
- turns:[
-  {s:0,t:"Guten Tag, Frau Kapanadze. Sie möchten Ihre Aufenthaltserlaubnis verlängern – richtig?"},
-  {s:1,t:"Guten Tag. Ja, genau. Meine Erlaubnis läuft in sechs Wochen ab, und ich arbeite weiter bei der Familie in Dillingen."},
-  {s:0,t:"Gut, dann brauchen wir einen Antrag und ein paar Unterlagen. Haben Sie Ihren Pass und den Arbeitsvertrag dabei?"},
-  {s:1,t:"Ja, den Pass und den Vertrag habe ich hier. Aber die Bescheinigung über meine Anmeldung fehlt noch – die bekomme ich erst nächste Woche."},
-  {s:0,t:"Das ist kein Problem. Reichen Sie die Bescheinigung einfach nach, sobald Sie sie haben. Die Bearbeitungszeit beträgt etwa vier bis sechs Wochen, also stellen wir den Antrag heute noch."},
-  {s:1,t:"Und was kostet die Verlängerung? Muss ich die Gebühr heute bezahlen?"},
-  {s:0,t:"Die Gebühr beträgt 100 Euro. Sie bekommen den Bescheid per Post, und erst dann zahlen Sie. Bitte achten Sie darauf, dass die neue Erlaubnis erst gilt, wenn der Bescheid da ist."},
-  {s:1,t:"Vielen Dank! Dann schicke ich die Bescheinigung nächste Woche nach und warte auf den Bescheid."}],
- questions:[
-  {q:"Warum ist Frau Kapanadze im Amt?",opts:["Sie will sich ummelden.","Sie will ihre Aufenthaltserlaubnis verlängern.","Sie will einen neuen Pass beantragen."],a:1},
-  {q:"Wann läuft ihre Aufenthaltserlaubnis ab?",opts:["In zwei Wochen","In sechs Wochen","In drei Monaten"],a:1},
-  {q:"Welche Unterlage fehlt noch?",opts:["Der Arbeitsvertrag","Der Pass","Die Bescheinigung über ihre Anmeldung"],a:2},
-  {q:"Wie lange dauert die Bearbeitung etwa?",opts:["Eine Woche","Vier bis sechs Wochen","Drei Monate"],a:1},
-  {q:"Wie hoch ist die Gebühr und wann muss sie zahlen?",opts:["50 Euro, sofort bar","100 Euro, erst nach dem Bescheid","200 Euro, vor der Antragstellung"],a:1}]},
-{title:"Übung 10: Radioreportage – Bürgerinitiative rettet das Stadtteilzentrum (C2)",names:["Reporterin"],
- turns:[
-  {s:0,t:"In der Kleinstadt Dillingen hat eine Bürgerinitiative Großes erreicht: Das alte Stadtteilzentrum, das eigentlich abgerissen werden sollte, bleibt erhalten. Mehr als zweitausend Bürgerinnen und Bürger haben innerhalb von drei Wochen Unterschriften gesammelt und einen Vorschlag bei der Stadt eingereicht."},
-  {s:0,t:"Die Stadtverwaltung hatte geplant, das Gebäude durch ein neues Parkhaus zu ersetzen. Doch die Initiative, die von der Lehrerin Maria Hoffmann gegründet wurde, überzeugte die Politiker mit einem klaren Konzept: Das Zentrum soll ein Treffpunkt für Jung und Alt werden – mit einem Café, einem Leseraum und Kursen für Seniorinnen und Senioren."},
-  {s:0,t:"Am Dienstagabend stimmte der Stadtrat mit großer Mehrheit für den Erhalt. Die Wahlbeteiligung bei der letzten Kommunalwahl lag in Dillingen bei über siebzig Prozent – ein Zeichen dafür, dass die Bürgerinnen und Bürger sich für ihre Stadt engagieren. Die Initiative will jetzt Transparenz bei den weiteren Entscheidungen und plant ein erstes Treffen im Januar."}],
- questions:[
-  {q:"Was sollte mit dem alten Stadtteilzentrum in Dillingen eigentlich passieren?",opts:["Es sollte renoviert werden.","Es sollte abgerissen werden.","Es sollte verkauft werden."],a:1},
-  {q:"Wie viele Unterschriften hat die Bürgerinitiative gesammelt?",opts:["Mehr als zweitausend","Etwa fünfhundert","Genau eintausend"],a:0},
-  {q:"Wer hat die Bürgerinitiative gegründet?",opts:["Die Stadtverwaltung","Eine Lehrerin namens Maria Hoffmann","Der Stadtrat"],a:1},
-  {q:"Wann stimmte der Stadtrat über den Erhalt ab?",opts:["Am Montagmorgen","Am Dienstagabend","Am Freitagmittag"],a:1},
-  {q:"Was plant die Initiative als Nächstes?",opts:["Ein erstes Treffen im Januar","Einen neuen Antrag auf ein Parkhaus","Eine Unterschriftensammlung in einer anderen Stadt"],a:0}]},
-{title:"Übung 11: Alltagsdialog – Spaziergang bei Herbstwetter (B2)",names:["Ana","Frau Kapanadze (Pflegekraft)"],
- turns:[
-  {s:0,t:"Guten Morgen, Frau Kapanadze! Wie ist das Wetter bei Ihnen heute? Bei uns in Dillingen ist es kalt und neblig."},
-  {s:1,t:"Guten Morgen, Ana! Hier ist es auch kalt, nur fünf Grad. Aber die Sonne soll am Nachmittag kommen, das sagt die Vorhersage."},
-  {s:0,t:"Die Seniorin möchte heute gern spazieren gehen. Geht das bei diesem Wetter?"},
-  {s:1,t:"Ja, am Vormittag ist es am besten. Am Nachmittag soll es regnen, deshalb gehen wir lieber jetzt. Ich nehme den Regenschirm mit, für alle Fälle."},
-  {s:0,t:"Gute Idee! Und bitte denken Sie an eine warme Jacke und einen Schal für Frau Müller. Bei Wind und Kälte friert sie schnell."},
-  {s:1,t:"Keine Sorge, ich helfe ihr beim Anziehen. Wir gehen nur eine halbe Stunde in den Park und trinken danach einen warmen Tee."},
-  {s:0,t:"Perfekt! Rufen Sie mich bitte an, wenn Sie wieder zu Hause sind."},
-  {s:1,t:"Mache ich. Bis später, Ana!"}],
- questions:[
-  {q:"Wie kalt ist es heute Morgen?",opts:["Minus zwei Grad","Fünf Grad","Zwölf Grad"],a:1},
-  {q:"Was sagt die Wettervorhersage für den Nachmittag?",opts:["Es soll regnen.","Es soll schneien.","Es bleibt sonnig."],a:0},
-  {q:"Wann wollen sie spazieren gehen?",opts:["Am Vormittag","Am Nachmittag","Am Abend"],a:0},
-  {q:"Was soll Frau Kapanadze für Frau Müller bereitlegen?",opts:["Eine warme Jacke und einen Schal","Einen Sonnenhut und eine Sonnenbrille","Neue Schuhe und Handschuhe"],a:0},
-  {q:"Was soll Frau Kapanadze nach dem Spaziergang tun?",opts:["Ana anrufen, wenn sie wieder zu Hause ist","Den Regenschirm zurückbringen","Einen neuen Termin vereinbaren"],a:0}]}
+ {title:"Übung 1: Der Anruf der Tochter",
+  text:"Guten Tag, hier spricht Frau Schneider. Ich rufe an, weil meine Mutter morgen einen Termin beim Hausarzt hat. Der Termin ist um elf Uhr. Ana, könnten Sie meine Mutter bitte begleiten? Sie soll eine warme Jacke und ihre Versichertenkarte mitnehmen. Nach dem Termin rufen Sie mich bitte an und sagen mir Bescheid, wie es war. Vielen Dank für Ihre liebevolle Hilfe!",
+  qs:[
+   {q:"Warum ruft Frau Schneider an?",opts:["Wegen eines Arzttermins ihrer Mutter","Weil sie eine neue Betreuerin sucht","Wegen eines Geburtstags"],a:0},
+   {q:"Um wie viel Uhr ist der Termin?",opts:["Um zehn Uhr","Um elf Uhr","Um zwölf Uhr"],a:1},
+   {q:"Was soll die Mutter mitnehmen?",opts:["Nur ihren Regenschirm","Eine warme Jacke und die Versichertenkarte","Ein neues Rezeptbuch"],a:1},
+   {q:"Was soll Ana nach dem Termin tun?",opts:["Die Tochter anrufen und Bescheid sagen","Sofort nach Hause fahren","Einen neuen Termin absagen"],a:0}
+  ]},
+ {title:"Übung 2: Am Abend",
+  text:"Am Abend sitzt Frau Müller gemütlich im Wohnzimmer. Ana bringt ihr eine warme Decke und eine Tasse Tee. Sie erzählt von ihrer Familie in Georgien, und Frau Müller lächelt. Sie sagt: Ana, bei dir fühle ich mich wohl. Du hast so viel Geduld mit mir. Dafür bin ich dir sehr dankbar.",
+  qs:[
+   {q:"Wo sitzt Frau Müller am Abend?",opts:["In der Küche","Im Wohnzimmer","Im Garten"],a:1},
+   {q:"Was bringt Ana ihr?",opts:["Eine Decke und eine Tasse Tee","Eine Tablette und Wasser","Ein Buch und eine Brille"],a:0},
+   {q:"Wie fühlt sich Frau Müller bei Ana?",opts:["Unsicher","Wohl und dankbar","Langweilig"],a:1}
+  ]}
 ];
+const ALLWORDS=PACKS.flatMap(p=>p.words.map(w=>({...w,level:p.level,pack:p.title})));
+let CURLEVEL="Alle";
+function wordsForLevel(){return CURLEVEL==="Alle"?ALLWORDS:ALLWORDS.filter(w=>w.level===CURLEVEL)}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function speak(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";u.rate=.92;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
 </script>
+
 <script>
 "use strict";
-/* ===== Fortschritt (nur lokal im Browser) ===== */
+/* ===== Fortschritt — gleicher Schlüssel wie früher, Punkte bleiben erhalten ===== */
 const KEY="b2-spiel-dashboard-v1";
 let S; try{S=JSON.parse(localStorage.getItem(KEY))||null}catch(e){S=null}
 if(!S||typeof S!=="object") S={xp:0,correct:0,answered:0,days:{},lastDay:"",streak:0,flips:0,todayAnswers:0,todayXP:0,todayFlips:0,today:"",level:"Alle"};
-if(!S.level)S.level="Alle";
-CURLEVEL=S.level||"Alle";
+CURLEVEL=["Alle","B2","C1"].includes(S.level)?S.level:"Alle";
 function todayKey(d){d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 function rollDay(){const t=todayKey();if(S.today!==t){S.today=t;S.todayAnswers=0;S.todayXP=0;S.todayFlips=0}}
 rollDay();
@@ -883,110 +318,149 @@ function gain(xp,wasCorrect){rollDay();S.xp+=xp;S.answered++;if(wasCorrect)S.cor
 function renderStats(){const lvl=Math.floor(S.xp/100)+1;const into=S.xp%100;
  document.getElementById("level").textContent=lvl;
  document.getElementById("xp").textContent=S.xp;
- document.getElementById("levelHint").textContent="Noch "+(100-into)+" XP bis zu Level "+(lvl+1);
+ document.getElementById("levelHint").textContent="Noch "+(100-into)+" XP bis Level "+(lvl+1);
  document.getElementById("ringFg").style.strokeDashoffset=(251.2*(1-into/100)).toFixed(1);
  document.getElementById("streak").textContent=S.streak+" 🔥";
  document.getElementById("accuracy").textContent=S.answered?Math.round(S.correct/S.answered*100)+"%":"–";
  document.getElementById("answered").textContent=S.answered;
- document.getElementById("wordCount").textContent=curWords().length;
- document.getElementById("q1").textContent=Math.min(S.todayAnswers,5)+" / 5 "+(S.todayAnswers>=5?"✅":"");
- document.getElementById("q2").textContent=Math.min(S.todayXP,30)+" / 30 XP "+(S.todayXP>=30?"✅":"");
- document.getElementById("q3").textContent=Math.min(S.todayFlips,4)+" / 4 "+(S.todayFlips>=4?"✅":"");
- const bars=document.getElementById("bars"),lbl=document.getElementById("barlbl");bars.innerHTML="";lbl.innerHTML="";
- let max=10;for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);max=Math.max(max,S.days[todayKey(d)]||0)}
- for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const v=S.days[todayKey(d)]||0;
-  const b=document.createElement("div");b.className="bar";b.style.height=Math.max(6,Math.round(v/max*100))+"%";b.innerHTML="<i>"+v+"</i>";bars.appendChild(b);
-  const s=document.createElement("span");s.textContent=["So","Mo","Di","Mi","Do","Fr","Sa"][d.getDay()];lbl.appendChild(s)}}
-/* ===== Pakete / Wortliste / Karteikarten / Bild-Karten ===== */
-function renderPacks(){document.getElementById("packs").innerHTML=PACKS.map(p=>'<div class="pack"><b>'+p.title+'</b> <span class="lvltag">'+p.level+'</span> <span class="muted">('+p.date+')</span><br><span class="muted">'+p.words.length+' neue Wörter: '+p.words.map(w=>w.de).join(", ")+'</span></div>').join("")}
-function renderWords(){const W=curWords();
- const tb=document.getElementById("wordTable");tb.innerHTML="";
- W.forEach(w=>{const tr=document.createElement("tr");
-  const td1=document.createElement("td");td1.innerHTML="<b>"+w.de+"</b>";tr.appendChild(td1);
-  const td2=document.createElement("td");td2.appendChild(spkBtn(w.de));tr.appendChild(td2);
-  const td3=document.createElement("td");td3.textContent=w.ka;tr.appendChild(td3);
-  const td4=document.createElement("td");td4.className="muted";td4.textContent=w.ex;tr.appendChild(td4);
-  const td5=document.createElement("td");td5.innerHTML='<span class="lvltag">'+w.lvl+"</span>";tr.appendChild(td5);
-  tb.appendChild(tr)});
- const f=document.getElementById("flash");f.innerHTML="";
- W.forEach(w=>{const d=document.createElement("div");d.className="flip";d.dataset.state="de";
-  const top=document.createElement("span");top.textContent=w.img+" "+w.de;d.appendChild(top);d.appendChild(spkBtn(w.de));
-  d.onclick=()=>{if(d.dataset.state==="de"){top.textContent=w.ka;d.classList.add("ka");d.dataset.state="ka";S.flips++;S.todayFlips++;save();renderStats()}else{top.textContent=w.img+" "+w.de;d.classList.remove("ka");d.dataset.state="de"}};f.appendChild(d)});
- const pc=document.getElementById("picCards");pc.innerHTML="";
- W.forEach(w=>{const d=document.createElement("div");d.className="piccard";
-  d.innerHTML='<span class="big">'+w.img+'</span><span class="wd">'+w.de+'</span><span class="ka2"></span>';
-  d.onclick=()=>{speak(w.de);d.querySelector(".ka2").textContent=w.ka};pc.appendChild(d)})}
-/* ===== Quiz-Engine ===== */
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a}
-function runQuiz(boxId,questions,label){const box=document.getElementById(boxId);let i=0,score=0;
- function step(){if(i>=questions.length){let bonus=0;if(score===questions.length){bonus=25;S.xp+=25;const t=todayKey();S.days[t]=(S.days[t]||0)+25;S.todayXP+=25;save()}
-   box.innerHTML='<div class="feedback '+(score>=questions.length*0.7?"ok":"bad")+'">Fertig! '+score+" von "+questions.length+" richtig."+(bonus?" Perfekt! +25 Bonus-XP 🎉":"")+'</div><button onclick="document.getElementById(\''+boxId+'\').dispatchEvent(new Event(\'restart\'))">Nochmal spielen</button>';renderStats();return}
-  const qu=questions[i];
-  box.innerHTML="<p><b>"+label+" · Frage "+(i+1)+" / "+questions.length+"</b></p>"+(qu.audio?'<p><button type="button" class="ghost" id="spk-'+boxId+'">🔊 Wort anhören</button></p>':"")+"<p style='font-size:18px'>"+qu.q+"</p>"+qu.opts.map((o,idx)=>'<button class="opt" data-i="'+idx+'">'+o+"</button>").join("")+'<div class="feedback" id="fb-'+boxId+'"></div>';
-  if(qu.audio){const sb=document.getElementById("spk-"+boxId);sb.onclick=()=>speak(qu.audio);speak(qu.audio)}
-  box.querySelectorAll(".opt").forEach(btn=>btn.onclick=()=>{const picked=+btn.dataset.i;const good=picked===qu.a;
-   box.querySelectorAll(".opt").forEach(b=>{b.disabled=true;if(+b.dataset.i===qu.a)b.classList.add("correct")});
-   if(!good)btn.classList.add("wrong");
-   if(good)score++; gain(good?10:0,good);
-   const fb=document.getElementById("fb-"+boxId);fb.innerHTML=good?'<span class="ok">Richtig! +10 XP ✅</span>':'<span class="bad">Nicht ganz. Richtig ist: '+qu.opts[qu.a]+"</span>";
-   const nx=document.createElement("button");nx.textContent=(i+1>=questions.length)?"Ergebnis sehen":"Weiter";nx.onclick=()=>{i++;step()};box.appendChild(nx)})}
- box.addEventListener("restart",()=>{start()},{once:true});
- function start(){i=0;score=0;step()} start()}
-function wordQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.de);const opts=shuffle([w.de].concat(others));return{q:"Was heißt „"+w.ka+"“ auf Deutsch?",opts:opts,a:opts.indexOf(w.de)}})}
-function hearQuestions(){const W=curWords();return shuffle(W).slice(0,10).map(w=>{const others=shuffle(W.filter(x=>x.de!==w.de)).slice(0,3).map(x=>x.ka);const opts=shuffle([w.ka].concat(others));return{q:"Was bedeutet das gehörte Wort?",audio:w.de,opts:opts,a:opts.indexOf(w.ka)}})}
-function grammarQuestions(){const pool=CURLEVEL==="Alle"?GRAMMAR:GRAMMAR.filter(g=>g.lvl===CURLEVEL);const use=pool.length?pool:GRAMMAR;const neu=use.slice(0,4);const rest=shuffle(use.slice(4));return neu.map(g=>({q:'<span class="neu-badge">🆕 NEU</span>'+g.q,opts:g.opts,a:g.a})).concat(rest.map(g=>({q:g.q,opts:g.opts,a:g.a})))}
-document.getElementById("quizStart").onclick=()=>runQuiz("quizBox",wordQuestions(),"Wortschatz-Quiz");
-document.getElementById("hearStart").onclick=()=>runQuiz("hearBox",hearQuestions(),"Hör-Quiz");
-document.getElementById("gramStart").onclick=()=>runQuiz("gramBox",grammarQuestions(),"Grammatik-Duell");
-/* ===== Hör-Prüfung (B2): Text anhören, Antworten antippen ===== */
-function renderHoerPruefung(){const box=document.getElementById("hpBox");if(!box)return;box.innerHTML="";
- HOERPRUEFUNG.forEach(function(ex,ei){const wrap=document.createElement("div");
-  if(ei>0){wrap.style.borderTop="1px solid #2c3160";wrap.style.marginTop="16px";wrap.style.paddingTop="6px"}
-  const h=document.createElement("h3");h.textContent=ex.title;wrap.appendChild(h);
-  const prow=document.createElement("p");
-  const play=document.createElement("button");play.type="button";play.textContent="▶ Text anhören";play.onclick=function(){speakTurns(ex.turns)};prow.appendChild(play);
-  const stop=document.createElement("button");stop.type="button";stop.className="ghost";stop.textContent="⏹ Stopp";stop.onclick=function(){stopSpeak()};prow.appendChild(stop);
-  wrap.appendChild(prow);
-  let done=0,score=0;const result=document.createElement("div");result.className="feedback";
-  ex.questions.forEach(function(qu,qi){const qd=document.createElement("div");
-   const qp=document.createElement("p");qp.innerHTML="<b>"+(qi+1)+".</b> "+qu.q;qd.appendChild(qp);
-   qu.opts.forEach(function(o,oi){const b=document.createElement("button");b.type="button";b.className="opt";b.textContent=o;b.dataset.i=oi;
-    b.onclick=function(){const good=oi===qu.a;
-     qd.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(+x.dataset.i===qu.a)x.classList.add("correct")});
-     if(!good)b.classList.add("wrong");
-     if(good)score++;gain(good?10:0,good);done++;
-     const fbd=document.createElement("div");fbd.className="feedback";
-     fbd.innerHTML=good?'<span class="ok">Richtig! +10 XP ✅</span>':'<span class="bad">Nicht ganz. Richtig ist: '+qu.opts[qu.a]+"</span>";
-     qd.appendChild(fbd);
-     if(done===ex.questions.length){result.innerHTML='<span class="'+(score>=3?"ok":"bad")+'">Ergebnis: '+score+" von "+ex.questions.length+" richtig.</span>"+(score===ex.questions.length?" Perfekt! 🎉":"");result.scrollIntoView({behavior:"smooth",block:"nearest"})}};
-    qd.appendChild(b)});
-   wrap.appendChild(qd)});
-  wrap.appendChild(result);
-  const trb=document.createElement("button");trb.type="button";trb.className="ghost";trb.textContent="📄 Transkript zeigen";
-  const trd=document.createElement("div");trd.style.display="none";
-  trd.innerHTML=ex.turns.map(function(tn){return "<p><b>"+ex.names[tn.s]+":</b> "+tn.t+"</p>"}).join("");
-  trb.onclick=function(){const open=trd.style.display!=="none";trd.style.display=open?"none":"block";trb.textContent=open?"📄 Transkript zeigen":"📄 Transkript verbergen"};
-  wrap.appendChild(trb);wrap.appendChild(trd);
-  box.appendChild(wrap)})}
-renderHoerPruefung();
-/* ===== Memory ===== */
-let memOpen=[],memLock=false,memPairs=0,memTotal=6;
-function startMemory(){const W=shuffle(curWords());const words=W.slice(0,Math.min(6,W.length));memTotal=words.length;let cards=[];words.forEach((w,idx)=>{cards.push({t:w.de,id:idx});cards.push({t:w.ka,id:idx})});cards=shuffle(cards);memOpen=[];memLock=false;memPairs=0;
- const m=document.getElementById("mem");m.innerHTML="";document.getElementById("memInfo").textContent="";
- cards.forEach(c=>{const d=document.createElement("div");d.className="memcard";d.textContent="❓";d.dataset.id=c.id;d.dataset.txt=c.t;
-  d.onclick=()=>{if(memLock||d.classList.contains("open")||d.classList.contains("done"))return;d.classList.add("open");d.textContent=c.t;memOpen.push(d);
-   if(memOpen.length===2){memLock=true;const A=memOpen[0],B=memOpen[1];
-    if(A.dataset.id===B.dataset.id){A.classList.add("done");B.classList.add("done");memPairs++;gain(10,true);
-     document.getElementById("memInfo").innerHTML='<span class="ok">Paar gefunden! +10 XP ✅ ('+memPairs+" / "+memTotal+")</span>";
-     if(memPairs===memTotal)document.getElementById("memInfo").innerHTML='<span class="ok">Memory geschafft! 🎉</span>';memOpen=[];memLock=false}
-    else{gain(0,false);setTimeout(()=>{A.classList.remove("open");B.classList.remove("open");A.textContent="❓";B.textContent="❓";memOpen=[];memLock=false},850)}}};
-  m.appendChild(d)})}
-document.getElementById("memRestart").onclick=startMemory;
-/* ===== Niveau-Auswahl ===== */
-function paintLvlBtns(){document.querySelectorAll(".lvlbtn").forEach(b=>b.classList.toggle("active",b.dataset.lvl===CURLEVEL))}
-document.querySelectorAll(".lvlbtn").forEach(b=>b.onclick=()=>{CURLEVEL=b.dataset.lvl;S.level=CURLEVEL;save();paintLvlBtns();renderWords();renderStats();startMemory()});
-paintLvlBtns();
-renderPacks();renderWords();renderStats();startMemory();
+ document.getElementById("wordcount").textContent=wordsForLevel().length;
+ document.getElementById("q1").textContent=Math.min(S.todayAnswers,5)+" / 5";
+ document.getElementById("q2").textContent=Math.min(S.todayXP,30)+" / 30 XP";
+ document.getElementById("q3").textContent=Math.min(S.todayFlips,4)+" / 4";
+ renderBars();
+ document.querySelectorAll(".lvlbtn").forEach(b=>b.classList.toggle("active",b.dataset.lvl===CURLEVEL));
+}
+function renderBars(){const bars=document.getElementById("bars"),lbl=document.getElementById("barlbl");bars.innerHTML="";lbl.innerHTML="";
+ const names=["So","Mo","Di","Mi","Do","Fr","Sa"];let max=10;
+ const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const v=S.days[todayKey(d)]||0;days.push({n:names[d.getDay()],v});if(v>max)max=v}
+ days.forEach(d=>{const b=document.createElement("div");b.className="bar";b.style.height=Math.max(6,Math.round(d.v/max*100))+"px";b.innerHTML="<i>"+(d.v||"")+"</i>";bars.appendChild(b);const s=document.createElement("span");s.textContent=d.n;lbl.appendChild(s)})}
+/* ===== Quiz generisch ===== */
+function makeQuiz(boxId,items,renderQ){
+ let idx=0,score=0,streakPerfect=true;
+ const box=document.getElementById(boxId);
+ function show(){box.innerHTML="";if(idx>=items.length){box.innerHTML='<p class="qbig">Runde geschafft! 🎉</p><p class="feedback '+(score===items.length?'ok':'')+'">'+score+" von "+items.length+" richtig."+(score===items.length?" Perfekte Runde! +25 Bonus-XP 💖":"")+'</p>';if(score===items.length){S.xp+=25;S.todayXP+=25;save()}renderStats();const rb=document.createElement("button");rb.textContent="🔄 Noch einmal";rb.onclick=()=>{idx=0;score=0;show()};box.appendChild(rb);return}
+  const it=items[idx];const head=document.createElement("p");head.className="muted";head.textContent="Frage "+(idx+1)+" von "+items.length+" · Treffer: "+score;box.appendChild(head);
+  renderQ(box,it,(chosen,correctBtn)=>{const fb=document.createElement("p");fb.className="feedback";
+   if(chosen===it.a){score++;gain(10,true);fb.className+=" ok";fb.textContent="✅ Richtig! +10 XP 💖"}
+   else{gain(0,false);fb.className+=" bad";fb.textContent="❌ Nicht ganz — richtig ist die markierte Antwort."}
+   box.querySelectorAll(".opt").forEach((b,i)=>{b.disabled=true;if(i===it.a)b.classList.add("correct");else if(i===chosen)b.classList.add("wrong")});
+   box.appendChild(fb);const nb=document.createElement("button");nb.textContent=idx+1>=items.length?"Ergebnis zeigen 🏁":"Weiter ➜";nb.onclick=()=>{idx++;show()};box.appendChild(nb)})}
+ show();
+}
+function optBtn(txt,i,cb){const b=document.createElement("button");b.className="opt";b.textContent=txt;b.onclick=()=>cb(i);return b}
+/* Wortschatz-Quiz: Georgisch → Deutsch */
+function buildVocabQuiz(){const ws=shuffle(wordsForLevel()).slice(0,10);
+ const items=ws.map(w=>{const others=shuffle(ALLWORDS.filter(x=>x.de!==w.de)).slice(0,2);const opts=shuffle([w.de,...others.map(o=>o.de)]);return {w,a:opts.indexOf(w.de),opts}});
+ makeQuiz("quizBox",items,(box,it,done)=>{const q=document.createElement("p");q.className="qbig";q.innerHTML="🇬🇪 "+it.w.ka+" <button class='spk' onclick='speak(\""+it.w.de.replace(/"/g,"")+"\")'>🔊 Deutsch hören</button>";box.appendChild(q);
+  const ex=document.createElement("p");ex.className="muted";ex.textContent="Beispiel: "+it.w.ex;box.appendChild(ex);
+  it.opts.forEach((o,i)=>box.appendChild(optBtn(o,i,c=>done(c))))})}
+/* Hör-Quiz: Deutsch hören → Georgisch wählen */
+function buildHoerQuiz(){const ws=shuffle(wordsForLevel()).slice(0,10);
+ const items=ws.map(w=>{const others=shuffle(ALLWORDS.filter(x=>x.ka!==w.ka)).slice(0,2);const opts=shuffle([w.ka,...others.map(o=>o.ka)]);return {w,a:opts.indexOf(w.ka),opts}});
+ makeQuiz("hoerBox",items,(box,it,done)=>{const q=document.createElement("p");q.className="qbig";q.innerHTML="🎧 <button onclick='speak(\""+it.w.de.replace(/"/g,"")+"\")'>🔊 Wort anhören</button>";box.appendChild(q);speak(it.w.de);
+  it.opts.forEach((o,i)=>box.appendChild(optBtn(o,i,c=>done(c))))})}
+/* Grammatik */
+function buildGrammar(){const items=shuffle(GRAMMAR).slice(0,10).map(g=>{const pairs=shuffle(g.opts.map((o,i)=>({o,ok:i===g.a})));return {g,opts:pairs.map(p=>p.o),a:pairs.findIndex(p=>p.ok)}});
+ makeQuiz("gramBox",items,(box,it,done)=>{const q=document.createElement("p");q.className="qbig";q.textContent=it.g.q;box.appendChild(q);
+  it.opts.forEach((o,i)=>box.appendChild(optBtn(o,i,c=>{done(c);const w=document.createElement("p");w.className="muted";w.textContent="💡 "+it.g.why;box.appendChild(w)})))})}
+/* Hör-Prüfung */
+function buildPruefung(){const box=document.getElementById("pruefBox");box.innerHTML="";
+ HOERPRUEFUNG.forEach(ex=>{const h=document.createElement("h3");h.textContent=ex.title;box.appendChild(h);
+  const play=document.createElement("button");play.textContent="▶ Text anhören";play.onclick=()=>speak(ex.text);box.appendChild(play);
+  ex.qs.forEach((qq,qi)=>{const wrap=document.createElement("div");const q=document.createElement("p");q.style.fontWeight="700";q.textContent=(qi+1)+". "+qq.q;wrap.appendChild(q);
+   qq.opts.forEach((o,i)=>{const b=optBtn(o,i,()=>{wrap.querySelectorAll(".opt").forEach((x,j)=>{x.disabled=true;if(j===qq.a)x.classList.add("correct");else if(j===i)x.classList.add("wrong")});
+    if(i===qq.a){gain(10,true);f.textContent="✅ Richtig! +10 XP"}else{gain(0,false);f.textContent="❌ Richtig wäre: "+qq.opts[qq.a]};wrap.appendChild(f)});wrap.appendChild(b)});
+   const f=document.createElement("p");f.className="feedback";box.appendChild(wrap);wrap.appendChild(f)});
+  const t=document.createElement("button");t.className="ghost";t.textContent="📄 Transkript zeigen";const tp=document.createElement("p");tp.className="muted";tp.style.display="none";tp.textContent=ex.text;
+  t.onclick=()=>{tp.style.display=tp.style.display==="none"?"block":"none"};box.appendChild(t);box.appendChild(tp)})}
+/* Bild-Karten, Karteikarten, Wortliste */
+function buildPics(){const box=document.getElementById("picBox");box.innerHTML="";shuffle(wordsForLevel()).slice(0,12).forEach(w=>{const d=document.createElement("div");d.className="piccard";d.innerHTML="<span class='big'>"+w.img+"</span><span class='wd'>"+w.de+"</span><span class='ka2'></span>";d.onclick=()=>{d.querySelector(".ka2").textContent=w.ka;speak(w.de)};box.appendChild(d)})}
+function buildFlips(){const box=document.getElementById("flipBox");box.innerHTML="";wordsForLevel().forEach(w=>{const d=document.createElement("div");d.className="flip";d.innerHTML="<span>"+w.de+"</span><button class='spk'>🔊</button>";let open=false;
+ d.querySelector(".spk").onclick=e=>{e.stopPropagation();speak(w.de)};
+ d.onclick=()=>{open=!open;if(open){rollDay();S.flips++;S.todayFlips++;save();renderStats()}d.classList.toggle("ka",open);d.querySelector("span").textContent=open?w.ka+" · "+w.de:w.de};box.appendChild(d)})}
+function buildTable(){const tb=document.getElementById("wordTable");tb.innerHTML="";PACKS.forEach(p=>{const tr=document.createElement("tr");tr.innerHTML="<td colspan='5'><span class='lvltag'>"+p.level+"</span> <b>"+p.title+"</b> <span class='muted'>· "+p.date+"</span></td>";tb.appendChild(tr);
+ p.words.forEach(w=>{const r=document.createElement("tr");r.innerHTML="<td><b>"+w.de+"</b></td><td><button class='spk'>🔊</button></td><td>"+w.ka+"</td><td class='muted'>"+w.ex+"</td><td>"+p.level+"</td>";r.querySelector(".spk").onclick=()=>speak(w.de);tb.appendChild(r)})})}
+/* Memory */
+let memOpen=[],memLock=false;
+function buildMemory(){const box=document.getElementById("memBox");box.innerHTML="";document.getElementById("memFb").textContent="";memOpen=[];memLock=false;
+ const ws=shuffle(wordsForLevel()).slice(0,8);const cards=shuffle(ws.flatMap(w=>[{v:w.de,id:w.de},{v:w.ka,id:w.de}]));
+ cards.forEach(c=>{const d=document.createElement("div");d.className="memcard";d.textContent="💗";d.dataset.id=c.id;d.dataset.v=c.v;
+  d.onclick=function(){
+   if(memLock||d.classList.contains("open")||d.classList.contains("done"))return;
+   d.classList.add("open");d.textContent=c.v;memOpen.push(d);
+   if(memOpen.length===2){memLock=true;const a=memOpen[0],b=memOpen[1];
+    if(a.dataset.id===b.dataset.id){
+     a.classList.add("done");b.classList.add("done");gain(10,true);
+     document.getElementById("memFb").textContent="💖 Paar gefunden: "+a.dataset.v+" = "+b.dataset.v;
+     memOpen=[];memLock=false;
+    }else{
+     setTimeout(()=>{a.classList.remove("open");b.classList.remove("open");a.textContent="💗";b.textContent="💗";memOpen=[];memLock=false;},900);
+    }
+   }
+  };
+  box.appendChild(d);});}
+function rebuildAll(){buildVocabQuiz();buildHoerQuiz();buildGrammar();buildPruefung();buildPics();buildFlips();buildTable();buildMemory();renderStats()}
+document.querySelectorAll(".lvlbtn").forEach(b=>b.onclick=()=>{CURLEVEL=b.dataset.lvl;S.level=CURLEVEL;save();rebuildAll()});
+rebuildAll();
+</script>
+
+<script>
+/* ===== 3D-HERZ-INTRO: Das Herz fliegt auf Ana zu ===== */
+let introDone=false, heartAnim=null;
+function endIntro(){if(introDone)return;introDone=true;
+ const intro=document.getElementById("intro");
+ /* Herz-Explosion: kleine Herzen fliegen hoch */
+ for(let i=0;i<28;i++){const s=document.createElement("span");s.className="flyheart";s.textContent=["❤","💖","💋","✨","💗"][i%5];
+  s.style.left=(8+Math.random()*84)+"vw";s.style.top=(45+Math.random()*35)+"vh";s.style.fontSize=(16+Math.random()*30)+"px";s.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),3400)}
+ intro.classList.add("gone");if(heartAnim)cancelAnimationFrame(heartAnim);
+ setTimeout(()=>{intro.style.display="none"},900);
+ try{speak("Für dich, Ana!")}catch(e){}}
+function startHeart(){
+ const canvas=document.getElementById("heart3d");
+ if(typeof THREE==="undefined"||!window.WebGLRenderingContext){document.getElementById("cssheart").style.display="block";setTimeout(endIntro,3400);return}
+ try{
+  const renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,300);camera.position.z=70;
+  function resize(){renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()}resize();addEventListener("resize",resize);
+  /* Herz-Form */
+  const x=0,y=0;const shape=new THREE.Shape();
+  shape.moveTo(x+5,y+5);shape.bezierCurveTo(x+5,y+5,x+4,y,x,y);
+  shape.bezierCurveTo(x-6,y,x-6,y+7,x-6,y+7);shape.bezierCurveTo(x-6,y+11,x-2,y+15.4,x+5,y+19);
+  shape.bezierCurveTo(x+12,y+15.4,x+16,y+11,x+16,y+7);shape.bezierCurveTo(x+16,y+7,x+16,y,x+10,y);
+  shape.bezierCurveTo(x+7,y,x+5,y+5,x+5,y+5);
+  const geo=new THREE.ExtrudeGeometry(shape,{depth:4,bevelEnabled:true,bevelSegments:6,bevelSteps:3,bevelSize:1.6,bevelThickness:1.6,curveSegments:24});
+  geo.center();
+  const mat=new THREE.MeshPhysicalMaterial({color:0xff1f5a,roughness:.16,metalness:.1,clearcoat:1,clearcoatRoughness:.15,emissive:0x55001c});
+  const heart=new THREE.Mesh(geo,mat);heart.rotation.z=Math.PI;heart.position.z=-160;heart.scale.setScalar(.4);scene.add(heart);
+  scene.add(new THREE.AmbientLight(0xffffff,.55));
+  const l1=new THREE.PointLight(0xff8fab,900,0,1.6);l1.position.set(25,25,40);scene.add(l1);
+  const l2=new THREE.PointLight(0xffc65c,600,0,1.6);l2.position.set(-25,-10,30);scene.add(l2);
+  const l3=new THREE.PointLight(0xffffff,500,0,1.6);l3.position.set(0,0,60);scene.add(l3);
+  /* Glitzer-Partikel */
+  const pn=260,pp=new Float32Array(pn*3);for(let i=0;i<pn*3;i++)pp[i]=(Math.random()-.5)*130;
+  const pg=new THREE.BufferGeometry();pg.setAttribute("position",new THREE.BufferAttribute(pp,3));
+  const stars=new THREE.Points(pg,new THREE.PointsMaterial({color:0xffc2d4,size:1.15,transparent:true,opacity:.9}));scene.add(stars);
+  const t0=performance.now();
+  function tick(now){heartAnim=requestAnimationFrame(tick);const t=(now-t0)/1000;
+   const fly=Math.min(t/3.4,1);const ease=1-Math.pow(1-fly,3);
+   heart.position.z=-160+ease*155;                       /* fliegt auf dich zu */
+   const base=.4+ease*2.5;const pulse=1+Math.sin(t*7)*.07;
+   heart.scale.setScalar(base*pulse);
+   heart.rotation.y=Math.sin(t*1.4)*.45;heart.rotation.x=Math.sin(t*1.1)*.15;
+   heart.position.y=Math.sin(t*2)*1.6;
+   stars.rotation.y=t*.03;
+   renderer.render(scene,camera);
+   if(fly>=1&&!introDone){setTimeout(endIntro,450)}}
+  heartAnim=requestAnimationFrame(tick);
+  setTimeout(endIntro,5200); /* Sicherheits-Ende */
+ }catch(e){document.getElementById("cssheart").style.display="block";setTimeout(endIntro,3400)}
+}
+function replayIntro(){const intro=document.getElementById("intro");introDone=false;intro.style.display="flex";intro.classList.remove("gone");startHeart();scrollTo({top:0,behavior:"smooth"})}
+document.getElementById("skipBtn").addEventListener("click",endIntro);
+document.getElementById("intro").addEventListener("click",function(e){if(e.target.id==="intro"||e.target.id==="heart3d")endIntro()});
+startHeart();
 </script>
 </body>
 </html>
